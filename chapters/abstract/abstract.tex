@@ -1,13 +1,18 @@
 % !TeX root = ../../thesis.tex
 \chapter{Abstract}                                 \label{ch:abstract}
 
-\ldots
-
-\instructionsabstract
+The evolutionary reconstruction of ongoing viral outbreaks and epidemics using genomic sequence data can provide valuable insights into the evolution and spread of those pathogens in an actionable time frame.
+Bayesian phylodynamic inference represents a powerful tool for performing this task, and recent developments in ‘online’ Bayesian phylogenetic methods enable scientists to efficiently update inferences upon the availability of new data—as is necessary during ongoing viral outbreaks that feature an increasing data flow over time.
+One limitation of phylogenetic inference is that it requires significant preprocessing of both sequence data, and of metadata relevant to the analysis.
+Reproducible analyses often require data to be subsampled by genotype, time, or based on other metadata, necessitating seamless integration between genomic sequence databases and phylogenetic inference software.
+Here, we implement a pipeline that enables BEAST 1.10 to make use of a continuous stream of data maintained in a pathogen-specific GLUE database instance.
+We apply this framework to data from seasonal Lassa virus outbreaks in Nigeria.
+We find GLUE to be a particularly good use-case for Lassa, as its clade-aware data schema stores nucleotide alignments, eliminating many of the hurdles encountered when preprocessing genome sequence data derived from  Lassa and other highly diverse segmented viruses.
+We also propose generalizations of this framework for other ongoing viral epidemics (COVID-19, seasonal influenza, measles, etc.).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Keep the following \cleardoublepage at the end of this file, 
+% Keep the following \cleardoublepage at the end of this file,
 % otherwise \includeonly includes empty pages.
 \cleardoublepage
 
