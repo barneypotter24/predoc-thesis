@@ -69,7 +69,7 @@ The implementation of such methods works according to a \comment{modified?} Metr
 For numeric parameters this takes the form of one or more numbers being generated randomly, and a random tree topology is used as the initial tree.
 A likelihood for the model can then be calculated, conditioned on the proposed tree and parameter set.
 The candidate parameter set and tree will then be randomly permuted according to various transition kernels---referred to as ``operators"---and a new likelihood is calculated.
-If the proposed parameter set yield a higher likelihood than the initial set, they are accepted as the new proposal set.
+If the proposed parameter set yield a higher likelihood than the inital set, they are accepted as the new proposal set.
 If they have a likelihood lower than the first proposal, they will be accepted with probability proportional to the ratio of their likelihoods.
 This process is then repeated, until a stable parameter and tree set are found.
 This stable set is considered to be the posterior distribution from which we would like to sample.

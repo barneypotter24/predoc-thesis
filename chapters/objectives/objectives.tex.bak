@@ -68,7 +68,7 @@ When running online analyses, it is often desired that the updated set of new se
 
 Following the generation of a suitable dataset of genomes, there are are still several necessary steps that must take place prior to phylogenetic inference that generally require significant manual work.
 An important prerequisite step for all molecular phylogenetic inference is the generation of a multiple sequence alignment of all the input genomes.
-Many different alignment tools are available to perform this task (e.g. BWA, MUSCLE, MAFFT), however they are generally highly parameterized tools with many available options that must be explored to create a suitable alignment.
+Many different alignment tools are available to perform this task (e.g. BWA, MUSCLE, MAFFT), however they are generally highly paramaterized tools with many available options that must be explored to create a suitable alignment.
 This step in particular often requires a large amount of manual work; many parameter combinations must be explored and alignments must be inspected manually as they cannot be easily validated automatically.
 Addition of new sequences in an online setting---though programatically simple if there is an existing framework---must still be validated manually in most cases, posing an obstacle to fully automated build pipelines.
 
@@ -77,13 +77,13 @@ Some models can be specified in BEAST using its graphical interface, BEAUti.
 Unfortunately this program does not support the full suite of models that BEAST can run at this time, and its use in facilitating online phylogenetic analyses is even more limited.
 Indeed, for many features that researchers may wish to use the only method for specifying them is by editing code blocks in a source file manually.
 While this process is possible to automate for those with sufficient technical knowledge there is no existing method for first-time users of the BEAST ecosystem to do so.
-In addition to initial model specification, it is frequently the case that models need to be tweaked follow some runtime either to be optimized or to fix issues that occur during their execution.
+In addition to inital model specification, it is frequently the case that models need to be tweaked follow some runtime either to be optimized or to fix issues that occur during their execution.
 This process is currently performed entirely manually by the user, further impeding automatic phylogenetic analysis.
 
 The final preprocessing step necessary before Bayesian phylogenetic analysis can be performed is the specification of MCMC parameters.
 This step generally takes place in concert with model specification, as its exact details vary significantly with different statistical models.
-Chain length---the number of iterations that the program will run---scales non-linearly with dataset size, dataset complexity, and model complexity; it is often estimated as a best guess by the user and cannot be explicitly calculated.
-It is often the case that a particular MCMC chain length is either insufficient to adequately explore the posterior distribution of all parameters, or it is vastly larger than necessary, resulting in excess computational resource being devoted to an analysis.
+Chainlength---the number of iterations that the program will run---scales nonlinearly with dataset size, dataset complexity, and model complexity; it is often estimated as a best guess by the user and cannot be explicitly calculated.
+It is often the case that a particular MCMC chainlength is either insufficient to adequately explore the posterior distribution of all parameters, or it is vastly larger than necessary, resulting in excess computational resource being devoted to an analysis.
 Prior distributions for all parameters must be specified prior to analysis, and may need to be updated significantly following the addition of new data in an online setting.
 Similarly, operators that modify each parameter during a run are particular to each model parameter and may change dynamically as data is introduced to an online build.
 Indeed, operators may also need to be changed if they are found to not work well for a given dataset---some may operate too ``slowly" and not explore state space adequately, while others may lack the power to deviate from local extrema in state space and become ``stuck" for thousands, if not millions, of states.
@@ -100,9 +100,9 @@ After demonstrating its utility for retrospective analysis, we present a novel p
 This is then applied to genomes collected during seasonal Nigerian Lassa fever outbreaks to demonstrate its utility in both facilitating a single analysis of an entire outbreak, as well as in automating the repetitive elements of an analysis to make real-time online analysis during an outbreak feasible.
 
 Finally, we present a framework by which this process may be extended in the future.
-Specifically, we propose a methodology by which our pipeline may interact directly with existing genomic database tools to provide a turnkey database-to-analysis pipeline that is easily used and modified by any user, regardless of their familiarity with the existing phylogenetic analysis ecosystem.
+Specifically, we propose a methodology by which our pipeline may interact directly with existing genomic database tools to provide a turnkey database-to-analysis pipeline that is easily used and modified by any user, regardless of their familiarity with the existing phylegenetic analysis ecosystem.
 We further describe some of the future work necessary to make this system robust to more phylogenetic models, and able to be run from start to finish without user intervention on cloud compute resources so that they are accessible to all researchers, regardless of access to physical compute resources.
-These improvements together constitute an ecosystem in which full online Bayesian phylogenetic analyses may be performed without exposing the user to the back-end operations, increasing both usability and interpretability.
+These improvements together constitute an ecosystem in which full online Bayesian phylogenetic analyses may be performed without exposing the user to the back-end operations, increasing both useability and interpretability.
 
 % \section{Convergence detection}
 %

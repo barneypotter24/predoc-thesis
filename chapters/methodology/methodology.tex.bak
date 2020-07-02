@@ -28,11 +28,11 @@ With the inclusion of ancient genomes, the final HBV-A and HBV-D datasets includ
 We inferred phylogenetic trees for each of our three datasets using MCMC analyses implemented in BEAST1.10.
 For all datasets we used the same model specification.
 Branch rates were inferred under a lognormal uncorrelated relaxed molecular clock model, allowing us to accommodate clock rate variation between branches of the tree.
-Following unsuccessful modeling of demographic history under a Bayesian Skygrid model, we used a constant demographic model as a tree model.
+Following unsuccessful modelling of demographic history under a Bayesian Skygrid model, we used a constant demographic model as a tree model.
 To accommodate the impact of the overlapping regions in the HBV genome on the substitution process of each codon position, we assumed an HKY substitution model without codon partitioning, accommodating among-site rate heterogeneity through a discretized gamma distribution.
 We performed at least three independent replicates of our MCMC analysis to ensure proper convergence, with each replicate running for 500 million iterations and subsampling every 10,000th iteration.
 We assumed default priors in BEAST for all parameters these analyses except for lognormal substitution rate ($X \sim Lognormal(-11.3474,1.22)$), which was derived from the HBV substitution rate estimated by the researchers who generated the ancient genomes\cite{muhlemann}.
-To speed likelihood computations we used the BEAGLE 3 high-performance computational library.
+To speed likelihood complutations we used the BEAGLE 3 high-performance computational library.
 MCMC chains were run for 500 million iterations and were sampled every 25,000th state.
 For each subtype multiple replicates of each subtype were run using different starting seeds in parallel to ensure proper convergence and statistical mixing, and a single combined posterior distribution was formed from all replicates, removing an appropriate proportion (at least 10\%) of each chain as burn-in.
 From this combined posterior distribution, 1,000 trees were sampled and used to perform subsequent Bayesian phylogeographic reconstruction in BEAST using empirical tree distributions.
@@ -40,7 +40,7 @@ From this combined posterior distribution, 1,000 trees were sampled and used to 
 \subsection{Phylogeographic modeling}
 
 Employing the collected empirical tree distributions, we estimated the spatial diffusion dynamics using a Bayesian phylogeographic approach in which the locations are treated as discrete traits, and allowed for different migration rates to and from each location.
-This approach conditioned on the geographic locations recorded at the tips of the trees and models the transition history among those locations as a continuous-time Markov chain (CTMC) process to infer the unobserved locations at the internal nodes of each tree.
+This approach conditioed on the geographic locations recorded at the tips of the trees and models the transition history among those locations as a continuous-time Markov chain (CTMC) process to infer the unobserved locations at the internal nodes of each tree.
 For these reconstructions, MCMC chains were run for 10 million iterations and sampled every 10,000th state.
 Maximum clade credibility (MCC) trees were summarized using TreeAnnotator v1.10 (cite BEAST 1.10) and the resulting trees were visualized in FigTree v1.4.3.
 The links between locations that contribute significantly to explaining the migration history were identified using a Bayesian stochastic search variable selection (BSSVS) procedure, and SpreaD3 was used to calculate the Bayes factor (BF) support for these links.
@@ -60,11 +60,11 @@ To handle these challenges, we divide our adaptable processing framework into tw
 
 \subsubsection{Snakemake for build management}
 
-For both of these steps, we employ the use of Snakemake\cite{snakemake}, a flexible workflow management system designed to be used with the Python programming language, to manage build specifications and easily perform online Bayesian inference.
+For both of these steps, we employ the use of Snakemake\cite{snakemake}, a flexible workflow management system designed to be used with the Python programing language, to manage build specifications and easily perform online Bayesian inference.
 We use this as an alternative to the traditional methods of workflow management---most commonly simple shell scripts or repeated use of command line tools.
 The use of Snakemake in our build pipelines affords us three major advantages over previous methods of build management: increased build reproducibility, easy parameterization, and robust error management.
 
-A pipeline is broken into its component steps as a series of ``rules"---each encapsulating a single command line directive---that can be parameterized by a single configuration file.
+A pipeline is broken into its componenet steps as a series of ``rules"---each encapsulating a single command line directive---that can be parameterized by a single configuration file.
 Each rule is defined in terms of its expected input and output as filenames; each rule also specifies a particular directive that should generate the outputs from the input.
 For example, one could specify a rule, \texttt{count\_lines}, whose goal was to apply the \texttt{wc -l} command line utility to an \texttt{input.txt} file and generate an \texttt{output.txt} file.
 At runtime Snakemake would check that \texttt{output.txt} did not already exist on the filesystem---an important check that prevents costly recomputation.
@@ -93,7 +93,7 @@ This process is illustrated in Figure~\ref{fig:alignment_dag}.
   \centering
   \medskip
   \includegraphics[width=.9\textwidth]{alignment_dag}
-  \caption[Lassa alignment pipeline]{A directed acyclic graph (DAG) representing the pipeline by which we generate Lassa virus alignments. We first use BLAST on each segment to determine its genotype. We then build gene-specific alignments for each genotype, and concatenate the results ``vertically"---i.e. all alignment files are combined into one. Then, we update the alignments such that all genotypes are as well aligned with each other as possible. Finally, we combine each gene ``horizontally" within each segment---i.e. for each segment and each strain there is a single sequence in the alignment---such that the final result are two final alignment files, one for each genome.}
+  \caption[Lassa alignment pipeline]{A directed acyclic graph (DAG) representing the pipeline by which we generate Lassa virus alignments. We first use BLAST on each segment to determine its genotype. We then build gene-specific alignments for each genotype, and concatenate the results ``vertically"---i.e. all alignment files are combined into one. Then, we update the alignments such that all genotypes are as well aligned with each other as possible. Finally, we combine each gene ``horizonally" within each segment---i.e. for each segment and each strain there is a single sequence in the alignment---such that the final result are two final alignment files, one for each genome.}
   \label{fig:alignment_dag}
 \end{figure}
 
@@ -102,7 +102,7 @@ This process is illustrated in Figure~\ref{fig:alignment_dag}.
 For our Lassa analyses, we created a Snakemake pipeline similar in form to that used for preprocessing.
 This pipeline (Fig.~\ref{fig:workflow_dag}) took the output alignments described above as its primary input.
 From each, we generated BEAST XML files.
-We use a Bayesian Skygrid demographic models for our analyses---though the pipeline is parameterized to easily accommodate both constant population size and Bayesian Skyride demographic models.
+We use a Bayesian Skygrid demographic models for our analyses---though the pipeline is parameterized to easily accomodate both constant population size and Bayesian Skyride demographic models.
 Our Skygrid inference used a Hamiltonian Monte Carlo (HMC) operator to allow efficient transition of population size state space.
 We assumed an HKY substitution model with codon partitioning for each gene, accommodating among-site rate heterogeneity through a discretized gamma distribution.
 We otherwise assume default BEAST values for operators and priors.

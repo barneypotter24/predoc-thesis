@@ -5,7 +5,7 @@
 
 \subsection{Demographic reconstruction}
 
-For this project, we had originally planned to reconstruct the demographic history of Hepatitis B subgenotypes throughout their history using a Bayesian Skygrid coalescent model.
+For this project, we had originally planned to reconstruct the demographic history of Hepatitis B subgenotypes throughout their history using a Bayesian skygrid coalescent model.
 This was a process by which we divided the evolutionary history of the virus into discrete intervals, then attempted to treat each ``bin" as a constant population size time window---resulting in a population function over time that was piecewise constant.
 Bins would then be smoothed with their neighbors to make a continuous estimation of population size through time.
 
@@ -14,7 +14,7 @@ Bins would then be smoothed with their neighbors to make a continuous estimation
 Unfortunately, this process was unsuccessful.
 The initial cause of the lack of success was the so-called ``block" operator of the MCMC that governed the change in Skygrid bin sizes.
 This operator became ``stuck" in all cases where we attempted to use it, such that the MCMC algorithm would never accept new proposals in state space, and therefore the estimated parameter values never changed---that is to say, the entire Markov chain became stuck in a local optimum and was never able to leave it.
-We attempted to rectify this situation by changing to a different transition kernel---a Hamiltonian Monte Carlo operator---however this operator was still never able to explore the state space rapidly enough to produce interpret able results.
+We attempted to rectify this situation by chaning to a different transition kernel---a Hamiltonian Monte Carlo operator---however this operator was still never able to explore the state space rapidly enough to produce interpretable results.
 
 To circumvent these issues, we transitioned to using a less sophisticated demographic model wherein the entire population size was assumed to be constant throughout history.
 Using this method, we recovered that HBV-A had an inferred effective population size of XXX [95\% HPD:X--Y] and that HBV-D had an inferred effective population size of 60,686 [95\% HPD: 38478--86598].
@@ -22,7 +22,7 @@ Using this method, we recovered that HBV-A had an inferred effective population 
 \subsection{Temporal signal and clock rates}
 
 The mean evolutionary rate and times to the most recent common ancestor (tMRCA) were first estimated for all data sets without including any ancient sequences (and hence not imposed any informative prior information) by collaborators.
-HBV genotype A was estimated to evolve at a mean rate of $5.75\times10^{-4}$ [95\% HPD: $3.81\times10^{-4}$--$7.90\times10^{-4}$] substitutions/site/year, genotype D at a mean rate of $1.27\times10^{-3}$ [95\% HPD: $1.12\times10^{-3}$--$1.43\times10^{-3}$] substitutions/site/year, and genotype E at a mean rate of $6.84\times10^{-4}$ [95\% HPD: $2.08\times10^{-4}$--$1.16\times10^{-3}$] substitutions/site/year.
+HBV genotype A was estimated to evolve at a mean rate of $5.75\times10^{-4}$ [95\% HPD: $3.81\times10^{-4}$--$7.90\times10^{-4}$] subsitutions/site/year, genotype D at a mean rate of $1.27\times10^{-3}$ [95\% HPD: $1.12\times10^{-3}$--$1.43\times10^{-3}$] substitutions/site/year, and genotype E at a mean rate of $6.84\times10^{-4}$ [95\% HPD: $2.08\times10^{-4}$--$1.16\times10^{-3}$] substitutions/site/year.
 However, HBV often shows very little temporal signal, making it difficult to accurately estimate the time scale onto an HBV phylogeny and to hence put accurate dates on historical migrations of the virus.
 M{\"u}hlemann et al. (2018) have shown that including ancient genomic sequences can provide the required additional information to warrant the use of molecular clock models to reconstruct time-stamped phylogenetic trees for HBV.
 For HBV data sets A and D, we have hence included the relevant ancient sequences and have set an informative prior distribution on the mean of the underlying lognormal distribution for the uncorrelated relaxed clock model, based on the reported estimate from M{\"u}hlemann et al. (2018).
@@ -33,7 +33,7 @@ For genotype A, this leads us to obtain a somewhat increased mean rate of $7.32\
 An initial goal of ours was to phylogenetically place the 118 complete genome sequences (split among HBV genotypes A,D, and E) which were provided to us by collaborators into discrete subgenotype-level categories.
 This was done by performing phylogenetic inference on the full set of genomes, then located the new sequences within the context of preexisting genetic diversity for their respective genotypes.
 Using this method, we were able to infer putative subgenotypes for each new sequence.
-For the genotypes that we analyzed, 54 belong to HBV genotypes A and D---the only genotypes we consider for which subgenotype definitions exist.
+For the genotypes that we analyzed, 54 belong to HBV genotypes A and D---the only genotypes we consider for which subgenotpye definitions exist.
 The remaining 64 new sequences that we introduce come from HBV-E; we find that these novel genomes span the existing known diversity of the genotype (Fig.~\ref{fig:HBV-E_new_sequences}).
 
 The most frequent HBV-A subgenotypes (Fig.~\ref{fig:HBV-A_new_sequences}) identified were A1 (n = 27, 57.4\%), quasi-subgenotype A3 (n = 11, 23.4\%) including previous [ A3(n = 5, 10.6\%), A4 (n = 4, 8.6\%) and A5 (n = 2, 4.3\%)], and A6 (n = 4, 8.6\%).
@@ -50,7 +50,7 @@ While 6 out of 8 HBV genotype D isolates (Fig.~\ref{fig:HBV-D_new_sequences}) we
   \centering
   \medskip
   \includegraphics[width=.9\textwidth]{HBV-A_new_sequences_smallboi}
-  \caption[HBV-A New sequences]{Phylogenetic trees (ancient sequences removed, ancient branch lengths rescaled for visibility) representing the diversity of the novel sequences from this study. Our sequences are shown as enlarged, labeled tips on the phylogeny. Taxa with a known subgenotype are colored by their subgenotype. Out of a total of 47 new genomes, we introduce 29 genomes that cluster most closely with Subgenotype 1, 22 of which represent a closely related subclade. Additionally, we introduce one genome that appears to fall within Subtype 2, nine new genomes that lie within the diversity of Subgenotype 3, two genomes that cluster with Subgenotype 5, and six genomes that cluster most closely with Subgenotype 6.}
+  \caption[HBV-A New sequences]{Phylogenetic trees (ancient sequences removed, ancient branch lengths rescaled for visibility) representing the diversity of the novel sequences from this study. Our sequences are shown as enlarged, labelled tips on the phylogeny. Taxa with a known subgenotype are colored by their subgenotype. Out of a total of 47 new genomes, we introduce 29 genomes that cluster most closely with Subgenotype 1, 22 of which represent a closely related subclade. Additionally, we introduce one genome that appears to fall within Subtype 2, nine new genomes that lie within the diversity of Subgenotype 3, two genomes that cluster with Subgenotype 5, and six genomes that cluster most closely with Subgenotype 6.}
   \label{fig:HBV-A_new_sequences}
 \end{figure}
 
@@ -58,7 +58,7 @@ While 6 out of 8 HBV genotype D isolates (Fig.~\ref{fig:HBV-D_new_sequences}) we
   \centering
   \medskip
   \includegraphics[width=.9\textwidth]{HBV-D_new_sequences_smallboi}
-  \caption[HBV-D New sequences]{Phylogenetic trees (ancient sequences removed, ancient branch lengths rescaled for visibility) representing the diversity of the novel sequences from this study. Our sequences are shown as enlarged, labeled tips on the phylogeny. Taxa with a known subgenotype are colored by their subgenotype. Here we introduce four novel genomes that fall within the known diversity of Subgenotype 1, two genomes that fall within Subgenotype 2, and one genome in Subgenotype 7.}
+  \caption[HBV-D New sequences]{Phylogenetic trees (ancient sequences removed, ancient branch lengths rescaled for visibility) representing the diversity of the novel sequences from this study. Our sequences are shown as enlarged, labelled tips on the phylogeny. Taxa with a known subgenotype are colored by their subgenotype. Here we introduce four novel genomes that fall within the known diversity of Subgenotype 1, two genomes that fall within Subgenotype 2, and one genome in Subgenotype 7.}
   \label{fig:HBV-D_new_sequences}
 \end{figure}
 
@@ -66,7 +66,7 @@ While 6 out of 8 HBV genotype D isolates (Fig.~\ref{fig:HBV-D_new_sequences}) we
   \centering
   \medskip
   \includegraphics[width=.9\textwidth]{HBV-E_new_sequences_smallboi}
-  \caption[HBV-E New sequences]{Phylogenetic trees representing the diversity of the novel sequences from this study. Our sequences are shown as enlarged, labeled tips on the phylogeny. Novel genomes introduced here represent over a quarter (64/234) of the total number of taxa.}
+  \caption[HBV-E New sequences]{Phylogenetic trees representing the diversity of the novel sequences from this study. Our sequences are shown as enlarged, labelled tips on the phylogeny. Novel genomes introduced here represent over a quarter (64/234) of the total number of taxa.}
   \label{fig:HBV-E_new_sequences}
 \end{figure}
 
@@ -80,7 +80,7 @@ From there, we infer that genotype A spread to Europe around 2000 BCE, then to A
 Following the jump to Africa, the topology of trees generated both with and without ancient genomes is well conserved.
 Notably, we observe at least 5 different introductions from Africa to the Americas taking place after the year 1700, consistent with the timing of the Atlantic slave trade.
 Following 1900, we observe a marked increase in the number of geographic jumps between the Americas, Europe, and West/Central Asia; this is consistent with the rapid globalization that took place during the previous century.
-The more recent introduction into West/Central Asia occurred from both Europe and the Americas from the 1960s onward.
+The more recent introduction into West/Central Asia occurred from both Europe and the Americas from the 1960s onwards.
 Finally, we note that in the most recent half-century there is little inferred migration, suggesting a strong recent geographic clade effect.
 
 \subsubsection{Genotype D}
@@ -88,7 +88,7 @@ Finally, we note that in the most recent half-century there is little inferred m
 As with genotype A, we estimated the evolutionary and migration history of HBV-D (Fig.~\ref{fig:HBV-D_phylogeo}), and included ancient genomes to provide temporal signal to the dataset.
 The MRCA that we inferred was located in East/South Asia around 1779 BCE.
 We observe an immediate jump out of the root location to West/Central Asia, and we observe most of the evolutionary history of genotype to take place between West/Central and East/South Asia.
-Following its time in East/South Asia, we observe multiple introductions into Africa, the Americas, and Europe.
+Following its time in East/South Asia, we observe multiple introductions into Afria, the Americas, and Europe.
 We also note that the majority of introductions into the Americas were spawned from Europe.
 
 Unlike with genotype A, we notice that there is a noticeable discrepancy between phylogenetic reconstructions with and without the inclusion of ancient genomes.
@@ -124,7 +124,7 @@ This agreement is indicative that the trees that we show are representative of t
   \centering
   \medskip
   \includegraphics[width=.9\textwidth]{HBV-A_phylogeography_and_mcc_tree_smallboi}
-  \caption[HBV-A phylogeography ]{Time-scaled maximum clade credibility tree representing the evolutionary history of HBV subtype A, averaged over 1,000 MCMC posterior state samples. The root is inferred to be at 2504BCE. Tip and branch colors represent location, both known and inferred by CTMC. Breaks in time axis represent long periods of time covered by individual branches. (inset) World map colored according to regions used for CTMC analysis. Each counterclockwise arrow represents an inferred transmission event between two regions (55 total). Arrow colors denote timing intervals of each introduction. Europe shows the greatest number of outgoing introductions (29). West/Central Asia is the inferred root location of the tree, with one ancient transmission to Europe inferred to have taken place between 2243--876BCE.}
+  \caption[HBV-A phylogeography ]{Time-scalled maximum clade credibility tree representing the evolutionary history of HBV subtype A, averaged over 1,000 MCMC posterior state samples. The root is inferred to be at 2504BCE. Tip and branch colors represent location, both known and inferred by CTMC. Breaks in time axis represent long periods of time covered by individual branches. (inset) World map colored according to regions used for CTMC analysis. Each counterclockwise arrow represents an inferred transmission event between two regions (55 total). Arrow colors denote timing intervals of each introduction. Europe shows the greatest number of outgoing introductions (29). West/Central Asia is the inferred root location of the tree, with one ancient transmission to Europe inferred to have taken place between 2243--876BCE.}
   \label{fig:HBV-A_phylogeo}
 \end{figure}
 

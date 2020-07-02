@@ -1,4 +1,4 @@
-\documentclass[showinstructions,faculty=firw,department=cws,phddegree=cws]{adsphd}
+\documentclass[showinstructions,faculty=med,department=rega,phddegree=predoc,doctoralschool=bms]{adsphd}
 %\documentclass[showinstructions,faculty=firw,department=cws,phddegree=cws,doctoralschool=ads]{adsphd}
 %\documentclass[showinstructions,showlabels,coverfontpercent=100,faculty=firw,department=cws,phddegree=cws]{adsphd}
 %\documentclass[croppedpdf,showinstructions,faculty=firw,department=cws,phddegree=cws]{adsphd}
@@ -27,7 +27,6 @@
 \jury{Prof.~Dr.~P.~Lemey\\
       Prof.~Dr.~J.~Matthijnssens
 }
-% \externaljurymember{Prof.~dr.~P.~Lemey}{Down the hall}
 
 % Your research group within the department
 % e.g. iMinds-DistriNet, Scientific Computing Group, ...
@@ -40,7 +39,7 @@
                               % that 'B-3001 Heverlee' is _incorrect_!!
                               % /[https://www.kuleuven.be/communicatie/marketing/intranet/huisstijl/taalgebruik.html]
 
-\date{July 2020}
+\date{August 2020}
 \copyyear{2020}
 %\udc{XXX.XX}            % UDC, deposit number and ISBN are no longer necessary.
 %\depot{XXXX/XXXX/XX}    % Leave out the initial D/ (it is added
@@ -83,6 +82,9 @@
 }
 \makeglossaries%
 
+% For highlighting comments in red so that they are easily seen/removed later:
+\newcommand{\comment}[1]{\textcolor{red}{#1}}
+
 
 % BibLaTeX
 %\usepackage[utf8]{inputenc}
@@ -124,7 +126,7 @@
 %    \includeabbreviations{abbreviations}
 % 2. automatic generation via the glossary package
 %    \glossary{name=MD,description=molecular dynamics}
-\myprintglossary
+% \myprintglossary
 
 % To create a list of symbols, there are 2 options
 % 1. include a manually created nomenclature as a chapter
