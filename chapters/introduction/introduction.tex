@@ -15,7 +15,7 @@
 In recent years the cost of generating genomic sequence data has dropped substantially.
 This, coupled with improvements to the speed and usability of software packages for analyzing these data, has led to an explosion of genomic sequence availability in recent years.
 
-\comment{Put in a figure of cost of a genome vs. Moore's law as an initial motivator?}
+\barneycomment{Put in a figure of cost of a genome vs. Moore's law as an initial motivator?}
 
 \section{Phylogenetics}
 
@@ -65,7 +65,7 @@ To perform Bayesian analyses it is frequently necessary to compute very large, h
 However, this process can be made computationally tractable by defining a Markov Chain whose stationary distribution is the desired posterior distribution of parameters.
 Through this implementation, we can use Markov Chain Monte Carlo (MCMC) methods to numerically solve for all desired parameter posterior distributions.
 
-The implementation of such methods works according to a \comment{modified?} Metropolis-Hastings algorithm: first by creating a starting proposal for each parameter that is to be inferred by drawing from its prior distribution.
+The implementation of such methods works according to a \barneycomment{modified?} Metropolis-Hastings algorithm: first by creating a starting proposal for each parameter that is to be inferred by drawing from its prior distribution.
 For numeric parameters this takes the form of one or more numbers being generated randomly, and a random tree topology is used as the initial tree.
 A likelihood for the model can then be calculated, conditioned on the proposed tree and parameter set.
 The candidate parameter set and tree will then be randomly permuted according to various transition kernels---referred to as ``operators"---and a new likelihood is calculated.
@@ -75,7 +75,7 @@ This process is then repeated, until a stable parameter and tree set are found.
 This stable set is considered to be the posterior distribution from which we would like to sample.
 We continue to repeat the process, recording the state of the chain at regular intervals, until the posterior has been sufficiently explored.
 
-\comment{There could probably be a lot more here, but I'm not sure what/if it is worth the page limit. Consider adding background on all the analyses that I do in more detail.}
+\barneycomment{There could probably be a lot more here, but I'm not sure what/if it is worth the page limit. Consider adding background on all the analyses that I do in more detail.}
 
 % \subsection{Measurably evolving populations}
 %

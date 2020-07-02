@@ -9,7 +9,7 @@ For this project, we had originally planned to reconstruct the demographic histo
 This was a process by which we divided the evolutionary history of the virus into discrete intervals, then attempted to treat each ``bin" as a constant population size time window---resulting in a population function over time that was piecewise constant.
 Bins would then be smoothed with their neighbors to make a continuous estimation of population size through time.
 
-\comment{below is more of discussion, and the above I guess is a method, but it is such a small section I don't know where to put it}
+\barneycomment{below is more of discussion, and the above I guess is a method, but it is such a small section I don't know where to put it}
 
 Unfortunately, this process was unsuccessful.
 The initial cause of the lack of success was the so-called ``block" operator of the MCMC that governed the change in Skygrid bin sizes.
