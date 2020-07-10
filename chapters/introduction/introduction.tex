@@ -65,7 +65,7 @@ To perform Bayesian analyses it is frequently necessary to compute very large, h
 However, this process can be made computationally tractable by defining a Markov Chain whose stationary distribution is the desired posterior distribution of parameters.
 Through this implementation, we can use Markov Chain Monte Carlo (MCMC) methods to numerically solve for all desired parameter posterior distributions.
 
-The implementation of such methods works according to a \barneycomment{modified?} Metropolis-Hastings algorithm: first by creating a starting proposal for each parameter that is to be inferred by drawing from its prior distribution.
+The implementation of such methods works according to a modified Metropolis-Hastings algorithm: first by creating a starting proposal for each parameter that is to be inferred by drawing from its prior distribution.
 For numeric parameters this takes the form of one or more numbers being generated randomly, and a random tree topology is used as the initial tree.
 A likelihood for the model can then be calculated, conditioned on the proposed tree and parameter set.
 The candidate parameter set and tree will then be randomly permuted according to various transition kernels---referred to as ``operators"---and a new likelihood is calculated.
@@ -75,16 +75,16 @@ This process is then repeated, until a stable parameter and tree set are found.
 This stable set is considered to be the posterior distribution from which we would like to sample.
 We continue to repeat the process, recording the state of the chain at regular intervals, until the posterior has been sufficiently explored.
 
-\barneycomment{There could probably be a lot more here, but I'm not sure what/if it is worth the page limit. Consider adding background on all the analyses that I do in more detail.}
+\subsection{Measurably evolving populations and temporal signal}
 
-\subsection{Measurably evolving populations}
+While performing phylogenetic analyses, we are often interested in
+\cite{shapiroscience}
 
 \subsubsection{Temporal signal}
 
-%
-% Online phylogenetic analysis of viral outbreaks
 
-\subsection{Computational challenges} %GB: I would turn this into 'Statistical and computational challenges'; or perhaps leave it but make sure to explain that an important aspect to consider is acquiring sufficiently high ESS values for all relevant parameters
+
+\subsection{Statistical and computational challenges} %GB: I would turn this into 'Statistical and computational challenges'; or perhaps leave it but make sure to explain that an important aspect to consider is acquiring sufficiently high ESS values for all relevant parameters
 
 One of the major challenges of phylogenetic inference is the vast size of the state space of potentially inferred variables.
 The size of so-called ``tree space"---the set of all possible phylogenetic trees for a given dataset---scales at the rate $\frac{(2n-3)!}{2^{n-1}(n-1)!}$.
@@ -92,11 +92,18 @@ This is far too large to exhaustively explore for the datasets that we are inter
 For the datasets that we explore in this thesis---ranging in size to 769 taxa---this number grows to vastly overshadow the number of atoms in the observable universe.
 As such, exhaustively exploring this space is impossible, and traversing this space algorithmically can still take considerable time.
 
+\subsection{Burnin and effective sample size}
 Bayesian phylogenetic inference of large, complex datasets can take upwards of a month of constant compute time before a chain stabilizes and begins to explore the posterior distribution.
+\begin{itemize}
+  \item Burnin happens first
+  \item Convergence happens when the chain reaches the posterior
+  \item Mixing is how we conceptualize how quickly the posterior is being explored
+  \item ESS is how we quantify how completely the posterior has been explored
+\end{itemize}
 
 \subsection{BEAST}
 
-For the analyses described in this thesis, we make use of the software package Bayesian Evolutionary Analysis Sampling Trees \cite{beast} (BEAST) in tandem with associated utility programs (BEAUti, Tracer).
+For the analyses described in this thesis, we make use of the software package Bayesian Evolutionary Analysis Sampling Trees 1.10 \cite{beast} (BEAST) in tandem with its associated utility programs (BEAUti, Tracer).
 BEAST a flexible tool in which many Bayesian phylogenetic models---and their associated priors and transition kernels---have been implemented and optimized such that large datasets may be easily specified and run efficiently on a wide variety of compute resources.
 This tool implements Bayesian phylogenetic inference via Markov Chain Monte Carlo
 

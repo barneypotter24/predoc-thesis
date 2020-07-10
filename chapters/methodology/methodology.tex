@@ -11,17 +11,17 @@
 \section{Bayesian phylogeographic inference of HBV}
 
 \subsection{Genomic sequence data}
-We analyze a total of 1,590 Hepatitis B virus genomes. %GB: how was this amount decided upon? Are these considered to be full/complete genomes?
-These genomes were divided into three datasets based on their HBV subgenotype, such that we had 587 HBV-A genomes, 769 HBV-D genomes, and 234 HBV-E genomes.
+We analyze a total of 1,590 complete Hepatitis B virus genomes divided among three genotypes, and arising from three primary sources: publically availabe sequence databases, novel genomes sequenced by collaborators, and recently sequenced ``ancient" genomes isolated from mummies.
+The genomes that we analyze were divided into three datasets based on their HBV genotype, such that we had 587 HBV-A genomes, 769 HBV-D genomes, and 234 HBV-E genomes.
 Of these, the vast majority (total 1,466: 540 HBV-A, 765 HBV-D, 170 HBV-E) were provided by collaborators following a query of the GenBank sequence database. %GB: this begs the question where the other ones came from; you can mention this information and prepare for questions (rudimentary ones) on how these data were generated, i.e. which technology (Illumina, MinION, ...).
-In order to investigate temporal signal in these HBV data sets, we perform additional analyses by including -- for two of the subgenotypes -- recently published `ancient' genomes isolated from mummies ranging in age from 450 years old to 4,500 years old \cite{muhlemann, ross}. %GB: I would make sure to mention `ancient' as this will tie in nicely with your explanation of measurably evolving populations in the introduction, where you should talk about `ancient DNA' data sets and mention Beth Shapiro's Science paper on bison populations.
+In order to investigate temporal signal in these HBV data sets, we perform additional analyses by including---for two genotypes---recently published ``ancient" genomes isolated from mummies ranging in age from 450 years old to 4,500 years old \cite{muhlemann, ross}. %GB: I would make sure to mention `ancient' as this will tie in nicely with your explanation of measurably evolving populations in the introduction, where you should talk about `ancient DNA' data sets and mention Beth Shapiro's Science paper on bison populations.
 The underlying assumption is that these genomes may help to improve temporal signal in the HBV datasets, as typically remarkably little signal is present in such data.
 We will assess whether the addition of these ancient samples allows to infer approximate timing windows of historical events.
 
 \subsection{Preprocessing}
 
-Prior to Bayesian inference, we estimated unrooted maximum likelihood phylogenetic trees using IQ-TREE. %GB: citation?
-These maximum likelihood trees were used to perform temporal signal analysis using TempEST, %GB: citation?
+Prior to Bayesian inference, we estimated unrooted maximum likelihood phylogenetic trees using IQ-TREE\cite{iqtree}. %GB: citation?
+These maximum likelihood trees were used to perform temporal signal analysis using TempEST\cite{tempest}, %GB: citation?
 allowing us to remove sequences that showed incongruent temporal signal patterns.
 %GB: I would talk more about TempEst and what it tries to do; the next two sequences are technically results.
 The resulting dataset comprised 583 sequences of HBV-A genotype viruses, 764 HBV-D sequences, and 234 sequences HBV-E genotype viruses.
@@ -33,6 +33,7 @@ We inferred phylogenetic trees for each of our three datasets by performing Baye
 For all datasets we used the same model specification as detailed below.
 Branch rates were inferred under an uncorrelated relaxed molecular clock model assuming an underlying lognormal distribution, allowing us accommodate evolutionary rate variation across the branches of the phylogeny.
 Following unsuccessful modeling of demographic history under a Bayesian skygrid model, we used a constant demographic model as a tree model. %GB: I don't mind this sentence, but it can lead to questions
+%BP: I wasn't sure how to nicely tie the non-results into the thesis, so I was planning on making it part of the presentation.
 To accommodate the impact of the overlapping regions in the HBV genome on the substitution process of each codon position, we assumed an HKY substitution model without codon partitioning, accommodating among-site rate heterogeneity through a discretized gamma distribution. %GB: citation?
 We performed at least three independent replicates of our MCMC analysis to ensure proper convergence, with each replicate running for 500 million iterations and subsampling every 10,000th iteration. %GB: make sure to be specific as to which approaches help with convergence and which help with mixing, as these are entirely different aspects
 We assumed default priors in BEAST for all parameters these analyses except for lognormal substitution rate ($X \sim Lognormal(-11.3474,1.22)$), %GB: I would avoid this type of math notation (it's also not defined what X is) and simply write down the mean and standard deviation (and mention the correct scale)
@@ -41,7 +42,6 @@ To speed up likelihood computations we used the BEAGLE 3 high-performance comput
 MCMC chains were run for 500 million iterations and were sampled every 25,000th state.
 For each subtype, multiple replicates were run in parallel using different starting seeds to ensure proper convergence and statistical mixing, and a single combined posterior distribution was formed from all replicates, removing an appropriate proportion (at least 10\%) of each chain as burn-in.
 From this combined posterior distribution, 1,000 trees were sampled and used to perform subsequent Bayesian phylogeographic reconstruction in BEAST using empirical tree distributions. %GB: it wasn't discussed why this step was taken I think
-
 
 \subsection{Phylogeographic modeling}
 
@@ -55,8 +55,6 @@ We also estimated the expected number of location state transitions in the ances
 Since the data consist of a heterogeneous number of sequences for each location which show strong sampling bias between individual countries that can strongly impact the outcome of a discrete phylogeography study.
 To mitigate this issue, we opted to group sequences into continental regions, aiming to contain a number of sequences of the same order of magnitude where possible: Africa, the Americas, East South Asia, Europe, and West Central Asia. %GB: I would not go into detail here, but make a general statement and refer to the results section for the different options/groupings we considered
 We note that for data set E, no samples from East South Asia nor West Central Asia were available.
-
-
 
 
 \section{Lassa phylogenetics and online inference}
@@ -91,11 +89,11 @@ It also ensures that all build parameters and commands that are not explicitly m
 
 \subsubsection{Alignment generation}
 
-Our initial Lassa analyses began with genomes gathered from GenBank via API query and from previously unpublished genomes from 2019 seasonal outbreaks in Nigeria provided by collaborators (671 L segments, 795 S segments). %GB: cite Liana's 2019 Science paper? Or not applicable here?
+Our initial Lassa analyses began with genomes gathered from GenBank via API query and from previously unpublished genomes from 2019 seasonal outbreaks in Nigeria provided by collaborators (671 L segments, 795 S segments)\cite{liana2019}. %GB: cite Liana's 2019 Science paper? Or not applicable here?
 Midway through the analysis period we received incoming data updates from collaborators in Nigeria, increasing our dataset sizes to respectively 698 L segments and 826 S segments.
 Data from collaborators were provided to us as Microsoft Excel spreadsheets containing both sequences and metadata, necessitating a preprocessing pipeline that could collate new genomes with those generated by GenBank query.
 For each sequence, its genotype was determined according to BLAST search.
-Genotype-gene alignments were then built using MAFFT and concatenated ``vertically" across genotypes. %GB: citation?
+Genotype-gene alignments were then built using MAFFT and concatenated ``vertically" across genotypes\cite{mafft}. %GB: citation?
 Finally, alignments were concatenated ``horizontally" between the two genes for each segment, padded with \textit{N} characters to allow for variations in length and to buffer between genes.
 This process is illustrated in Figure~\ref{fig:alignment_dag}.
 
@@ -114,7 +112,7 @@ For our Lassa analyses, we created a Snakemake pipeline similar in form to that 
 This pipeline (Fig.~\ref{fig:workflow_dag}) took the output alignments described above as its primary input.
 From each, we generated BEAST XML files.
 We use a Bayesian skygrid demographic models for our analyses---though the pipeline is parameterized to easily accommodate both constant population size and Bayesian Skyride demographic models.
-Our skygrid inference used a Hamiltonian Monte Carlo (HMC) operator to allow efficient transition of population size state space. %GB: citation?
+Our Skygrid inference used a Hamiltonian Monte Carlo (HMC) operator to allow efficient transition of population size state space. %GB: citation?
 We assumed an HKY substitution model with codon partitioning for each gene, accommodating among-site rate heterogeneity through a discretized gamma distribution.
 We otherwise assume default BEAST values for operators and priors.
 The MCMC chain length, logging frequency, and number of parallel replicates were parameterized dynamically though Snakemake, however for the results we present we ran a single chain for $5\times10^7$ iterations, logging every 15,000th state.

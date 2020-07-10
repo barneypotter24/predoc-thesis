@@ -23,7 +23,11 @@ This integration would considerably mitigate the amount of bespoke preprocessing
 Such ``full stack" pipelines are currently in existence for Maximum Likelihood bases phylogenetics\cite{nextstrain}, however at this time no such framework exists for large-scale Bayesian phylogenetic analysis.
 
 As our next direction, we will integrate existing online BEAST pipelines with GLUE\cite{glue}---a database software designed specifically for viral genomic sequence data.
-
+This database stores sequence data---and their associated metadata---in a phylogenetically-informed manner as a series of multiple sequence alignments.
+This provides several immediate benefits to the rapid initiation of phylogenetic pipelines from an existing datbase instance.
+Because sequences are stored as alignments according to their phylogenetic relationship, selection of sequences and subsampling becomes much easier, as a database API call replaces the need to perform genetic distance calculations as a preprocessing step.
+Additionally, because alignments are preexisting within the database it becomes possible to skip the alignment preprocessing step entirely.
+Finally, because the GLUE database system is designed with
 
 
 \section{Data insertion and model updates}
