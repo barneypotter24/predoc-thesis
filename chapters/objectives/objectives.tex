@@ -4,49 +4,21 @@
 
 %GB: make sure this chapter is phrased as (a series of) objectives/goals, i.e. what are we trying to do. No need to discuss results, but each (sub)section must clearly describe an objective
 
-\section{Viral pathogen analysis}
+\section{Hepatitis B Virus}
 
-Viral pathogen outbreaks are a particularly useful study system for Bayesian phylogeneticists because their small genomes and fast evolutionary rate facilitate both tractable computation and a constant stream of constantly evolving genomes. %GB: not sure what the latter part means? Also, your HBV analyses will contradict (in part) the tractable computation part ... perhaps add a 'typically' somewhere in this sentence?
-Additionally, viruses frequently cause human suffering and death, both as endemic diseases (seasonal influenza, hepatitis, etc.) and the agents behind sudden disease epidemics (Zika, Ebola, Lassa).
-Indeed, viruses have been responsible for the majority of the most deadly pandemics of the last century (1918 Spanish influenza, 2009 Swine flu, COVID-19).
-%GB: I feel another sentence is needed here before the final sentence, indicating that not all viruses necessarily lead to deadly pandemics but can also be specific to certain regions and/or lead to severe health problems.
-In this thesis, I present the results of Bayesian phylogenetic analyses of two separate viral pathogens: Hepatitis B virus (HBV) and Lassa virus (LASV). %GB: use 'I' and not 'we', it's your predoc thesis after all
-
-% \subsection{Zika Virus}
-%
-% Zika virus (ZIKV) is the causative agent of Zika fever, a disease spread between humans via \textit{Aedes} mosquito hosts.
-% It is endemic in the tropical islands of Oceania, and has most recently attracted global notoriety due to the 2015-2016 Zika epidemic in the Americas.
-% Zika virus is closely related to Dengue virus, Yellow Fever virus, and West Nile virus, and it is a member of the virus family \textit{Flaviviridae}.
-% Zika virus is a positive-sense single stranded RNA virus with a genome approximately 10 kilobases in length.
-% Recently, phylogenetic methods have been used to describe the evolution and geographic spread of ZIKV throughout the Americas, and have proven invaluable in revealing both the number of Zika introductions to individual countries, as well as potential modalities of viral spread between countries.
-% We are interested in... something?
-% Here we use the tools provided in the Nextstrain software package \cite{nextstrain} to reconstruct hypothesized ancestral genomes that were the ancestor to contemporary Zika virus strains.
-
-
-\subsection{Hepatitis B Virus}
-
-HBV has infected over two billion people worldwide, and puts over 350 million people at risk of cirrhosis and liver cancer \cite{kane1995}.
-The virus is classified into eight different genotypes based on genomic sequence divergence.
-These genotypes show strong ethnospatial patterns, and are often correlated directly to the region of the world where they are most prominent \cite{schaefer2007}.
-Hepatitis B virus consists of two partially overlapping strands of DNA. %GB: do you want to show a small (but still high-quality figure)? You need to come back to this when discussing the choice for the substitution model
-The long strand ranges from 3020--3320 bases in length, while the short strand ranges from 1700--2800 nucleotides long, depending on genotype \cite{kay2007_hepatitis_b_virus_genetic_variability}.
-
-In a first part of this thesis, we are interested in obtaining a better understanding of the spatiotemporal dynamics that have contributed to the current geographic diversity of HBV genotypes A, D, and E.
-Unfortunately, one of the difficulties of analyzing HBV genomic datasets is that the virus generally shows very little temporal signal. %GB: no figure needed but a proper explanation of temporal signal is required in the introduction, so I have made/uncommented the corresponding section titles there
-To remedy this we perform temporal phylogeographic analysis of contemporary HBV genomes and explore how and if the addition of several `ancient' HBV genomes render these data sets suitable for Bayesian phylogeographic inference without the need for external calibration information. %isolated from the tissue of mummies \cite{muhlemann, ross}.
-The genomes range between 500--4,500 years in age, and %GB: incomplete sentence? Also, be consistent on the notation for thousands (previous sentences had no separator symbol)
-These genomes may help provide both some temporal signal to our data, as well as give us some information about the historical locations of different HBV genotypes.
+In a first part of this thesis, I am interested in obtaining a better understanding of the spatiotemporal dynamics that have contributed to the current geographic diversity of \gls{hbv} genotypes A, D, and E.
+Unfortunately, one of the difficulties of analyzing \gls{hbv} genomic datasets is that the virus generally shows very little temporal signal.
+To remedy this we perform temporal phylogeographic analysis of contemporary \gls{hbv} genomes and explore how and if the addition of several `ancient' \gls{hbv} genomes render these data sets suitable for Bayesian phylogeographic inference without the need for external calibration information. %isolated from the tissue of mummies \cite{muhlemann, ross}.
+The genomes range between 500--4,500 years in age, and \barneycomment{FINISH THIS SENTENCE}%GB: incomplete sentence? Also, be consistent on the notation for thousands (previous sentences had no separator symbol)
+These genomes may help provide both some temporal signal to our data, as well as give us some information about the historical locations of different \gls{hbv} genotypes.
 
 %GB: also need to mention that we will study or try to mitigate any potential sampling bias issues
 
 
 \subsection{Lassa Virus} %GB: write this section as an objective, i.e. what is the problem you will be working on that is currently hindering/cumbersome for Bayesian phylodynamic inference whenever new sequence data become available?
 
-Talk to Liana about Lassa references %GB: but don't write an introduction to LASV here, leave that for the LASV chapter. Focus on objectives here; you can phrase the objective/problem in a more general way and mention that you will focus here on LASV.
+Talk to Liana about Lassa references %GB: but don't write an introduction to \gls{lasv} here, leave that for the \gls{lasv} chapter. Focus on objectives here; you can phrase the objective/problem in a more general way and mention that you will focus here on \gls{lasv}.
 Fill this in.
-
-
-
 
 \section{Online Bayesian phylodynamic inference} %GB: what is the objective in this section? I feel like the Objectives chapter should be just that: a clear list of goals/objectives; everything else can/should be moved to another part of the thesis (Sam's objectives part was less than 1 page for example). This paragraph can be merged with the final paragraph in the file and should no longer be a separate section.
 
@@ -57,7 +29,7 @@ as complete analyses can plausibly take longer to run than is actionable during 
 Additionally, current methods do not accommodate changes to datasets or statistical models, often requiring new analyses to be restarted ``from scratch" as more information regarding a pathogen is being uncovered.
 While frequent restarts may be feasible for small datasets or relatively simple models that run in a short amount of time, it quickly becomes unreasonable as dataset size and model complexity grows.
 
-\section{Data preprocessing} %GB: I feel like we write one or two paragraphs describing the general problem (for LASV) in the section above and move most (and perhaps all) of the text below to the Lassa virus (results) chapter; this is too much text to clearly summarize the thesis objectives
+\section{Data preprocessing} %GB: I feel like we write one or two paragraphs describing the general problem (for \gls{lasv}) in the section above and move most (and perhaps all) of the text below to the Lassa virus (results) chapter; this is too much text to clearly summarize the thesis objectives
 
 Beyond the runtime complexity of currently available phylogeographic inference tools real time analyses are further impeded by the significant amount of preprocessing that they necessitate before raw sequence data can be analyzed.
 This preprocessing generally takes the form of bespoke pipelines that require significant manual work to function properly.
@@ -106,25 +78,17 @@ Only after all of these steps have been completed can a user begin to perform th
 In this thesis, we first illustrate the power of Bayesian phylogenetic inference as a \textit{post hoc} analysis tool.
 We perform phylogenetic inference on a three large datasets of contemporary Hepatitis B virus sequences from around the world.
 To two of these datasets we additionally include several genomes isolated from mummies ranging between 500--4,500 years in age.
-Conditioned on the results of this phylogenetic inference, we perform phylogeographic inference to identify historical migration events that may have contributed to the current geographic distribution patterns of HBV. %GB: this paragraph should be moved to a conclusion section of the HBV chapter
+Conditioned on the results of this phylogenetic inference, we perform phylogeographic inference to identify historical migration events that may have contributed to the current geographic distribution patterns of \gls{hbv}. %GB: this paragraph should be moved to a conclusion section of the \gls{hbv} chapter
 
 After demonstrating its utility for retrospective analysis, we present a novel pipeline that unifies dataset preprocessing, Bayesian phylogenetic inference, and figure generation into one automated tool.
-This is then applied to genomes collected during seasonal Nigerian Lassa fever outbreaks to demonstrate its utility in both facilitating a single analysis of an entire outbreak, as well as in automating the repetitive elements of an analysis to make real-time online analysis during an outbreak feasible. %GB: perhaps move this paragraph to the end of the HBV objective above?
+This is then applied to genomes collected during seasonal Nigerian Lassa fever outbreaks to demonstrate its utility in both facilitating a single analysis of an entire outbreak, as well as in automating the repetitive elements of an analysis to make real-time online analysis during an outbreak feasible. %GB: perhaps move this paragraph to the end of the \gls{hbv} objective above?
 
 Finally, we present a framework by which this process may be extended in the future. %GB: move this to the Lassa objective above?
 Specifically, we propose a methodology by which our pipeline may interact directly with existing genomic database tools to provide a turnkey database-to-analysis pipeline that is easily used and modified by any user, regardless of their familiarity with the existing phylogenetic analysis ecosystem.
 We further describe some of the future work necessary to make this system robust to more phylogenetic models, and able to be run from start to finish without user intervention on cloud compute resources so that they are accessible to all researchers, regardless of access to physical compute resources.
 These improvements together constitute an ecosystem in which full online Bayesian phylogenetic analyses may be performed without exposing the user to the back-end operations, increasing both usability and interpretability.
 
-% \section{Convergence detection}
-%
-% The final issue that presents itself as online Bayesian phylogenetic analysis pipelines are run in an increasingly automated manner is that of how to detect when an analysis has run sufficiently to produce results---that is, to determine of the desired posterior distribution has been adequately explored and sampled.
-% Let's have a little discussion about:
-% \begin{itemize}
-%   \item ESS detection
-%   \item Convergence estimation
-%   \item scheduling
-% \end{itemize}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

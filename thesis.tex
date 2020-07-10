@@ -25,8 +25,9 @@
 \supervisor{Dr.~M.~Gill}{}
 \president{Prof.~Dr.~G.~Opdenakker}
 \jury{Prof.~Dr.~P.~Lemey\\
-      Prof.~Dr.~J.~Matthijnssens
+      Prof.~Dr.~J.~Matthijnssens\\
 }
+\externaljurymember{Prof.~dr.~L.~Dupont}{Secretary}
 
 % Your research group within the department
 % e.g. iMinds-DistriNet, Scientific Computing Group, ...
@@ -80,7 +81,7 @@
   \chaptermark{\glossname}
   \addcontentsline{toc}{chapter}{\glossname} %% comment to exclude from TOC
 }
-\makeglossaries%
+\makeglossary%
 
 % For highlighting comments in red so that they are easily seen/removed later:
 \newcommand{\barneycomment}[1]{\textcolor{blue}{#1}}
@@ -126,7 +127,7 @@
 %    \includeabbreviations{abbreviations}
 % 2. automatic generation via the glossary package
 %    \glossary{name=MD,description=molecular dynamics}
-% \myprintglossary
+\myprintglossary
 
 % To create a list of symbols, there are 2 options
 % 1. include a manually created nomenclature as a chapter
@@ -175,11 +176,11 @@
 \bibliography{allpapers}
 % BibLatex (comment lines above and comment out biblatex lines in preamble)
 %\printbibliography[title=\bibname]
-\instructionsbibliography
+% \instructionsbibliography
 
-\includecv{curriculum}
+% \includecv{curriculum}
 
-\includepublications{publications}
+% \includepublications{publications}
 
 \makebackcoverXII
 
