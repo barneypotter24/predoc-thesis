@@ -2,93 +2,34 @@
 \chapter{Objectives}
 \label{ch:objectives}
 
-%GB: make sure this chapter is phrased as (a series of) objectives/goals, i.e. what are we trying to do. No need to discuss results, but each (sub)section must clearly describe an objective
-
 \section{Hepatitis B Virus}
 
 In a first part of this thesis, I am interested in obtaining a better understanding of the spatiotemporal dynamics that have contributed to the current geographic diversity of \gls{hbv} genotypes A, D, and E.
 Unfortunately, one of the difficulties of analyzing \gls{hbv} genomic datasets is that the virus generally shows very little temporal signal.
-To remedy this we perform temporal phylogeographic analysis of contemporary \gls{hbv} genomes and explore how and if the addition of several `ancient' \gls{hbv} genomes render these data sets suitable for Bayesian phylogeographic inference without the need for external calibration information. %isolated from the tissue of mummies \cite{muhlemann, ross}.
-The genomes range between 500--4,500 years in age, and \barneycomment{FINISH THIS SENTENCE}%GB: incomplete sentence? Also, be consistent on the notation for thousands (previous sentences had no separator symbol)
-These genomes may help provide both some temporal signal to our data, as well as give us some information about the historical locations of different \gls{hbv} genotypes.
+To remedy this we perform temporal phylogeographic analysis of contemporary \gls{hbv} genomes and explore how and if the addition of several ``ancient'' \gls{hbv} genomes isolated from the tissue of mummies\cite{muhlemann, ross} render these data sets suitable for Bayesian phylogeographic inference without the need for external calibration information.
+The genomes range between 500--4,500 years in age, and cover a geographic range from central Asia to the Korean peninsula; this provides more temporal signal to our data than has existed in previous studies, and helps us generate more accurate reconstructions of the temporal aspects of the evolutionary history of \gls{hbv}.
 
-%GB: also need to mention that we will study or try to mitigate any potential sampling bias issues
+Beyond the accurate temporal inference of the evolutionary history of \gls{hbv}, I aim to reconstruct the migration history of the virus over evolutionary time.
+Beyond the temporal signal that they contribute, the ancient genomes give us some information about the historical locations of different \gls{hbv} genotypes.
+I aim to use these in tandem with our contempory dataset of genomes to infer when major migration events have taken place over the history of each \gls{hbv} genotype.
+For this analysis, I strive to migigate any potential sampling bias that is introduced by over- or under-sampling of specific locations in our dataset.
 
+Finally, I aim to phylogenetically place the novel set of \gls{hbv} genomes that are used in these analyses.
+In doing so, I seek to determing a ``subgenotype'' label for each new sequence.
 
-\subsection{Lassa Virus} %GB: write this section as an objective, i.e. what is the problem you will be working on that is currently hindering/cumbersome for Bayesian phylodynamic inference whenever new sequence data become available?
+\section{Lassa Virus}
+In the second part of this thesis, I seek to better understand the phylodynamics of \gls{lasv} in ``real time'' during seasonal outbreaks of Lassa fever in Nigeria.
+A major hinderance to this process is the significant amount of ``preprocessing'' currently required to begin any Bayesian phylogenetic analysis pipeline.
+It is a non-trivial process to add new data---even a single new genome---to an ongoing analysis; this often requires hand-made, bespoke preprocessing workflows.
+Here, I present a new method for automating one such work flow to facilitate rapid analysis of \gls{lasv} genomes during a seasonal outbreak.
+This workflow removes much of the manual labor required to being Bayesian phylogenetic analysis, and represents the first step toward creating a complete online \gls{beast} ecosystem.
 
-Talk to Liana about Lassa references %GB: but don't write an introduction to \gls{lasv} here, leave that for the \gls{lasv} chapter. Focus on objectives here; you can phrase the objective/problem in a more general way and mention that you will focus here on \gls{lasv}.
-Fill this in.
+\section{Online BEAST roadmap}
 
-\section{Online Bayesian phylodynamic inference} %GB: what is the objective in this section? I feel like the Objectives chapter should be just that: a clear list of goals/objectives; everything else can/should be moved to another part of the thesis (Sam's objectives part was less than 1 page for example). This paragraph can be merged with the final paragraph in the file and should no longer be a separate section.
-
-One of the biggest challenges in performing Bayesian phylogenetic inference is the large computational footprint of analyses.
-Depending on the size and complexity of a dataset---as well as the particular statistical model being used and the hardware on which analyses are run---analyses of a single dataset can take upwards of a month of runtime.
-While this can largely be worked around for retrospective analyses of datasets, it proves a major impediment to using Bayesian phylogenetics to analyze ongoing disease outbreaks, %GB: this is rather vague, i.e. what can be done for retrospective analyses that cannot be done for analyses of ongoing epidemics?
-as complete analyses can plausibly take longer to run than is actionable during the course of an epidemic.
-Additionally, current methods do not accommodate changes to datasets or statistical models, often requiring new analyses to be restarted ``from scratch" as more information regarding a pathogen is being uncovered.
-While frequent restarts may be feasible for small datasets or relatively simple models that run in a short amount of time, it quickly becomes unreasonable as dataset size and model complexity grows.
-
-\section{Data preprocessing} %GB: I feel like we write one or two paragraphs describing the general problem (for \gls{lasv}) in the section above and move most (and perhaps all) of the text below to the Lassa virus (results) chapter; this is too much text to clearly summarize the thesis objectives
-
-Beyond the runtime complexity of currently available phylogeographic inference tools real time analyses are further impeded by the significant amount of preprocessing that they necessitate before raw sequence data can be analyzed.
-This preprocessing generally takes the form of bespoke pipelines that require significant manual work to function properly.
-While each individual analysis presents challenges unique to the biology of the pathogen of interest, for many analyses the general scheme of data preprocessing is similar.
-
-The prototypical preprocessing pipeline begins with collection of genomic sequence data.
-It is not uncommon for genomic data to come from multiple disparate sources.
-Genomic databases (e.g. GISAID, ViPR, GenBank) frequently present data to the user in a variety of formats---presenting a major hurdle towards systematically collating genomes into a single dataset.
-Additionally, researchers performing analyses frequently wish to include genomes generated by their own research groups or collaborators.
-These genomes will generally not be stored on database servers, preventing them from being available to database APIs that could normally assist in the building of datasets.
-
-Even after full datasets are assembled, they may not be the final set of sequences that will be used for phylogenetic inference.
-Frequently, researchers wish to downsample their datasets based on a variety of factors---both assisting with runtime and reducing the risk of introducing sampling bias into the final analyses.
-Specific genomes may be deemed inappropriate for analysis based on containing incomplete or highly ambiguous sequences.
-Genomes may also be excluded based on genetic distance thresholds or their phylogenetic placement in previous analyses.
-In addition to removing specific inappropriate sequences, researchers will frequently downsample randomly (or pseudorandomly) to achieve a desired distribution of genomes through time, space, or some other feature of interest.
-Finally, researchers may want to ensure that specific sequences are included in their analyses for a variety of reasons, and thus ensure that they are not removed by downsampling procedures.
-When running online analyses, it is often desired that the updated set of new sequences need to be included in the analysis, requiring them to be exempt from downsampling.
-
-Following the generation of a suitable dataset of genomes, there are are still several necessary steps that must take place prior to phylogenetic inference that generally require significant manual work.
-An important prerequisite step for all molecular phylogenetic inference is the generation of a multiple sequence alignment of all the input genomes.
-Many different alignment tools are available to perform this task (e.g. BWA, MUSCLE, MAFFT), however they are generally highly parameterized tools with many available options that must be explored to create a suitable alignment.
-This step in particular often requires a large amount of manual work; many parameter combinations must be explored and alignments must be inspected manually as they cannot be easily validated automatically.
-Addition of new sequences in an online setting---though programatically simple if there is an existing framework---must still be validated manually in most cases, posing an obstacle to fully automated build pipelines.
-
-Once an alignment has been generated, phylogenetic models must be specified; this is often a very complicated task.
-Some models can be specified in BEAST using its graphical interface, BEAUti.
-Unfortunately this program does not support the full suite of models that BEAST can run at this time, and its use in facilitating online phylogenetic analyses is even more limited.
-Indeed, for many features that researchers may wish to use the only method for specifying them is by editing code blocks in a source file manually.
-While this process is possible to automate for those with sufficient technical knowledge there is no existing method for first-time users of the BEAST ecosystem to do so.
-In addition to initial model specification, it is frequently the case that models need to be tweaked follow some runtime either to be optimized or to fix issues that occur during their execution.
-This process is currently performed entirely manually by the user, further impeding automatic phylogenetic analysis.
-
-The final preprocessing step necessary before Bayesian phylogenetic analysis can be performed is the specification of MCMC parameters.
-This step generally takes place in concert with model specification, as its exact details vary significantly with different statistical models.
-Chain length---the number of iterations that the program will run---scales non-linearly with dataset size, dataset complexity, and model complexity; it is often estimated as a best guess by the user and cannot be explicitly calculated.
-It is often the case that a particular MCMC chain length is either insufficient to adequately explore the posterior distribution of all parameters, or it is vastly larger than necessary, resulting in excess computational resource being devoted to an analysis.
-Prior distributions for all parameters must be specified prior to analysis, and may need to be updated significantly following the addition of new data in an online setting.
-Similarly, operators that modify each parameter during a run are particular to each model parameter and may change dynamically as data is introduced to an online build.
-Indeed, operators may also need to be changed if they are found to not work well for a given dataset---some may operate too ``slowly" and not explore state space adequately, while others may lack the power to deviate from local extrema in state space and become ``stuck" for thousands, if not millions, of states.
-Only after all of these steps have been completed can a user begin to perform the actual phylogenetic inference that interests them.
-
-
-\section{Thesis objectives}
-
-In this thesis, we first illustrate the power of Bayesian phylogenetic inference as a \textit{post hoc} analysis tool.
-We perform phylogenetic inference on a three large datasets of contemporary Hepatitis B virus sequences from around the world.
-To two of these datasets we additionally include several genomes isolated from mummies ranging between 500--4,500 years in age.
-Conditioned on the results of this phylogenetic inference, we perform phylogeographic inference to identify historical migration events that may have contributed to the current geographic distribution patterns of \gls{hbv}. %GB: this paragraph should be moved to a conclusion section of the \gls{hbv} chapter
-
-After demonstrating its utility for retrospective analysis, we present a novel pipeline that unifies dataset preprocessing, Bayesian phylogenetic inference, and figure generation into one automated tool.
-This is then applied to genomes collected during seasonal Nigerian Lassa fever outbreaks to demonstrate its utility in both facilitating a single analysis of an entire outbreak, as well as in automating the repetitive elements of an analysis to make real-time online analysis during an outbreak feasible. %GB: perhaps move this paragraph to the end of the \gls{hbv} objective above?
-
-Finally, we present a framework by which this process may be extended in the future. %GB: move this to the Lassa objective above?
+Finally, we present a framework by which this process may be extended in the future.
 Specifically, we propose a methodology by which our pipeline may interact directly with existing genomic database tools to provide a turnkey database-to-analysis pipeline that is easily used and modified by any user, regardless of their familiarity with the existing phylogenetic analysis ecosystem.
 We further describe some of the future work necessary to make this system robust to more phylogenetic models, and able to be run from start to finish without user intervention on cloud compute resources so that they are accessible to all researchers, regardless of access to physical compute resources.
 These improvements together constitute an ecosystem in which full online Bayesian phylogenetic analyses may be performed without exposing the user to the back-end operations, increasing both usability and interpretability.
-
-
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

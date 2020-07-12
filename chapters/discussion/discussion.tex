@@ -3,11 +3,24 @@
 
 \section{HBV phylogeography}
 
+In this thesis, we first illustrate the power of Bayesian phylogenetic inference as a \textit{post hoc} analysis tool.
+We perform phylogenetic inference on a three large datasets of contemporary Hepatitis B virus sequences from around the world.
+To two of these datasets we additionally include several genomes isolated from mummies ranging between 500--4,500 years in age.
+Conditioned on the results of this phylogenetic inference, we perform phylogeographic inference to identify historical migration events that may have contributed to the current geographic distribution patterns of \gls{hbv}.
+
 \section{Lassa phylogenetics}
 
-\section{Limitations}
+After demonstrating its utility for retrospective analysis of \gls{hbv}, we present a novel pipeline that unifies dataset preprocessing, Bayesian phylogenetic inference, and figure generation into one automated tool.
+This is then applied to genomes collected during seasonal \gls{lasv} outbreaks to demonstrate its utility in both facilitating a single analysis of an entire outbreak, as well as in automating the repetitive elements of an analysis to make real-time online analysis during an outbreak feasible.
 
-\subsection{Runtime}
+\section{Future directions}
+
+One of the biggest challenges in performing Bayesian phylogenetic inference is the large computational footprint of analyses.
+Depending on the size and complexity of a dataset---as well as the particular statistical model being used and the hardware on which analyses are run---analyses of a single dataset can take upwards of a month of runtime.
+While this can largely be worked around for retrospective analyses of datasets, it proves a major impediment to using Bayesian phylogenetics to analyze ongoing disease outbreaks because current tools are designed to operate on a a single dataset; their utility breaks down under scenarios that create dynamic inputs.
+Because of runtime constraints, complete analyses can plausibly take longer to run than is actionable during the course of an epidemic.
+Additionally, current methods do not accommodate changes to datasets or statistical models, often requiring new analyses to be restarted ``from scratch'' as more information regarding a pathogen is being uncovered.
+While frequent restarts may be feasible for small datasets or relatively simple models that run in a short amount of time, it quickly becomes unreasonable as dataset size and model complexity grows.
 
 \subsection{Updating ongoing analyses}
 
@@ -18,11 +31,11 @@ We have demonstrated the utility of Bayesian phylogenetic inference as a tool fo
 \section{Database integration}
 
 One of the most crucial next steps that we identify moving forward towards the ideal online Bayesian phylogenetic framework is the development of tools to seamlessly integrate data streams with analysis pipelines.
-In particular, we suggest the combination of BEAST's analysis tools with genomic databases whose design is focused around efficient, biologically informed storage of both genetic sequence data, as well as relevant metadata.
+In particular, we suggest the combination of \gls{beast}'s analysis tools with genomic databases whose design is focused around efficient, biologically informed storage of both genetic sequence data, as well as relevant metadata.
 This integration would considerably mitigate the amount of bespoke preprocessing work that is currently required to get phylogenetic builds running \barneycomment{this sounds dumb, reword}.
 Such ``full stack" pipelines are currently in existence for Maximum Likelihood bases phylogenetics\cite{nextstrain}, however at this time no such framework exists for large-scale Bayesian phylogenetic analysis.
 
-As our next direction, we will integrate existing online BEAST pipelines with GLUE\cite{glue}---a database software designed specifically for viral genomic sequence data.
+As our next direction, we will integrate existing online \gls{beast} pipelines with GLUE\cite{glue}---a database software designed specifically for viral genomic sequence data.
 This database stores sequence data---and their associated metadata---in a phylogenetically-informed manner as a series of multiple sequence alignments.
 This provides several immediate benefits to the rapid initiation of phylogenetic pipelines from an existing datbase instance.
 Because sequences are stored as alignments according to their phylogenetic relationship, selection of sequences and subsampling becomes much easier, as a database API call replaces the need to perform genetic distance calculations as a preprocessing step.
