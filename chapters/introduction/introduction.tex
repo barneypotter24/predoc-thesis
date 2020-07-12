@@ -55,7 +55,7 @@ Similar methods may be used not only to reconstruct the ancestral states of vari
 Common examples of this type of analysis include location analyses %---either discrete or continuous---
 or analyses of a particular phenotype of interest.
 Finally, phylogenetic methods often hypothesize a link between effective population sizes and tree shape---known as the coalescent process---whereby small populations are expected to have relatively high rates of branching (and therefore relatively short branch lengths) compared to larger populations.
-Visual examples of all of these standard analyses are illustrated in Figure~\ref{fig:phylogeneticsOverview}.
+Visual examples of all of these aspects of phylodynamic analyses are illustrated in Figure~\ref{fig:phylogeneticsOverview}.
 
 %GB: need to cite the Pybus and Rambaut review (Nat. Rev. Genet. 2009)
 \begin{figure}[ht]
@@ -78,30 +78,32 @@ to the common ancestor (black circle).}
 
 One particularly useful application of phylogenetics is in the analysis of viral pathogen outbreaks.
 Viruses represent unique study systems for both the theoretical development of phylogenetic methodologies and the implementation of phylogenetic analyses in settings with tangible public health impact.
-In addition to their ubiquity and high profile within the human population, viruses prove highly suitable for phylogenetic inference because of their fast evolutionary rates, small, simple genomes, and frequent adherence to the assumptions of a single evolutionary history (i.e. infrequent recombination or reassortment).
+In addition to their ubiquity and high profile within the human population, viruses prove highly suitable for phylogenetic inference because of their fast evolutionary rates, relatively small genomes, and frequent adherence to the assumptions of a single evolutionary history (i.e. infrequent recombination or reassortment). %GB: should we avoid such strong statements (infrequent recombination or reassortment)?
 Phylogenetic methods have frequently been used to perform \textit{post hoc} analyses of viral outbreaks, however significant work is still required before such methods can be used to inform public health responses in ``real time'' during an ongoing epidemic.
-In this thesis, I describe phylogenetic analyses of two viral pathogens---Hepatitis B virus (\gls{hbv}) and Lassa virus (\gls{lasv}).
-We use these analyses to both illustrate both the use of current phylogenetic analysis in performing retrospective analysis, and to provide a framework for so-called ``online'' phylogenetic analyses that can be performed in real-time during a viral epidemic.
+In this thesis, I describe phylogenetic analyses of two viral pathogens---hepatitis B virus (\gls{hbv}) and Lassa virus (\gls{lasv}).
+%GB: need to decide whether to consistently use "I" or "we"
+We use these analyses to illustrate the use of current phylogenetic and phylogeographic analysis in performing retrospective analysis, and to provide a framework for novel ``online'' phylogenetic analyses that can be performed in real-time during a viral epidemic.
+
 
 \section{Bayesian phylodynamics and joint inference}
 
-In this thesis, I devote particular to Bayesian methodologies of phylogenetic inference.
-Generally, Bayesian methods are those which do not assume that the parameters which govern statistical models take a single-point value, but rather come from some posterior probability distribution.
-Such methodologies are also informed by hypotheses of these parameter distributions provided \textit{a priori} by researchers---referred to as parameter priors.
+In this thesis, I devote particular to Bayesian methodologies of phylogenetic inference. %GB: this sentence sounds weird to me
+Unlike many other approaches, including maximum-likelihood inference, Bayesian methods do not assume that the parameters which govern statistical models take a single-point value, but rather come from a posterior probability distribution.
+Such methodologies are also informed by hypotheses of these parameter distributions provided \textit{a priori} by researchers---referred to as parameter prior distributions.
 Bayesian methodologies are particularly well suited to phylogenetic methods in several key ways.
-Firstly, they allow researchers to create robust estimates of evolutionary histories that still account uncertainty both in the phylogenies and in other parameters of interest.
+Firstly, they allow researchers to create robust estimates of evolutionary histories that still accommdate uncertainty both in the phylogenies and in other parameters of interest. %GB: robust how?
 Additionally, Bayesian phylogenetic methods afford researchers the opportunity to infer many different parameters of interest (e.g. mutation rates, effective population sizes, and migration rates) jointly with the phylogeny.
-Finally, these methods can be put to use with relative ease using algorithms that allow efficient exploration of posterior distributions for many parameters simultaneously.
+Finally, these methods can be put to use with relative ease using algorithms that allow efficient exploration of posterior distributions for many parameters simultaneously. %GB: this sounds a bit vague, what are you trying to say here?
 
-\newglossaryentry{mcmc}{name={MCMC},description={Markov Chain Monte Carlo}}
-To perform Bayesian analyses it is frequently necessary to compute very large, highly dimensional integrals to produce exact posterior distributions; this is unfortunately often infeasible to solve analytically using computers.
-However, this process can be made computationally tractable by defining a Markov Chain whose stationary distribution is the desired posterior distribution of parameters.
-Through this implementation, we can use Markov Chain Monte Carlo (\gls{mcmc}) methods to numerically solve for all desired parameter posterior distributions.
+\newglossaryentry{mcmc}{name={MCMC},description={Markov chain Monte Carlo}}
+To perform Bayesian analyses it is frequently necessary to compute very large, high-dimensional integrals to produce exact posterior distributions; this is unfortunately often infeasible to solve analytically using computers.
+However, this process can be made computationally tractable by defining a Markov chain whose stationary distribution is the desired posterior distribution of parameters.
+Through this implementation, we can use Markov chain Monte Carlo (\gls{mcmc}) methods to numerically solve for all desired parameter posterior distributions.
 
 The implementation of such methods works according to a modified Metropolis-Hastings algorithm: first by creating a starting proposal for each parameter that is to be inferred by drawing from its prior distribution.
 For numeric parameters this takes the form of one or more numbers being generated randomly, and a random tree topology is used as the initial tree.
 A likelihood for the model can then be calculated, conditioned on the proposed tree and parameter set.
-The candidate parameter set and tree will then be randomly permuted according to various transition kernels---referred to as ``operators''---and a new likelihood is calculated.
+The candidate parameter set and tree will then be randomly permuted according to various transition kernels and a new likelihood is calculated. %GB: let's not mention "operators", as that's "BEAST speak"
 If the proposed parameter set yield a higher likelihood than the initial set, they are accepted as the new proposal set.
 If they have a likelihood lower than the first proposal, they will be accepted with probability proportional to the ratio of their likelihoods.
 This process is then repeated, until a stable parameter and tree set are found.
