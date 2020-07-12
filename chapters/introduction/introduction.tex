@@ -47,20 +47,29 @@ Additionally, phylogenetic analyses may be combined with other methodologies (e.
 \newglossaryentry{mrca}{name={MRCA},description={Most recent common ancestor}}
 
 Phylogenetic methods can help reveal many features of a set of related taxa.
-The most frequent use of these methods is to construct a phylogenetic tree: a bifurcating (or sometimes multifurcating) representation of the inferred evolutionary history of a set of contemporary taxa---represented as tips or leaves of the tree---with inferred shared ancestors represented by internal nodes where two or more branches of the tree meet, eventually coalescing at the most recent common ancestor (\gls{mrca}) of all the taxa.
+The most frequent use of these methods is to construct a phylogenetic tree: a bifurcating (or sometimes multifurcating) representation of the inferred evolutionary history of a set of contemporary taxa---represented as tips or leaves of the tree---with inferred shared ancestors represented by internal nodes where two or more branches of the tree meet, eventually coalescing at the most recent common ancestor (\gls{mrca}) of all the taxa in a data set.
 Such trees often use length of branches to represent genetic distance between nodes.
-Often a more useful representation of evolutionary history can be found by rescaling branch lengths along a tree according to some mutation rate which provides a mapping between genetic distance and time, allowing the phylogeny to be represented as a function of time.
+A more useful representation of evolutionary history can be found by rescaling branch lengths along a tree according to a mutation rate which provides a mapping between genetic distance and time, allowing the phylogeny to be represented as a function of time.
 Phylogenetic trees can also be used to infer the shared mutation history of a set of sequences, thereby allowing the reconstruction of inferred ancestral genomes.
 Similar methods may be used not only to reconstruct the ancestral states of various discrete or continuous traits that describe the taxa of the tree.
-Common examples of this type of analysis include location analyses---either discrete or continuous---or analyses of a particular phenotype of interest.
+Common examples of this type of analysis include location analyses %---either discrete or continuous---
+or analyses of a particular phenotype of interest.
 Finally, phylogenetic methods often hypothesize a link between effective population sizes and tree shape---known as the coalescent process---whereby small populations are expected to have relatively high rates of branching (and therefore relatively short branch lengths) compared to larger populations.
-Visual examples of all of these standard analyses are illustrated in Fig.~\ref{fig:phylogeneticsOverview}.
+Visual examples of all of these standard analyses are illustrated in Figure~\ref{fig:phylogeneticsOverview}.
 
+%GB: need to cite the Pybus and Rambaut review (Nat. Rev. Genet. 2009)
 \begin{figure}[ht]
   \centering
   \medskip
   \includegraphics[width=.9\textwidth]{rambautFig}
-  \caption[Applications of phylogenetic analysis]{\barneycomment{I need to write some more stuff here.}}
+  \caption[Applications of phylogenetic analysis]{Key concepts in phylodynamic analysis. 
+  a) Molecular phylogenies from viral gene sequences are typically rooted and bifurcating.
+  b) A molecular clock allows to define a relationship between genetic distance and time, with unusually fast or slow evolving lineages are shown as thick or thin lines, respectively.
+  c) Phylodynamic data can also highlight the evolution through time of mutations that may reflect viral adaptations; of particular interest are the replacement mutations that are found on the persisting phylogenetic ‘backbone’ that represents the ancestor of future virus populations (blue branches), as opposed to those occurring on branches that die out (black branches).
+  d) Temporal phylogeographic inference is used to reconstruct the history of pathogen spread, so that each branch is labelled with its estimated geographic position.
+  e) Coalescent analyses incorporate an explicit model of the sampled pathogen population.
+  The increasing width of each row therefore reflects the growth of the epidemic through time. Starting from the sampled infections (red), the sampled lineages (black lines) can be traced back through unsampled infections (grey)
+to the common ancestor (black circle).}
   \label{fig:phylogeneticsOverview}
 \end{figure}
 
