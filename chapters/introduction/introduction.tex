@@ -12,17 +12,37 @@
 % \newpage
 % \end{shaded}
 
-In recent years the cost of generating genomic sequence data has dropped substantially.
-This, coupled with improvements to the speed and usability of software packages for analyzing these data, has led to an explosion of genomic sequence availability in recent years.
 
-\barneycomment{Put in a figure of cost of a genome vs. Moore's law as an initial motivator?}
+%GB: I think a short introduction to decreased cost of generating genomic sequence data should be moved to the LASV chapter
+%there, you can talk about the MinION which was used in the Lassa field work: https://nanoporetech.com/products/minion
+%and recent developments/evolution in sequencing protocols, as the ones developed by the Artic network are now frequently used, also for SARS-CoV-2
+%https://nanoporetech.com/about-us/news/artic-network-provides-protocol-rapid-accurate-sequencing-novel-coronavirus-ncov-2019
+%https://artic.network/ncov-2019
+%In recent years the cost of generating genomic sequence data has dropped substantially.
+%This, coupled with improvements to the speed and usability of software packages for analyzing these data, has led to an explosion of genomic sequence availability in recent years.
+
+%GB: you can include a figure on the MinION, or evolution of sequencing technologies over time; perhaps discuss Josh Quick's Nature paper and the first use of MinION for Ebola sequencing
+%https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4817224/
+%\barneycomment{Put in a figure of cost of a genome vs. Moore's law as an initial motivator?}
+%With high-throughput molecular sequencing, genomic data from pathogenic viruses are becoming available in unprecedented quantities and with remarkable speed, even in resource-limited settings, aided by portable genome sequencing technology \citep{quick2016}. 
+
+Infectious diseases are now emerging or reemerging almost every year. 
+This trend will continue because a number of factors, including the increased global population, aging, travel, urbanization, and climate change, favor the emergence, evolution, and spread of new pathogens \cite{Bloom2017}.
+Many of those pathogens represent a clear and eminent threat to public health, as the ongoing severe acute respiratory syndrome corona virus 2 (SARS-CoV-2) outbreak has made brutally clear, as well as a tremendous burden on global economies.
+Other examples from the last few years include the emergence of West Nile, H5N1, H1N1, Ebola, Zika and Lassa.
+Demographic forces amplify the risks associated with such emerging infectious diseases (EIDs), with the global population expected to grow to 8 billion within 8 years, with nearly 60\% living in relatively crowded urban areas. 
+Among EIDs, viral pathogens, particularly RNA viruses, stand as major concerns, owing to their high rates of nucleotide substitution and capacity to adapt to new hosts.
+Viral sequence data provide a major asset in characterising these pathogens. 
+Analysing the historical information contained in viral genomes contributes to better insight into viral emergence and early transmission dynamics, even before systematic epidemiological surveillance initiates.
+
+
 
 \section{Phylogenetics}
 
 One powerful tool at the disposal of scientists interested in inferring pathogen dynamics is that of molecular phylogenetic inference.
 This is a methodology by which the shared evolutionary history of a set of genomic sequences, sometimes referred to as taxa, is hypothesized based on genomic similarity.
-Phylogenetic methodologies come in many different forms, ranging from simple heuristics that approximate phylogenetic relationships based on number of observed differences between sequences\cite{felsenstein2003inferring} to highly complex models that use demographic and geographic population structure as well as state-of-the-art models of evolution to inform phylogenetic inference\cite{dudas2018mers}.
-Additionally, phylogenetic analyses may be combined with other methodologies (e.g. population genetics\cite{felsenstein2003inferring} or epidemiology\cite{Black2020}) to produce robust analyses.
+Phylogenetic methodologies come in many different forms, ranging from simple heuristics that approximate phylogenetic relationships based on the number of observed differences between sequences \cite{felsenstein2003inferring} to highly complex models that use demographic and geographic population structure as well as state-of-the-art models of evolution to inform phylogenetic inference \cite{dudas2018mers}.
+Additionally, phylogenetic analyses may be combined with other methodologies (e.g. population genetics \cite{felsenstein2003inferring} or epidemiology \cite{Black2020}) to produce robust analyses.
 
 \newglossaryentry{mrca}{name={MRCA},description={Most recent common ancestor}}
 
