@@ -6,44 +6,45 @@
 \subsection{Demographic reconstruction}
 
 For this project, we had originally planned to reconstruct the demographic history of Hepatitis B subgenotypes throughout their history using a Bayesian Skygrid coalescent model.
-This was a process by which we divided the evolutionary history of the virus into discrete intervals, then attempted to treat each ``bin" as a constant population size time window---resulting in a population function over time that was piecewise constant.
+This was a process by which we divided the evolutionary history of the virus into discrete intervals, then attempted to treat each ``bin'' as a constant population size time window---resulting in a population function over time that was piecewise constant.
 Bins would then be smoothed with their neighbors to make a continuous estimation of population size through time.
 
-\barneycomment{below is more of discussion, and the above I guess is a method, but it is such a small section I don't know where to put it}
+% \barneycomment{below is more of discussion, and the above I guess is a method, but it is such a small section I don't know where to put it}
 
 Unfortunately, this process was unsuccessful.
-The initial cause of the lack of success was the so-called ``block" operator of the MCMC that governed the change in Skygrid bin sizes.
-This operator became ``stuck" in all cases where we attempted to use it, such that the MCMC algorithm would never accept new proposals in state space, and therefore the estimated parameter values never changed---that is to say, the entire Markov chain became stuck in a local optimum and was never able to leave it.
+The initial cause of the lack of success was the so-called ``block'' operator of the \gls{mcmc} that governed the change in Skygrid bin sizes.
+This operator became ``stuck'' in all cases where we attempted to use it, such that the \gls{mcmc} algorithm would never accept new proposals in state space, and therefore the estimated parameter values never changed---that is to say, the entire Markov chain became stuck in a local optimum and was never able to leave it.
 We attempted to rectify this situation by changing to a different transition kernel---a Hamiltonian Monte Carlo operator---however this operator was still never able to explore the state space rapidly enough to produce interpret able results.
 
 To circumvent these issues, we transitioned to using a less sophisticated demographic model wherein the entire population size was assumed to be constant throughout history.
-Using this method, we recovered that HBV-A had an inferred effective population size of XXX [95\% HPD:X--Y] and that HBV-D had an inferred effective population size of 60,686 [95\% HPD: 38478--86598].
+Using this method, we recovered that \gls{hbv}-A had an inferred effective population size of \barneycomment{XXX [95\% HPD:X--Y]} and that \gls{hbv}-D had an inferred effective population size of 60,686 [95\% HPD: 38,478--86,598].
 
 \subsection{Temporal signal and clock rates}
 
-The mean evolutionary rate and times to the most recent common ancestor (tMRCA) were first estimated for all data sets without including any ancient sequences (and hence not imposed any informative prior information) by collaborators.
-HBV genotype A was estimated to evolve at a mean rate of $5.75\times10^{-4}$ [95\% HPD: $3.81\times10^{-4}$--$7.90\times10^{-4}$] substitutions/site/year, genotype D at a mean rate of $1.27\times10^{-3}$ [95\% HPD: $1.12\times10^{-3}$--$1.43\times10^{-3}$] substitutions/site/year, and genotype E at a mean rate of $6.84\times10^{-4}$ [95\% HPD: $2.08\times10^{-4}$--$1.16\times10^{-3}$] substitutions/site/year.
-However, HBV often shows very little temporal signal, making it difficult to accurately estimate the time scale onto an HBV phylogeny and to hence put accurate dates on historical migrations of the virus.
-M{\"u}hlemann et al. (2018) have shown that including ancient genomic sequences can provide the required additional information to warrant the use of molecular clock models to reconstruct time-stamped phylogenetic trees for HBV.
-For HBV data sets A and D, we have hence included the relevant ancient sequences and have set an informative prior distribution on the mean of the underlying lognormal distribution for the uncorrelated relaxed clock model, based on the reported estimate from M{\"u}hlemann et al. (2018).
+\newglossaryentry{tmrca}{name={tMRCA},description={Time to most recent common ancestor}}
+The mean evolutionary rate and times to the most recent common ancestor (\gls{tmrca}) were first estimated for all data sets without including any ancient sequences (and hence not imposed any informative prior information) by collaborators.
+\gls{hbv} genotype A was estimated to evolve at a mean rate of $5.75\times10^{-4}$ [95\% HPD: $3.81\times10^{-4}$--$7.90\times10^{-4}$] substitutions/site/year, genotype D at a mean rate of $1.27\times10^{-3}$ [95\% HPD: $1.12\times10^{-3}$--$1.43\times10^{-3}$] substitutions/site/year, and genotype E at a mean rate of $6.84\times10^{-4}$ [95\% HPD: $2.08\times10^{-4}$--$1.16\times10^{-3}$] substitutions/site/year.
+However, \gls{hbv} often shows very little temporal signal, making it difficult to accurately estimate the time scale onto an \gls{hbv} phylogeny and to hence put accurate dates on historical migrations of the virus.
+M{\"u}hlemann et al. (2018) have shown that including ancient genomic sequences can provide the required additional information to warrant the use of molecular clock models to reconstruct time-stamped phylogenetic trees for \gls{hbv}.
+For \gls{hbv} data sets A and D, we have hence included the relevant ancient sequences and have set an informative prior distribution on the mean of the underlying lognormal distribution for the uncorrelated relaxed clock model, based on the reported estimate from M{\"u}hlemann et al. (2018).
 For genotype A, this leads us to obtain a somewhat increased mean rate of $7.32\times10^{-4}$ [95\% HPD: $4.14\times10^{-4}$--$1.06\times10^{-3}$] substitutions/site/year, while for genotype D we obtained a much decreased mean rate of $9.65\times10^{-5}$ [95\% HPD: $5.97\times10^{-5}$--$1.36\times10^{-4}$] substitutions/site/year.
 
 \subsection{Phylogenetic placement}
 
-An initial goal of ours was to phylogenetically place the 118 complete genome sequences (split among HBV genotypes A,D, and E) which were provided to us by collaborators into discrete subgenotype-level categories.
+An initial goal of ours was to phylogenetically place the 118 complete genome sequences (split among \gls{hbv} genotypes A,D, and E) which were provided to us by collaborators into discrete subgenotype-level categories.
 This was done by performing phylogenetic inference on the full set of genomes, then located the new sequences within the context of preexisting genetic diversity for their respective genotypes.
 Using this method, we were able to infer putative subgenotypes for each new sequence.
-For the genotypes that we analyzed, 54 belong to HBV genotypes A and D---the only genotypes we consider for which subgenotype definitions exist.
-The remaining 64 new sequences that we introduce come from HBV-E; we find that these novel genomes span the existing known diversity of the genotype (Fig.~\ref{fig:HBV-E_new_sequences}).
+For the genotypes that we analyzed, 54 belong to \gls{hbv} genotypes A and D---the only genotypes we consider for which subgenotype definitions exist.
+The remaining 64 new sequences that we introduce come from \gls{hbv}-E; we find that these novel genomes span the existing known diversity of the genotype (Fig.~\ref{fig:HBV-E_new_sequences}).
 
-The most frequent HBV-A subgenotypes (Fig.~\ref{fig:HBV-A_new_sequences}) identified were A1 (n = 27, 57.4\%), quasi-subgenotype A3 (n = 11, 23.4\%) including previous [ A3(n = 5, 10.6\%), A4 (n = 4, 8.6\%) and A5 (n = 2, 4.3\%)], and A6 (n = 4, 8.6\%).
-Interestingly, phylogenies revealed that two African isolates (ID: MB-135 and MB-146) belonging to HBV genotype A did not cluster with any of the known subgenotypes.
-Our analysis also reveals that some HBV-A sequences with a previously identified subgenotype do not cluster phylogenetically with other members of their subgenotype.
+The most frequent \gls{hbv}-A subgenotypes (Fig.~\ref{fig:HBV-A_new_sequences}) identified were A1 (n = 27, 57.4\%), quasi-subgenotype A3 (n = 11, 23.4\%) including previous [ A3(n = 5, 10.6\%), A4 (n = 4, 8.6\%) and A5 (n = 2, 4.3\%)], and A6 (n = 4, 8.6\%).
+Interestingly, phylogenies revealed that two African isolates (ID: MB-135 and MB-146) belonging to \gls{hbv} genotype A did not cluster with any of the known subgenotypes.
+Our analysis also reveals that some \gls{hbv}-A sequences with a previously identified subgenotype do not cluster phylogenetically with other members of their subgenotype.
 These inconsistencies manifest as three sequences identified as A1, falling independently within the A2 subgenotype.
 We also find a single sequence A2 sequence that clusters phylogenetically within A1.
 
 Interestingly, a similar lineage was observed in the phylogenetic tree of genotype D strains of this study.
-While 6 out of 8 HBV genotype D isolates (Fig.~\ref{fig:HBV-D_new_sequences}) were phylogenetically classified as subgenotypes D1 (n = 4, 57.1\%), D2 (n = 2, 28.6\%) and D7 (n = 1, 14.3\%), two strains (ID: MB-46 and MB-96) did not cluster with any of the HBV D1-D9 references sequences.
+While 6 out of 8 \gls{hbv} genotype D isolates (Fig.~\ref{fig:HBV-D_new_sequences}) were phylogenetically classified as subgenotypes D1 (n = 4, 57.1\%), D2 (n = 2, 28.6\%) and D7 (n = 1, 14.3\%), two strains (ID: MB-46 and MB-96) did not cluster with any of the \gls{hbv} subgenotype D1-D9 references sequences.
 
 
 \begin{figure}[ht]
@@ -74,33 +75,33 @@ While 6 out of 8 HBV genotype D isolates (Fig.~\ref{fig:HBV-D_new_sequences}) we
 
 \subsubsection{Genotype A}
 
-We performed discrete phylogeographic reconstruction for HBV genotype A with the inclusion the relevant ancient genomic sequences (Fig.~\ref{fig:HBV-A_phylogeo}).
-We estimate the most recent common ancestor (MRCA) of of HBV-A to have been located in East/South Asia circa 2504 BCE.
+We performed discrete phylogeographic reconstruction for \gls{hbv} genotype A with the inclusion the relevant ancient genomic sequences (Fig.~\ref{fig:HBV-A_phylogeo}).
+We estimate the most recent common ancestor (\gls{mrca}) of of \gls{hbv}-A to have been located in East \& South Asia circa 2504 BCE.
 From there, we infer that genotype A spread to Europe around 2000 BCE, then to Africa between 500 and 1500 CE.
 Following the jump to Africa, the topology of trees generated both with and without ancient genomes is well conserved.
 Notably, we observe at least 5 different introductions from Africa to the Americas taking place after the year 1700, consistent with the timing of the Atlantic slave trade.
-Following 1900, we observe a marked increase in the number of geographic jumps between the Americas, Europe, and West/Central Asia; this is consistent with the rapid globalization that took place during the previous century.
-The more recent introduction into West/Central Asia occurred from both Europe and the Americas from the 1960s onward.
+Following 1900, we observe a marked increase in the number of geographic jumps between the Americas, Europe, and West \& Central Asia; this is consistent with the rapid globalization that took place during the previous century.
+The more recent introduction into West \& Central Asia occurred from both Europe and the Americas from the 1960s onward.
 Finally, we note that in the most recent half-century there is little inferred migration, suggesting a strong recent geographic clade effect.
 
 \subsubsection{Genotype D}
 
-As with genotype A, we estimated the evolutionary and migration history of HBV-D (Fig.~\ref{fig:HBV-D_phylogeo}), and included ancient genomes to provide temporal signal to the dataset.
-The MRCA that we inferred was located in East/South Asia around 1779 BCE.
-We observe an immediate jump out of the root location to West/Central Asia, and we observe most of the evolutionary history of genotype to take place between West/Central and East/South Asia.
-Following its time in East/South Asia, we observe multiple introductions into Africa, the Americas, and Europe.
+As with genotype A, we estimated the evolutionary and migration history of \gls{hbv}-D (Fig.~\ref{fig:HBV-D_phylogeo}), and included ancient genomes to provide temporal signal to the dataset.
+The \gls{mrca} that we inferred was located in East \& South Asia around 1779 BCE.
+We observe an immediate jump out of the root location to West \& Central Asia, and we observe most of the evolutionary history of genotype to take place between West \& Central and East \& South Asia.
+Following its time in East \& South Asia, we observe multiple introductions into Africa, the Americas, and Europe.
 We also note that the majority of introductions into the Americas were spawned from Europe.
 
 Unlike with genotype A, we notice that there is a noticeable discrepancy between phylogenetic reconstructions with and without the inclusion of ancient genomes.
-As discussed in the previous section, the inclusion of ancient genomes generates a much lower evolutionary rate estimate in HBV-D, however we also found that clade divergence times were substantially older in the dataset that included ancient sequences.
-Our TMRCA estimates of the largest predominantly African lineage is suggest their most recent shared ancestor existed circa 550CE, while the TMRCA of a mixed European/Americas clade is estimated around 1100 CE.
+As discussed in the previous section, the inclusion of ancient genomes generates a much lower evolutionary rate estimate in \gls{hbv}-D, however we also found that clade divergence times were substantially older in the dataset that included ancient sequences.
+Our \gls{tmrca} estimates of the largest predominantly African lineage is suggest their most recent shared ancestor existed circa 550 CE, while the \gls{tmrca} of a mixed European/Americas clade is estimated around 1100 CE.
 As with genotype A, individual clades show a strong local geographic effect, with few individual location changes occurring within the most recent 50 years.
 
 \subsubsection{Genotype E}
 
-We finally performed phylogeographic reconstruction of HBV genotype E (Fig.~\ref{fig:HBV-E_phylogeo}).
+We finally performed phylogeographic reconstruction of \gls{hbv} genotype E (Fig.~\ref{fig:HBV-E_phylogeo}).
 This genotype had no available ancient genomes, and was comprised of mostly sequences from African countries.
-We estimate the MRCA of this genotype to be in Africa circa 1825 CE.
+We estimate the \gls{mrca} of this genotype to be in Africa circa 1825 CE.
 From Africa, we infer migrations into Europe and the Americas.
 Given that nearly all European sequences into the tree are singletons there is not enough statistical support to estimate the timing of these migrations accurately.
 
@@ -108,23 +109,23 @@ Given that nearly all European sequences into the tree are singletons there is n
 
 To confirm that our inferred migration histories were valid, we performed two tests to ensure that our inferred results were statistically supported.
 We first summarized the strongest supported rates of discrete location transitions between pairs regions for each genotype data set using Bayes Factor analysis (Fig.~\ref{fig:bayes_factors}).
-For HBV A, we find very strong (i.e. Bayes Factor $>100$) support for movements from Europe to East South Asia and the Americas, as well as strong support for movements from the Americas and Africa to Europe.
-However, we did not find support for movements between West/Central Asia and the Americas, nor for movements between West/Central Asia and East/South Asia, nor between Africa and East/South Asia.
-For HBV-D, we observe very strong support for outgoing movements from West Central Asia to Europe, Africa and East South Asia.
-We also find very strong support for outgoing movements from Europe to East South Asia, West Central Asia and the Americas.
-However, we find no support for movements between West Central Asia and the Americas, nor between Africa and the Americas.
-Finally, for HBV-E, we only find very strong support for movements from Africa into Europe and strong support for movements from Africa to the Americas.
-We confirmed the estimated number of geographic transitions by counting Markov jumps on each posterior tree (Fig.~MarkovJumps).
-The average of count jumps between each region agreed with the values counted on the MCC trees that we present.
+For \gls{hbv}-A, we find very strong (i.e. Bayes Factor $>100$) support for movements from Europe to East \& South Asia and the Americas, as well as strong support for movements from the Americas and Africa to Europe.
+However, we did not find support for movements between West \& Central Asia and the Americas, nor for movements between West \& Central Asia and East \& South Asia, nor between Africa and East \& South Asia.
+For \gls{hbv}-D, we observe very strong support for outgoing movements from West \& Central Asia to Europe, Africa and East \& South Asia.
+We also find very strong support for outgoing movements from Europe to East \& South Asia, West \& Central Asia and the Americas.
+However, we find no support for movements between West \& Central Asia and the Americas, nor between Africa and the Americas.
+Finally, for \gls{hbv}-E, we only find very strong support for movements from Africa into Europe and strong support for movements from Africa to the Americas.
+We confirmed the estimated number of geographic transitions by counting Markov jumps on each posterior tree \barneycomment{(Fig.~MarkovJumps)}.
+The average of count jumps between each region agreed with the values counted on the \gls{mcc} trees that we present.
 This agreement is indicative that the trees that we show are representative of the posterior tree distribution both in terms of migration history.
 
-\ref{fig:bayes_factors}
+\barneycomment{\ref{fig:bayes_factors}}
 
 \begin{figure}[ht]
   \centering
   \medskip
   \includegraphics[width=.9\textwidth]{HBV-A_phylogeography_and_mcc_tree_smallboi}
-  \caption[HBV-A phylogeography ]{Time-scaled maximum clade credibility tree representing the evolutionary history of HBV subtype A, averaged over 1,000 MCMC posterior state samples. The root is inferred to be at 2504BCE. Tip and branch colors represent location, both known and inferred by CTMC. Breaks in time axis represent long periods of time covered by individual branches. (inset) World map colored according to regions used for CTMC analysis. Each counterclockwise arrow represents an inferred transmission event between two regions (55 total). Arrow colors denote timing intervals of each introduction. Europe shows the greatest number of outgoing introductions (29). West/Central Asia is the inferred root location of the tree, with one ancient transmission to Europe inferred to have taken place between 2243--876BCE.}
+  \caption[HBV-A phylogeography ]{Time-scaled maximum clade credibility tree representing the evolutionary history of \gls{hbv} subtype A, averaged over 1,000 \gls{mcmc} posterior state samples. The root is inferred to be at 2504 BCE. Tip and branch colors represent location, both known and inferred by \gls{ctmc}. Breaks in time axis represent long periods of time covered by individual branches. (inset) World map colored according to regions used for \gls{ctmc} analysis. Each counterclockwise arrow represents an inferred transmission event between two regions (55 total). Arrow colors denote timing intervals of each introduction. Europe shows the greatest number of outgoing introductions (29). West \& Central Asia is the inferred root location of the tree, with one ancient transmission to Europe inferred to have taken place between 2243--876 BCE.}
   \label{fig:HBV-A_phylogeo}
 \end{figure}
 
@@ -132,7 +133,7 @@ This agreement is indicative that the trees that we show are representative of t
   \centering
   \medskip
   \includegraphics[width=.9\textwidth]{HBV-D_phylogeography_and_mcc_tree_smallboi}
-  \caption[HBV-D Phylogeography]{Time-scaled maximum clade credibility tree representing the evolutionary history of HBV subtype D, averaged over 1,000 MCMC posterior state samples. The root is inferred to be at 1779 BCE. Tip and branch colors represent location, both known and inferred by CTMC. (inset) World map colored according to regions used for CTMC analysis. Each counterclockwise arrow represents an inferred transmission event between two regions (82 total). Arrow colors denote timing intervals of each introduction. West/Central Asia shows the greatest number of outgoing transmission events (55), as well as being the most likely location of the most recent common ancestor to sampled modern sequences.}
+  \caption[HBV-D Phylogeography]{Time-scaled maximum clade credibility tree representing the evolutionary history of \gls{hbv} subtype D, averaged over 1,000 \gls{mcmc} posterior state samples. The root is inferred to be at 1779 BCE. Tip and branch colors represent location, both known and inferred by \gls{ctmc}. (inset) World map colored according to regions used for \gls{ctmc} analysis. Each counterclockwise arrow represents an inferred transmission event between two regions (82 total). Arrow colors denote timing intervals of each introduction. West \& Central Asia shows the greatest number of outgoing transmission events (55), as well as being the most likely location of the most recent common ancestor to sampled modern sequences.}
   \label{fig:HBV-D_phylogeo}
 \end{figure}
 
@@ -140,7 +141,7 @@ This agreement is indicative that the trees that we show are representative of t
   \centering
   \medskip
   \includegraphics[width=.9\textwidth]{HBV-E_phylogeography_and_mcc_tree}
-  \caption[HBV-E Phylogeography]{Time-scaled maximum clade credibility tree representing the evolutionary history of HBV subtype E, averaged over 1,000 MCMC posterior state samples. The root is inferred to be at 1824 CE. Tip and branch colors represent location, both known and inferred by CTMC. Breaks in time axis represent long periods of time covered by individual branches. (inset) World map colored according to regions used for CTMC analysis. Each counterclockwise arrow represents an inferred transmission event between two regions. Arrow colors denote timing intervals of each introduction. All migration events (8 total) are inferred to have originated in Africa; Europe was the destination of seven migrations, and the Americas were the destination of one.}
+  \caption[HBV-E Phylogeography]{Time-scaled maximum clade credibility tree representing the evolutionary history of \gls{hbv} subtype E, averaged over 1,000 \gls{mcmc} posterior state samples. The root is inferred to be at 1824 CE. Tip and branch colors represent location, both known and inferred by \gls{ctmc}. Breaks in time axis represent long periods of time covered by individual branches. (inset) World map colored according to regions used for \gls{ctmc} analysis. Each counterclockwise arrow represents an inferred transmission event between two regions. Arrow colors denote timing intervals of each introduction. All migration events (8 total) are inferred to have originated in Africa; Europe was the destination of seven migrations, and the Americas were the destination of one.}
   \label{fig:HBV-E_phylogeo}
 \end{figure}
 
@@ -148,7 +149,7 @@ This agreement is indicative that the trees that we show are representative of t
   \centering
   \medskip
   \includegraphics[width=.9\textwidth]{bayes_factors_smallboi}
-  \caption[Bayes' factors of HBV geographic transitions]{Networks summarizing posterior support for migrations between geographic regions as determined by BSSVS analysis. Inferred migrations are represented as counterclockwise arrows. Bayes' factors are represented by color intensity; darker arrows depict higher Bayes' factors, therefore higher posterior support. In HBV-A we observe well supported inference of migrations out of Europe to all other regions, as well as high support for inferred migrations into Europe from Africa and the Americas. In HBV-D we observe well supported migration history from Africa to Europe, and from Europe to the Americas and Asia. Finally, in HBV-E we observe very well supported migration inference from Africa to Europe, as well as relatively high support for migration from Africa to the Americas.}
+  \caption[Bayes' factors of \gls{hbv} geographic transitions]{Networks summarizing posterior support for migrations between geographic regions as determined by BSSVS analysis. Inferred migrations are represented as counterclockwise arrows. Bayes' factors are represented by color intensity; darker arrows depict higher Bayes' factors, therefore higher posterior support. In \gls{hbv}-A we observe well supported inference of migrations out of Europe to all other regions, as well as high support for inferred migrations into Europe from Africa and the Americas. In \gls{hbv}-D we observe well supported migration history from Africa to Europe, and from Europe to the Americas and Asia. Finally, in \gls{hbv}-E we observe very well supported migration inference from Africa to Europe, as well as relatively high support for migration from Africa to the Americas.}
   \label{fig:bayes_factors}
 \end{figure}
 
