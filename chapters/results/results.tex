@@ -9,15 +9,13 @@ For this project, we had originally planned to reconstruct the demographic histo
 This was a process by which we divided the evolutionary history of the virus into discrete intervals, then attempted to treat each ``bin'' as a constant population size time window---resulting in a population function over time that was piecewise constant.
 Bins would then be smoothed with their neighbors to make a continuous estimation of population size through time.
 
-% \barneycomment{below is more of discussion, and the above I guess is a method, but it is such a small section I don't know where to put it}
-
 Unfortunately, this process was unsuccessful.
 The initial cause of the lack of success was the so-called ``block'' operator of the \gls{mcmc} that governed the change in Skygrid bin sizes.
 This operator became ``stuck'' in all cases where we attempted to use it, such that the \gls{mcmc} algorithm would never accept new proposals in state space, and therefore the estimated parameter values never changed---that is to say, the entire Markov chain became stuck in a local optimum and was never able to leave it.
 We attempted to rectify this situation by changing to a different transition kernel---a Hamiltonian Monte Carlo operator---however this operator was still never able to explore the state space rapidly enough to produce interpret able results.
 
 To circumvent these issues, we transitioned to using a less sophisticated demographic model wherein the entire population size was assumed to be constant throughout history.
-Using this method, we recovered that \gls{hbv}-A had an inferred effective population size of \barneycomment{XXX [95\% HPD:X--Y]} and that \gls{hbv}-D had an inferred effective population size of 60,686 [95\% HPD: 38,478--86,598].
+Using this method, we recovered that \gls{hbv}-A had an inferred effective population size of 1,620 [95\% HPD:765--2,815] and that \gls{hbv}-D had an inferred effective population size of 60,686 [95\% HPD: 38,478--86,598].
 
 \subsection{Temporal signal and clock rates}
 
@@ -50,7 +48,7 @@ While 6 out of 8 \gls{hbv} genotype D isolates (Fig.~\ref{fig:HBV-D_new_sequence
 \begin{figure}[ht]
   \centering
   \medskip
-  \includegraphics[width=.9\textwidth]{HBV-A_new_sequences}
+  \includegraphics[width=\textwidth]{HBV-A_new_sequences}
   \caption[HBV-A New sequences]{Phylogenetic trees (ancient sequences removed, ancient branch lengths rescaled for visibility) representing the diversity of the novel sequences from this study. Our sequences are shown as enlarged, labeled tips on the phylogeny. Taxa with a known subgenotype are colored by their subgenotype. Out of a total of 47 new genomes, we introduce 29 genomes that cluster most closely with Subgenotype 1, 22 of which represent a closely related subclade. Additionally, we introduce one genome that appears to fall within Subtype 2, nine new genomes that lie within the diversity of Subgenotype 3, two genomes that cluster with Subgenotype 5, and six genomes that cluster most closely with Subgenotype 6.}
   \label{fig:HBV-A_new_sequences}
 \end{figure}
@@ -58,7 +56,7 @@ While 6 out of 8 \gls{hbv} genotype D isolates (Fig.~\ref{fig:HBV-D_new_sequence
 \begin{figure}[ht]
   \centering
   \medskip
-  \includegraphics[width=.9\textwidth]{HBV-D_new_sequences}
+  \includegraphics[width=\textwidth]{HBV-D_new_sequences}
   \caption[HBV-D New sequences]{Phylogenetic trees (ancient sequences removed, ancient branch lengths rescaled for visibility) representing the diversity of the novel sequences from this study. Our sequences are shown as enlarged, labeled tips on the phylogeny. Taxa with a known subgenotype are colored by their subgenotype. Here we introduce four novel genomes that fall within the known diversity of Subgenotype 1, two genomes that fall within Subgenotype 2, and one genome in Subgenotype 7.}
   \label{fig:HBV-D_new_sequences}
 \end{figure}
@@ -66,7 +64,7 @@ While 6 out of 8 \gls{hbv} genotype D isolates (Fig.~\ref{fig:HBV-D_new_sequence
 \begin{figure}[ht]
   \centering
   \medskip
-  \includegraphics[width=.9\textwidth]{HBV-E_new_sequences}
+  \includegraphics[width=\textwidth]{HBV-E_new_sequences}
   \caption[HBV-E New sequences]{Phylogenetic trees representing the diversity of the novel sequences from this study. Our sequences are shown as enlarged, labeled tips on the phylogeny. Novel genomes introduced here represent over a quarter (64/234) of the total number of taxa.}
   \label{fig:HBV-E_new_sequences}
 \end{figure}
@@ -109,22 +107,20 @@ Given that nearly all European sequences into the tree are singletons there is n
 
 To confirm that our inferred migration histories were valid, we performed two tests to ensure that our inferred results were statistically supported.
 We first summarized the strongest supported rates of discrete location transitions between pairs regions for each genotype data set using Bayes Factor analysis (Fig.~\ref{fig:bayes_factors}).
-For \gls{hbv}-A, we find very strong (i.e. Bayes Factor $>100$) support for movements from Europe to East \& South Asia and the Americas, as well as strong support for movements from the Americas and Africa to Europe.
+For \gls{hbv}-A, we find very strong (i.e. Bayes Factor $>100$) support for movements from Europe to East \& South Asia and the Americas, as well as strong support for movements from the Americas and Africa to Europe (Fig.~\ref{fig:bayes_factors}).
 However, we did not find support for movements between West \& Central Asia and the Americas, nor for movements between West \& Central Asia and East \& South Asia, nor between Africa and East \& South Asia.
 For \gls{hbv}-D, we observe very strong support for outgoing movements from West \& Central Asia to Europe, Africa and East \& South Asia.
 We also find very strong support for outgoing movements from Europe to East \& South Asia, West \& Central Asia and the Americas.
 However, we find no support for movements between West \& Central Asia and the Americas, nor between Africa and the Americas.
 Finally, for \gls{hbv}-E, we only find very strong support for movements from Africa into Europe and strong support for movements from Africa to the Americas.
-We confirmed the estimated number of geographic transitions by counting Markov jumps on each posterior tree \barneycomment{(Fig.~MarkovJumps)}.
+We confirmed the estimated number of geographic transitions by counting Markov jumps on each posterior tree.
 The average of count jumps between each region agreed with the values counted on the \gls{mcc} trees that we present.
 This agreement is indicative that the trees that we show are representative of the posterior tree distribution both in terms of migration history.
-
-\barneycomment{\ref{fig:bayes_factors}}
 
 \begin{figure}[ht]
   \centering
   \medskip
-  \includegraphics[width=.9\textwidth]{HBV-A_phylogeography_and_mcc_tree}
+  \includegraphics[width=\textwidth]{HBV-A_phylogeography_and_mcc_tree}
   \caption[HBV-A phylogeography ]{Time-scaled maximum clade credibility tree representing the evolutionary history of \gls{hbv} subtype A, averaged over 1,000 \gls{mcmc} posterior state samples. The root is inferred to be at 2504 BCE. Tip and branch colors represent location, both known and inferred by \gls{ctmc}. Breaks in time axis represent long periods of time covered by individual branches. (inset) World map colored according to regions used for \gls{ctmc} analysis. Each counterclockwise arrow represents an inferred transmission event between two regions (55 total). Arrow colors denote timing intervals of each introduction. Europe shows the greatest number of outgoing introductions (29). West \& Central Asia is the inferred root location of the tree, with one ancient transmission to Europe inferred to have taken place between 2243--876 BCE.}
   \label{fig:HBV-A_phylogeo}
 \end{figure}
@@ -132,7 +128,7 @@ This agreement is indicative that the trees that we show are representative of t
 \begin{figure}[ht]
   \centering
   \medskip
-  \includegraphics[width=.9\textwidth]{HBV-D_phylogeography_and_mcc_tree}
+  \includegraphics[width=\textwidth]{HBV-D_phylogeography_and_mcc_tree}
   \caption[HBV-D Phylogeography]{Time-scaled maximum clade credibility tree representing the evolutionary history of \gls{hbv} subtype D, averaged over 1,000 \gls{mcmc} posterior state samples. The root is inferred to be at 1779 BCE. Tip and branch colors represent location, both known and inferred by \gls{ctmc}. (inset) World map colored according to regions used for \gls{ctmc} analysis. Each counterclockwise arrow represents an inferred transmission event between two regions (82 total). Arrow colors denote timing intervals of each introduction. West \& Central Asia shows the greatest number of outgoing transmission events (55), as well as being the most likely location of the most recent common ancestor to sampled modern sequences.}
   \label{fig:HBV-D_phylogeo}
 \end{figure}
@@ -140,7 +136,7 @@ This agreement is indicative that the trees that we show are representative of t
 \begin{figure}[ht]
   \centering
   \medskip
-  \includegraphics[width=.9\textwidth]{HBV-E_phylogeography_and_mcc_tree}
+  \includegraphics[width=\textwidth]{HBV-E_phylogeography_and_mcc_tree}
   \caption[HBV-E Phylogeography]{Time-scaled maximum clade credibility tree representing the evolutionary history of \gls{hbv} subtype E, averaged over 1,000 \gls{mcmc} posterior state samples. The root is inferred to be at 1824 CE. Tip and branch colors represent location, both known and inferred by \gls{ctmc}. Breaks in time axis represent long periods of time covered by individual branches. (inset) World map colored according to regions used for \gls{ctmc} analysis. Each counterclockwise arrow represents an inferred transmission event between two regions. Arrow colors denote timing intervals of each introduction. All migration events (8 total) are inferred to have originated in Africa; Europe was the destination of seven migrations, and the Americas were the destination of one.}
   \label{fig:HBV-E_phylogeo}
 \end{figure}
@@ -148,32 +144,53 @@ This agreement is indicative that the trees that we show are representative of t
 \begin{figure}[ht]
   \centering
   \medskip
-  \includegraphics[width=.9\textwidth]{bayes_factors}
+  \includegraphics[width=\textwidth]{bayes_factors}
   \caption[Bayes' factors of \gls{hbv} geographic transitions]{Networks summarizing posterior support for migrations between geographic regions as determined by BSSVS analysis. Inferred migrations are represented as counterclockwise arrows. Bayes' factors are represented by color intensity; darker arrows depict higher Bayes' factors, therefore higher posterior support. In \gls{hbv}-A we observe well supported inference of migrations out of Europe to all other regions, as well as high support for inferred migrations into Europe from Africa and the Americas. In \gls{hbv}-D we observe well supported migration history from Africa to Europe, and from Europe to the Americas and Asia. Finally, in \gls{hbv}-E we observe very well supported migration inference from Africa to Europe, as well as relatively high support for migration from Africa to the Americas.}
   \label{fig:bayes_factors}
 \end{figure}
 
 \section{Lassa phylogenetics}
 
-\ref{fig:l-skygrid}
-\ref{fig:L-prelim}
+For all Lassa analyses we find present preliminary results which will motivate future work.
+Using our adaptive workflow, we performed Bayesian phylogenetic inference on \gls{lasv} segments L and S under a Bayesian skygrid demographic model.
+We ran \gls{mcmc} chains for segment L in parallel for a combined total of $1.5\times10^{12}$ states (excluding burn-ing), and S for a combined total of $2.4\times10^{12}$ states (excluding burn-in).
+We note that this analysis took almost a month of compute time on the Vlaams Supercomputer Centrum cluster, parallelized across three independent replicates per segment.
+This represents a total compute time of roughly 6 months.
+
+Our inference revealed markedly different clock rates between the two segments.
+In segment L we infer a mean clock rate of $9.9914\times10^{-4}$ substitutions per site per year [95\% HPD:$9.0332\times10^{-4}$--$1.0646\times10^{-3}$].
+In segment S we instead infer a mean clock rate of $2.2116\times10^{-3}$ substitutions per site per year [95\% HPD:$1.9757\times10^{-3}$--$2.4948\times10^{-3}$].
+While this estimate for the clock rate of segment L is concordant with rates established for \gls{lasv} in the literature\cite{andersen2015clinical, fichet2016spatial}, our estimate for segment S differs from the literature by a factor of 10 (Fig.~\ref{fig:lassa_clock_rates}).
+Despite this difference, we find overlapping estimtes of \gls{tmrca} for the two segments: 1698 CE for segment L and 1752 for segment S.
+Additionally, we perform Bayesian skygrid reconstruction of the demographic history of both segment L (Fig.~\ref{fig:l_skygrid}) and segment S (Fig.~\ref{fig:s_skygrid}).
+Both segments' population reconstructions show the same patterns.
+In both segments we observe exponentially increasing effective population size since the \gls{tmrca} until roughly 1900.
+The 1900s show a trough in effective population size (lowest around the year 1950) followed by another increase in population until roughly the 1990s.
+Over the last three decades, we observe much more variable growth and decline in popultion size, with sharp dips in inferred population size in the late 1990s and since the year 2015.
 
 \begin{figure}[ht]
   \centering
   \medskip
-  \includegraphics[width=.9\textwidth]{l-skygrid-population-reconstruction}
-  \caption[Demographic history of Lassa's L segment]{}
-  \label{fig:l-skygrid}
+  \includegraphics[width=.9\textwidth]{clock_rates_by_segment}
+  \caption[LASV clock rates by segment]{Histograms and kernel density estimates of mean clock rate posterior samples in \gls{lasv} segments L (green) and S (red). Blue shaded region represents expected clock rate range ($(7--11)\times10^{–4}$ substitutions per site per year), as derived from the literature on Lassa virus clock rates\cite{andersen2015clinical, fichet2016spatial}. While segment L's clock rate falls within the expected window, segment S demonstrates a clock rate roughly tenfold higher than expected.}
+  \label{fig:lassa_clock_rates}
 \end{figure}
 
 \begin{figure}[ht]
   \centering
   \medskip
-  \includegraphics[width=.9\textwidth]{2020-03-05_L_prelim}
-  \caption[Sample output of online analysis framework]{}
-  \label{fig:L-prelim}
+  \includegraphics[width=.9\textwidth]{l_skygrid_population_reconstruction}
+  \caption[Demographic history of Lassa's L segment]{Bayesian skygrid reconstruction of the demographic history (effective population size over time) of \gls{lasv} segment L. Dashed vertical lines denote the mean root age and 95\% HPD interval: 1697 [1647--1741].}
+  \label{fig:l_skygrid}
 \end{figure}
 
+\begin{figure}[ht]
+  \centering
+  \medskip
+  \includegraphics[width=.9\textwidth]{s_skygrid_population_reconstruction}
+  \caption[Demographic history of Lassa's S segment]{Bayesian skygrid reconstruction of the demographic history (effective population size over time) of \gls{lasv} segment S. Dashed vertical lines denote the mean root age and 95\% HPD interval: 1752 [1751--1802].}
+  \label{fig:s_skygrid}
+\end{figure}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
