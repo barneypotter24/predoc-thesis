@@ -1,25 +1,14 @@
 % !TeX root = ../../thesis.tex
 \chapter{Introduction}\label{ch:introduction}
 
-%GB: I think a short introduction to decreased cost of generating genomic sequence data should be moved to the LASV chapter
-%there, you can talk about the MinION which was used in the Lassa field work: https://nanoporetech.com/products/minion
-%and recent developments/evolution in sequencing protocols, as the ones developed by the Artic network are now frequently used, also for SARS-CoV-2
-%https://nanoporetech.com/about-us/news/artic-network-provides-protocol-rapid-accurate-sequencing-novel-coronavirus-ncov-2019
-%https://artic.network/ncov-2019
-%In recent years the cost of generating genomic sequence data has dropped substantially.
-%This, coupled with improvements to the speed and usability of software packages for analyzing these data, has led to an explosion of genomic sequence availability in recent years.
-
-%GB: you can include a figure on the MinION, or evolution of sequencing technologies over time; perhaps discuss Josh Quick's Nature paper and the first use of MinION for Ebola sequencing
-%https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4817224/
-%\barneycomment{Put in a figure of cost of a genome vs. Moore's law as an initial motivator?}
-%With high-throughput molecular sequencing, genomic data from pathogenic viruses are becoming available in unprecedented quantities and with remarkable speed, even in resource-limited settings, aided by portable genome sequencing technology \citep{quick2016}.
+\newglossaryentry{eids}{name={EIDs},description={Emerging infectious diseases}}
 
 Infectious diseases are now emerging or reemerging almost every year.
-This trend will continue because a number of factors, including the increased global population, aging, travel, urbanization, and climate change, favor the emergence, evolution, and spread of new pathogens \cite{Bloom2017}. %BP: not sure what paper this references?
+This trend will continue because a number of factors, including the increased global population, aging, travel, urbanization, and climate change, favor the emergence, evolution, and spread of new pathogens \cite{bloom2017emerging}.
 Many of those pathogens represent a clear and eminent threat to public health, as the ongoing severe acute respiratory syndrome corona virus 2 (SARS-CoV-2) outbreak has made brutally clear, as well as a tremendous burden on global economies.
 Other examples from the last few years include the emergence of West Nile\cite{ng}, H5N1\cite{moncla}, H1N1\cite{h1n1}, Ebola\cite{dudas}, Zika\cite{zibra} and Lassa\cite{kafetzopoulou2019metagenomic}.
-Demographic forces amplify the risks associated with such emerging infectious diseases (EIDs), with the global population expected to grow to 8 billion within 8 years, with nearly 60\% living in relatively crowded urban areas.
-Among EIDs, viral pathogens, particularly RNA viruses, stand as major concerns, owing to their high rates of nucleotide substitution and capacity to adapt to new hosts.
+Demographic forces amplify the risks associated with such emerging infectious diseases (\gls{eids}), with the global population expected to grow to 8 billion within 8 years, with nearly 60\% living in relatively crowded urban areas.
+Among \gls{eids}, viral pathogens, particularly RNA viruses, stand as major concerns, owing to their high rates of nucleotide substitution and capacity to adapt to new hosts.
 Viral sequence data provide a major asset in characterising these pathogens.
 Analysing the historical information contained in viral genomes contributes to better insight into viral emergence and early transmission dynamics, even before systematic epidemiological surveillance initiates.
 
@@ -40,9 +29,8 @@ Phylogenetic trees can also be used to infer the shared mutation history of a se
 Similar methods may be used not only to reconstruct the ancestral states of various discrete or continuous traits that describe the taxa of the tree.
 Common examples of this type of analysis include location analyses, or analyses of a particular phenotype of interest.
 Finally, phylogenetic methods often hypothesize a link between effective population sizes and tree shape---known as the coalescent process---whereby small populations are expected to have relatively high rates of branching (and therefore relatively short branch lengths) compared to larger populations.
-Visual examples of all of these aspects of phylodynamic analyses are illustrated in Figure~\ref{fig:phylogeneticsOverview}.
+Visual examples of all of these aspects of phylodynamic analyses are illustrated in Figure~\ref{fig:phylogeneticsOverview}\cite{pybus2009evolutionary}.
 
-%GB: need to cite the Pybus and Rambaut review (Nat. Rev. Genet. 2009)
 \begin{figure}[ht]
   \centering
   \medskip
@@ -54,6 +42,7 @@ Visual examples of all of these aspects of phylodynamic analyses are illustrated
   d) Temporal phylogeographic inference is used to reconstruct the history of pathogen spread, so that each branch is labelled with its estimated geographic position.
   e) Coalescent analyses incorporate an explicit model of the sampled pathogen population.
   The increasing width of each row therefore reflects the growth of the epidemic through time. Starting from the sampled infections (red), the sampled lineages (black lines) can be traced back through unsampled infections (grey) to the common ancestor (black circle).
+  (\textit{Photo credit: Pybus \& Rambaut. Nature. 2009.}\cite{pybus2009evolutionary})
   }
   \label{fig:phylogeneticsOverview}
 \end{figure}
@@ -86,8 +75,6 @@ We call the existence of sufficient statistical power from heterochronous sequen
 In general, there are two sources from which we can observe \gls{mep}s: populations with available ancient genomes, and rapidly evolving RNA viruses.
 Analysis of ancient genomes has proven to be an informative way of inferring the phylodynamics of eukaryotic populations \cite{shapiro2004bison}. %GB: if there is still room, I would be tempted to provide more information regarding this example, and perhaps the key figure from that paper
 
-
-
 \section{Bayesian phylodynamics and joint inference}
 
 In this thesis, we specifically use Bayesian methodologies of phylogenetic inference.
@@ -96,7 +83,7 @@ Such methodologies are also informed by hypotheses of these parameter distributi
 Bayesian methodologies are particularly well suited to phylogenetic methods in several key ways.
 Firstly, they allow researchers to create strongly supported estimates of evolutionary histories that still accommdate uncertainty both in the phylogenies and in other parameters of interest.
 Additionally, Bayesian phylogenetic methods afford researchers the opportunity to infer many different parameters of interest (e.g. mutation rates, effective population sizes, and migration rates) jointly with the phylogeny.
-Finally, these methods can be put to use with relative ease using algorithms that allow efficient exploration of posterior distributions for many parameters simultaneously. %GB: this sounds a bit vague, what are you trying to say here?
+Finally, for many different evolutionary models algorithms for performing Bayesian phylogenetic inference are well defined and implemented efficiently, allowing tractable computation.
 
 \newglossaryentry{mcmc}{name={MCMC},description={Markov chain Monte Carlo}}
 To perform Bayesian analyses it is frequently necessary to compute very large, high-dimensional integrals to produce exact posterior distributions; this is unfortunately often analytically intractable.
@@ -122,7 +109,6 @@ This is far too large to exhaustively explore for the datasets that researchers 
 For the datasets that we explore in this thesis---ranging in size to 769 taxa---this number grows to vastly overshadow the number of atoms in the observable universe.
 As such, exhaustively exploring this space is impossible, and traversing this space algorithmically can still take considerable time.
 
-
 \subsection{Effective sample size and burn-in}
 \label{sec:ess}
 \newglossaryentry{ess}{name={ESS},description={Effective sample size}}
@@ -131,7 +117,7 @@ Bayesian phylogenetic inference of large, complex datasets can hence take upward
 During this time, we sample the constructed Markov chain at fixed intervals by recording the state of all parameters of the chain.
 We quantify how thoroughly the posterior has been sampled using a metric known as the effective sample size (\gls{ess})---a measurement of the number of effectively independent draws from the posterior distribution that the Markov chain is equivalent to.
 Because sequential samples of the chain's state are frequently highly correlated, we find \gls{ess} to be an appropriate metric for how fully the \gls{mcmc} has explored the posterior distribution of interest.
-While there is no theoretical foundation for using a specific cut-off value when computing the ESS, we generally seek to accumulate \gls{ess} values over 200 for each parameter of interest as a decent trade-off between length of computation and the number of independent samples collected for a specific parameter.
+While there is no theoretical foundation for using a specific cut-off value when computing the \gls{ess}, we generally seek to accumulate \gls{ess} values over 200 for each parameter of interest as a decent trade-off between length of computation and the number of independent samples collected for a specific parameter.
 
 A significant amount of computation time is consumed by the chain moving from where it (randomly) began in state space toward the posterior distribution---a period referred to as ``burn-in''.
 Because the chain is rapidly traversing parameter space during this period all samples are correlated, and we are therefore unable to accumulate any \gls{ess} during this time.
@@ -176,11 +162,9 @@ The long strand ranges from 3,020--3,320 bases in length, while the short strand
 
 \subsection{Lassa virus}
 
-Lassa virus (\gls{lasv}) is the causative agent of Lassa fever, a viral hemorrhagic fever that infects 300,000--500,000 people anually and causes 54,000--90,000 deaths yearly \cite{three, lassa, papers}.
+Lassa virus (\gls{lasv}) is the causative agent of Lassa fever, a viral hemorrhagic fever that infects 300,000--500,000 people anually and causes 54,000--90,000 deaths yearly \cite{lianaThesis, asogun2012molecular}.
 \gls{lasv} has a genome that is divided into two segments: a large (L) segment approximately 7.5 kb in length, and a small (S) segment approximately 3.5 kb in length.
 The L segment encodes genes \textit{Pol} and \textit{Z}, while the S segment encodes genes \textit{GPC} and \textit{NP}.
-
-\barneycomment{Maybe include a figure from Liana's dissertaton}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

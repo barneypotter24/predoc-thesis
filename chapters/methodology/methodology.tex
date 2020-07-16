@@ -61,6 +61,17 @@ We note that for data set E, no samples from East \& South Asia, nor West \& Cen
 
 \section{Lassa phylogenetics and online inference}
 
+\subsection{Genomic sequence data}
+
+In recent years the cost of generating genomic sequence data has dropped substantially\cite{sboner2011real}.
+This, coupled with improvements to the speed and usability of software packages for analyzing these data, has led to an explosion of genomic sequence availability in recent years.
+With high-throughput molecular sequencing, genomic data from pathogenic viruses are becoming available in unprecedented quantities and with remarkable speed, even in resource-limited settings, aided by portable genome sequencing technology.
+One such example was during the 2013--2016 West African Ebola outbreak, during which a novel sequencing protocol was developed and implemented to perform an unprecedented number of genomes from the oubread ``in the field'' in real-time\cite{quick2016}.
+The end result of this was a steady flow of new genomes during the course of the epidemic, resulting in roughly 5\% of all cases producing a genome\cite{dudas2017virus}.
+As such technologies continue to be refined, constant generation of genomes in real-time will become increasingly common during viral outbreaks\cite{jain2016oxford}.
+For the ``new'' \gls{lasv}genomes that we analyze as a part of this thesis, we use data generated using one such mobile sequence platform---the Oxford Nanopore MinION.
+Though our data is generated using this particular techonology, the automated build pipeline that we introduce in the following sections is not dependent upon sequencing technology.
+
 \subsection{Preprocessing and model specification}
 
 Beyond the runtime complexity of currently available phylogeographic inference tools real time analyses are further impeded by the significant amount of preprocessing that they necessitate before raw sequence data can be analyzed.
