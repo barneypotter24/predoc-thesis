@@ -5,7 +5,7 @@
 
 \subsection{Demographic reconstruction}
 
-For this project, we had originally planned to reconstruct the demographic history of Hepatitis B subgenotypes throughout their history using a Bayesian Skygrid coalescent model.
+For this project, we had originally planned to reconstruct the demographic history of Hepatitis B genotypes throughout their history using a Bayesian Skygrid coalescent model.
 This was a process by which we divided the evolutionary history of the virus into discrete intervals, then attempted to treat each ``bin'' as a constant population size time window---resulting in a population function over time that was piecewise constant.
 Bins would then be smoothed with their neighbors to make a continuous estimation of population size through time.
 
@@ -153,7 +153,7 @@ This agreement is indicative that the trees that we show are representative of t
 
 For all Lassa analyses we find present preliminary results which will motivate future work.
 Using our adaptive workflow, we performed Bayesian phylogenetic inference on \gls{lasv} segments L and S under a Bayesian skygrid demographic model.
-We ran \gls{mcmc} chains for segment L in parallel for a combined total of $1.5\times10^{12}$ states (excluding burn-ing), and S for a combined total of $2.4\times10^{12}$ states (excluding burn-in).
+We ran \gls{mcmc} chains for segment L in parallel for a combined total of $1.5\times10^{12}$ states (excluding burn-in), and S for a combined total of $2.4\times10^{12}$ states (excluding burn-in).
 We note that this analysis took almost a month of compute time on the Vlaams Supercomputer Centrum cluster, parallelized across three independent replicates per segment.
 This represents a total compute time of roughly 6 months.
 
@@ -161,18 +161,18 @@ Our inference revealed markedly different clock rates between the two segments.
 In segment L we infer a mean clock rate of $9.9914\times10^{-4}$ substitutions per site per year [95\% HPD:$9.0332\times10^{-4}$--$1.0646\times10^{-3}$].
 In segment S we instead infer a mean clock rate of $2.2116\times10^{-3}$ substitutions per site per year [95\% HPD:$1.9757\times10^{-3}$--$2.4948\times10^{-3}$].
 While this estimate for the clock rate of segment L is concordant with rates established for \gls{lasv} in the literature\cite{andersen2015clinical, fichet2016spatial}, our estimate for segment S differs from the literature by a factor of 10 (Fig.~\ref{fig:lassa_clock_rates}).
-Despite this difference, we find overlapping estimtes of \gls{tmrca} for the two segments: 1698 CE for segment L and 1752 for segment S.
+Despite this difference, we find overlapping estimates of \gls{tmrca} for the two segments: 1698 CE for segment L and 1752 for segment S.
 Additionally, we perform Bayesian skygrid reconstruction of the demographic history of both segment L (Fig.~\ref{fig:l_skygrid}) and segment S (Fig.~\ref{fig:s_skygrid}).
 Both segments' population reconstructions show the same patterns.
 In both segments we observe exponentially increasing effective population size since the \gls{tmrca} until roughly 1900.
 The 1900s show a trough in effective population size (lowest around the year 1950) followed by another increase in population until roughly the 1990s.
-Over the last three decades, we observe much more variable growth and decline in popultion size, with sharp dips in inferred population size in the late 1990s and since the year 2015.
+Over the last three decades, we observe much more variable growth and decline in population size, with sharp dips in inferred population size in the late 1990s and since the year 2015.
 
 \begin{figure}[ht]
   \centering
   \medskip
   \includegraphics[width=.9\textwidth]{clock_rates_by_segment}
-  \caption[LASV clock rates by segment]{Histograms and kernel density estimates of mean clock rate posterior samples in \gls{lasv} segments L (green) and S (red). Blue shaded region represents expected clock rate range ($(7--11)\times10^{–4}$ substitutions per site per year), as derived from the literature on Lassa virus clock rates\cite{andersen2015clinical, fichet2016spatial}. While segment L's clock rate falls within the expected window, segment S demonstrates a clock rate roughly tenfold higher than expected.}
+  \caption[LASV clock rates by segment]{Histograms and kernel density estimates of mean clock rate posterior samples in \gls{lasv} segments L (green) and S (red). Blue shaded region represents expected clock rate range (7--11)$\times10^{-4}$ substitutions per site per year), as derived from the literature on Lassa virus clock rates\cite{andersen2015clinical, fichet2016spatial}. While segment L's clock rate falls within the expected window, segment S demonstrates a clock rate roughly tenfold higher than expected.}
   \label{fig:lassa_clock_rates}
 \end{figure}
 
