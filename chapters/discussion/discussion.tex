@@ -8,6 +8,19 @@ We perform phylogenetic inference on a three large datasets of contemporary Hepa
 To two of these datasets we additionally include several genomes isolated from mummies ranging between 500--4,500 years in age.
 Conditioned on the results of this phylogenetic inference, we perform phylogeographic inference to identify historical migration events that may have contributed to the current geographic distribution patterns of \gls{hbv}.
 
+We observed that genotype D was the fastest evolving.
+Genotype E is the most recently diverged genotype, however both its divergence and evolutionary rate estimates have large 95\% highest posterior density intervals, indicating that these estimates must be cautiously interpreted.
+This is probably due to the smaller dataset for genotype E (234 sequences), compared to the dataset sizes for the other genotypes (583 and 764 sequences for A and D, respectively).
+Additionally, there is recent evidence that HBV has limited temporal signal warranting temporal and evolutionary estimation not reliable, particularly for very long timeframes, with the risk of underestimating when the most recent common ancestor (MRCA) diverged\cite{ross2018paradox}.
+To avoid the inherent biases of estimate these measures for viruses that have an ancient time of divergence, we opted for analyzing each genotype separately.
+Moreover, the short time frame of these datasets, ranging from 16 to 37 years of sampling, should be less affected by the limited temporal signal, thus making the estimation of evolutionary rate and time to MRCA more reliable.
+The phylogeographic reconstructions are not affected by the temporal inference, particularly because we conditioned it on a posterior subset of trees.
+
+Rather than employing each specific country in our comprehensive data set as a different location for our discrete phylogeographic reconstruction, we have opted to perform these analyses on the continent level in order to deal with sampling bias among the different countries in our data set.
+Unfortunately, to maintain consistent geographic subdivisions across datasets there remains significant heterogeneity in number of sequences between regions for some analyses.
+Phylogeographic inference using structured coalescent models (cite BASTA and MASCOT papers) offers a potential solution to deal with sampling bias, at the expense of much increased computational demands.
+Given that generating the empirical tree distributions was already very time-consuming on its own, and that this approach cannot be combined with the use of structured coalescent models, we decided to resort to continent-level analysis rather than employing a range of subsampling strategies\cite{hong2020search}.
+
 \section{Lassa phylogenetics}
 
 After demonstrating its utility for retrospective analysis of \gls{hbv}, we present a novel pipeline that unifies dataset preprocessing, Bayesian phylogenetic inference, and figure generation into one automated tool.
@@ -37,10 +50,10 @@ Such ``full stack" pipelines are currently in existence for Maximum Likelihood b
 
 As our next direction, we will integrate existing online \gls{beast} pipelines with GLUE\cite{singer2018glue}---a database software designed specifically for viral genomic sequence data.
 This database stores sequence data---and their associated metadata---in a phylogenetically-informed manner as a series of multiple sequence alignments.
-This provides several immediate benefits to the rapid initiation of phylogenetic pipelines from an existing datbase instance.
+This provides several immediate benefits to the rapid initiation of phylogenetic pipelines from an existing database instance.
 Because sequences are stored as alignments according to their phylogenetic relationship, selection of sequences and subsampling becomes much easier, as a database API call replaces the need to perform genetic distance calculations as a preprocessing step.
 Additionally, because alignments are preexisting within the database it becomes possible to skip the alignment preprocessing step entirely.
-Finally, because the GLUE database system is designed with viral patogens data storage as a core concept, it already supports their commonly associated metadata (i.e. dates, locations, etc.), thereby reducing the potential for error that can be caused when these metadata need to be inserted into analyses by hand.
+Finally, because the GLUE database system is designed with viral pathogens data storage as a core concept, it already supports their commonly associated metadata (i.e. dates, locations, etc.), thereby reducing the potential for error that can be caused when these metadata need to be inserted into analyses by hand.
 
 \subsection{Data insertion and model updates}
 
@@ -51,11 +64,11 @@ Current online \gls{beast} only supports sequential (one-at-a-time) insertion of
 Our next steps will extend the existing sequence-insertion regimes to support a wide range of new sequence numbers and timings (e.g. a doubling of data following a second season of an epidemic).
 Following this, we will begin to increase the number of models that are supported with sequence insertion.
 This will require new methods for inferring reasonable starting parameter values for each model, as more complex models often have parameter numbers scale with dataset sizes.
-One example of this is the Bayesian Skygrid demographic model.
+One example of this is the Bayesian skygrid demographic model.
 Under this model, time is split into windows, and population sizes are inferred for each window separately.
 New sequences may result in the addition of new windows---particularly if they fall well outside of the bounds of previously defined timing windows---necessitating a method whereby reasonable initial estimates for population sizes in the new windows may be proposed.
 
-Finally, once an appropriate suite of phylogenetic models have been implemented in the online \gls{beast} framework we must create functions by which models may be ``switched'' follwing the insertion of new data.
+Finally, once an appropriate suite of phylogenetic models have been implemented in the online \gls{beast} framework we must create functions by which models may be ``switched'' following the insertion of new data.
 In particular, we must create methods that ``convert'' parameter values from one model to another.
 For example, during the early stages of an outbreak we may parameterize our inference simply---say, as an exponentially growing population under a fixed clock rate.
 As the outbreak goes on and the number of sequences available grows, it may become apparent that more sophisticated models are necessary to adequately describe the epidemic---for example transitioning to an uncorrelated relaxed clock model with a skygrid demographic model.
@@ -70,10 +83,7 @@ Currently, our main tools for determining this take the shape of \gls{ess}s and 
 This process requires significant time on the behalf of researchers, and is not able to be automated at all.
 Through the development of new tools for assessing the completeness of analyses we will be able to automatically detect when analyses should be terminated, thereby preventing unnecessary computation.
 By doing so compute resources will be freed up for new analyses begin.
-If this is achieved, we will be able to create a fully online \gls{beast} environment that runs continuously on cloud compute resources, making maximum use of both available resources and time so that researchers may spend more time analysing results rather than fussing with the minutiae currently associated with performing Bayesian phylogenetic analysis. 
-
-
-
+If this is achieved, we will be able to create a fully online \gls{beast} environment that runs continuously on cloud compute resources, making maximum use of both available resources and time so that researchers may spend more time analyzing results rather than fussing with the minutiae currently associated with performing Bayesian phylogenetic analysis.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
