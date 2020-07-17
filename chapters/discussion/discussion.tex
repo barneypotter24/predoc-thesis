@@ -33,9 +33,9 @@ The online build framework described in this thesis may be extended through thre
 One of the most crucial next steps that we identify moving forward towards the ideal online Bayesian phylogenetic framework is the development of tools to seamlessly integrate data streams with analysis pipelines.
 In particular, we suggest the combination of \gls{beast}'s analysis tools with genomic databases whose design is focused around efficient, biologically informed storage of both genetic sequence data, as well as relevant metadata.
 This integration would considerably mitigate the amount of bespoke preprocessing work that is currently required to initiate phylogenetic analyses.
-Such ``full stack" pipelines are currently in existence for Maximum Likelihood bases phylogenetics\cite{nextstrain}, however at this time no such framework exists for large-scale Bayesian phylogenetic analysis.
+Such ``full stack" pipelines are currently in existence for Maximum Likelihood bases phylogenetics\cite{hadfield2019nextstrain}, however at this time no such framework exists for large-scale Bayesian phylogenetic analysis.
 
-As our next direction, we will integrate existing online \gls{beast} pipelines with GLUE\cite{glue}---a database software designed specifically for viral genomic sequence data.
+As our next direction, we will integrate existing online \gls{beast} pipelines with GLUE\cite{singer2018glue}---a database software designed specifically for viral genomic sequence data.
 This database stores sequence data---and their associated metadata---in a phylogenetically-informed manner as a series of multiple sequence alignments.
 This provides several immediate benefits to the rapid initiation of phylogenetic pipelines from an existing datbase instance.
 Because sequences are stored as alignments according to their phylogenetic relationship, selection of sequences and subsampling becomes much easier, as a database API call replaces the need to perform genetic distance calculations as a preprocessing step.

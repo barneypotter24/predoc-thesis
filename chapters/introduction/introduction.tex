@@ -17,7 +17,7 @@ Analysing the historical information contained in viral genomes contributes to b
 One powerful tool at the disposal of scientists interested in inferring pathogen dynamics is that of molecular phylogenetic inference.
 This is a methodology by which the shared evolutionary history of a set of genomic sequences, sometimes referred to as taxa, is hypothesized based on genomic similarity.
 Phylogenetic methodologies come in many different forms, ranging from simple heuristics that approximate phylogenetic relationships based on the number of observed differences between sequences \cite{felsenstein2003inferring} to highly complex models that use demographic and geographic population structure as well as state-of-the-art models of evolution to inform phylogenetic inference \cite{dudas2018mers}.
-Additionally, phylogenetic analyses may be combined with other methodologies (e.g. population genetics \cite{felsenstein2003inferring} or epidemiology \cite{Black2020}) to produce robust analyses.
+Additionally, phylogenetic analyses may be combined with other methodologies (e.g. population genetics \cite{felsenstein2003inferring} or epidemiology \cite{black2020ten}) to produce robust analyses.
 
 \newglossaryentry{mrca}{name={MRCA},description={Most recent common ancestor}}
 
@@ -61,7 +61,7 @@ We use these analyses to illustrate the use of current phylogenetic and phylogeo
 
 While performing phylogenetic analyses, we are often interested in how populations evolve as a function of time, rather than as a function of genetic distance.
 To this end, we seek a way to correlate differences in our input data (i.e. genetic distance) with time.
-We do this by assuming that mutations accumulate along the branches of a phylogenetic tree according to some rate, which can be estimated to hold a constant value across the entire phylogeny \cite{Brown2011}, or it can vary by branch according to sophisticated statistical models \cite{Drummond2006relaxed, Drummond2010randomLocal}.
+We do this by assuming that mutations accumulate along the branches of a phylogenetic tree according to some rate, which can be estimated to hold a constant value across the entire phylogeny \cite{brown2011rate}, or it can vary by branch according to sophisticated statistical models \cite{drummond2006relaxed, drummond2010randomLocal}.
 We refer to this rate as a ``clock rate''---generally represented in units of substitutions per site per year.
 The clock rate can be used to rescale the branches of a phylogeny from units of genetic distance to units of time.
 
