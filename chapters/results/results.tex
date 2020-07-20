@@ -5,14 +5,14 @@
 
 \subsection{Demographic reconstruction}
 
-For this project, we had originally planned to reconstruct the demographic history of Hepatitis B genotypes throughout their history using a Bayesian Skygrid coalescent model.
+For this project, we had originally planned to reconstruct the demographic history of Hepatitis B genotypes throughout their history using a Bayesian skygrid coalescent model.
 This was a process by which we divided the evolutionary history of the virus into discrete intervals, then attempted to treat each ``bin'' as a constant population size time window---resulting in a population function over time that was piecewise constant.
-Bins would then be smoothed with their neighbors to make a continuous estimation of population size through time.
+%Bins would then be smoothed with their neighbors to make a continuous estimation of population size through time.
 
 Unfortunately, this process was unsuccessful.
-The initial cause of the lack of success was the so-called ``block'' operator of the \gls{mcmc} that governed the change in Skygrid bin sizes.
-This operator became ``stuck'' in all cases where we attempted to use it, such that the \gls{mcmc} algorithm would never accept new proposals in state space, and therefore the estimated parameter values never changed---that is to say, the entire Markov chain became stuck in a local optimum and was never able to leave it.
-We attempted to rectify this situation by changing to a different transition kernel---a Hamiltonian Monte Carlo operator---however this operator was still never able to explore the state space rapidly enough to produce interpret able results.
+The initial cause of the lack of success was the so-called ``block'' operator of the \gls{mcmc} that governed the change in Skygrid population size values.
+This operator became ``stuck'' in all cases where we attempted to use it, such that the \gls{mcmc} algorithm would never accept new proposals in state space, and therefore the simulated parameter values never changed---that is to say, the entire Markov chain became stuck in a local optimum and was never able to leave it.
+We attempted to rectify this situation by changing to a different transition kernel---a Hamiltonian Monte Carlo operator---however this operator was still never able to explore the state space rapidly enough to produce results. 
 
 To circumvent these issues, we transitioned to using a less sophisticated demographic model wherein the entire population size was assumed to be constant throughout history.
 Using this method, we recovered that \gls{hbv}-A had an inferred effective population size of 1,620 [95\% HPD:765--2,815] and that \gls{hbv}-D had an inferred effective population size of 60,686 [95\% HPD: 38,478--86,598].
@@ -22,8 +22,8 @@ Using this method, we recovered that \gls{hbv}-A had an inferred effective popul
 \newglossaryentry{tmrca}{name={tMRCA},description={Time to most recent common ancestor}}
 The mean evolutionary rate and times to the most recent common ancestor (\gls{tmrca}) were first estimated for all data sets without including any ancient sequences (and hence not imposed any informative prior information) by collaborators.
 \gls{hbv} genotype A was estimated to evolve at a mean rate of $5.75\times10^{-4}$ [95\% HPD: $3.81\times10^{-4}$--$7.90\times10^{-4}$] substitutions/site/year, genotype D at a mean rate of $1.27\times10^{-3}$ [95\% HPD: $1.12\times10^{-3}$--$1.43\times10^{-3}$] substitutions/site/year, and genotype E at a mean rate of $6.84\times10^{-4}$ [95\% HPD: $2.08\times10^{-4}$--$1.16\times10^{-3}$] substitutions/site/year.
-However, \gls{hbv} often shows very little temporal signal, making it difficult to accurately estimate the time scale onto an \gls{hbv} phylogeny and to hence put accurate dates on historical migrations of the virus.
-M{\"u}hlemann et al. (2018) have shown that including ancient genomic sequences can provide the required additional information to warrant the use of molecular clock models to reconstruct time-stamped phylogenetic trees for \gls{hbv}.
+However, \gls{hbv} often shows very little temporal signal, making it difficult to accurately estimate the time scale for an \gls{hbv} phylogeny and to hence put accurate dates on historical migrations of the virus.
+M{\"u}hlemann et al. (2018) have shown that including ancient genomic sequences can provide the required additional information to warrant the use of molecular clock models to reconstruct time-measured phylogenetic trees for \gls{hbv}.
 For \gls{hbv} data sets A and D, we have hence included the relevant ancient sequences and have set an informative prior distribution on the mean of the underlying lognormal distribution for the uncorrelated relaxed clock model, based on the reported estimate from M{\"u}hlemann et al. (2018).
 For genotype A, this leads us to obtain a somewhat increased mean rate of $7.32\times10^{-4}$ [95\% HPD: $4.14\times10^{-4}$--$1.06\times10^{-3}$] substitutions/site/year, while for genotype D we obtained a much decreased mean rate of $9.65\times10^{-5}$ [95\% HPD: $5.97\times10^{-5}$--$1.36\times10^{-4}$] substitutions/site/year.
 
@@ -73,7 +73,7 @@ While 6 out of 8 \gls{hbv} genotype D isolates (Fig.~\ref{fig:HBV-D_new_sequence
 
 \subsubsection{Genotype A}
 
-We performed discrete phylogeographic reconstruction for \gls{hbv} genotype A with the inclusion the relevant ancient genomic sequences (Fig.~\ref{fig:HBV-A_phylogeo}).
+We performed discrete phylogeographic reconstruction for \gls{hbv} genotype A with the inclusion of the relevant ancient genomic sequences (Fig.~\ref{fig:HBV-A_phylogeo}).
 We estimate the most recent common ancestor (\gls{mrca}) of of \gls{hbv}-A to have been located in East \& South Asia circa 2504 BCE.
 From there, we infer that genotype A spread to Europe around 2000 BCE, then to Africa between 500 and 1500 CE.
 Following the jump to Africa, the topology of trees generated both with and without ancient genomes is well conserved.
@@ -90,7 +90,7 @@ We observe an immediate jump out of the root location to West \& Central Asia, a
 Following its time in East \& South Asia, we observe multiple introductions into Africa, the Americas, and Europe.
 We also note that the majority of introductions into the Americas were spawned from Europe.
 
-Unlike with genotype A, we notice that there is a noticeable discrepancy between phylogenetic reconstructions with and without the inclusion of ancient genomes.
+Unlike with genotype A, we see that there is a noticeable discrepancy between phylogenetic reconstructions with and without the inclusion of ancient genomes.
 As discussed in the previous section, the inclusion of ancient genomes generates a much lower evolutionary rate estimate in \gls{hbv}-D, however we also found that clade divergence times were substantially older in the dataset that included ancient sequences.
 Our \gls{tmrca} estimates of the largest predominantly African lineage is suggest their most recent shared ancestor existed circa 550 CE, while the \gls{tmrca} of a mixed European/Americas clade is estimated around 1100 CE.
 As with genotype A, individual clades show a strong local geographic effect, with few individual location changes occurring within the most recent 50 years.
@@ -101,13 +101,13 @@ We finally performed phylogeographic reconstruction of \gls{hbv} genotype E (Fig
 This genotype had no available ancient genomes, and was comprised of mostly sequences from African countries.
 We estimate the \gls{mrca} of this genotype to be in Africa circa 1825 CE.
 From Africa, we infer migrations into Europe and the Americas.
-Given that nearly all European sequences into the tree are singletons there is not enough statistical support to estimate the timing of these migrations accurately.
+Given that nearly all European sequences in the tree are singletons there is not enough statistical support to estimate the timing of these migrations accurately.
 
 \subsubsection{Migration history support}
 
 To confirm that our inferred migration histories were valid, we performed two tests to ensure that our inferred results were statistically supported.
-We first summarized the strongest supported rates of discrete location transitions between pairs regions for each genotype data set using Bayes Factor analysis (Fig.~\ref{fig:bayes_factors}).
-For \gls{hbv}-A, we find very strong (i.e. Bayes Factor $>100$) support for movements from Europe to East \& South Asia and the Americas, as well as strong support for movements from the Americas and Africa to Europe (Fig.~\ref{fig:bayes_factors}).
+We first summarized the strongest supported rates of discrete location transitions between pairs regions for each genotype data set using Bayes factor analysis (Fig.~\ref{fig:bayes_factors}).
+For \gls{hbv}-A, we find very strong (i.e. Bayes factor $>100$) support for movements from Europe to East \& South Asia and the Americas, as well as strong support for movements from the Americas and Africa to Europe (Fig.~\ref{fig:bayes_factors}).
 However, we did not find support for movements between West \& Central Asia and the Americas, nor for movements between West \& Central Asia and East \& South Asia, nor between Africa and East \& South Asia.
 For \gls{hbv}-D, we observe very strong support for outgoing movements from West \& Central Asia to Europe, Africa and East \& South Asia.
 We also find very strong support for outgoing movements from Europe to East \& South Asia, West \& Central Asia and the Americas.
@@ -115,7 +115,7 @@ However, we find no support for movements between West \& Central Asia and the A
 Finally, for \gls{hbv}-E, we only find very strong support for movements from Africa into Europe and strong support for movements from Africa to the Americas.
 We confirmed the estimated number of geographic transitions by counting Markov jumps on each posterior tree.
 The average of count jumps between each region agreed with the values counted on the \gls{mcc} trees that we present.
-This agreement is indicative that the trees that we show are representative of the posterior tree distribution both in terms of migration history.
+This agreement is indicative that the trees that we show are representative of the posterior tree distribution in terms of migration history.
 
 \begin{figure}[ht]
   \centering
@@ -151,18 +151,18 @@ This agreement is indicative that the trees that we show are representative of t
 
 \section{Lassa phylogenetics}
 
-For all Lassa analyses we find present preliminary results which will motivate future work.
+For all Lassa analyses we present preliminary results which will motivate future work.
 Using our adaptive workflow, we performed Bayesian phylogenetic inference on \gls{lasv} segments L and S under a Bayesian skygrid demographic model.
 We ran \gls{mcmc} chains for segment L in parallel for a combined total of $1.5\times10^{12}$ states (excluding burn-in), and S for a combined total of $2.4\times10^{12}$ states (excluding burn-in).
-We note that this analysis took almost a month of compute time on the Vlaams Supercomputer Centrum cluster, parallelized across three independent replicates per segment.
-This represents a total compute time of roughly 6 months.
+We note that this analysis took almost a month of computational time on the Vlaams Supercomputer Centrum cluster, parallelized across three independent replicates per segment.
+This represents a total computational time of roughly 6 months.
 
 Our inference revealed markedly different clock rates between the two segments.
 In segment L we infer a mean clock rate of $9.9914\times10^{-4}$ substitutions per site per year [95\% HPD:$9.0332\times10^{-4}$--$1.0646\times10^{-3}$].
 In segment S we instead infer a mean clock rate of $2.2116\times10^{-3}$ substitutions per site per year [95\% HPD:$1.9757\times10^{-3}$--$2.4948\times10^{-3}$].
 While this estimate for the clock rate of segment L is concordant with rates established for \gls{lasv} in the literature\cite{andersen2015clinical, fichet2016spatial}, our estimate for segment S differs from the literature by a factor of 10 (Fig.~\ref{fig:lassa_clock_rates}).
 Despite this difference, we find overlapping estimates of \gls{tmrca} for the two segments: 1698 CE for segment L and 1752 for segment S.
-Additionally, we perform Bayesian skygrid reconstruction of the demographic history of both segment L (Fig.~\ref{fig:l_skygrid}) and segment S (Fig.~\ref{fig:s_skygrid}).
+Additionally, we performed Bayesian skygrid reconstruction of the demographic history of both segment L (Fig.~\ref{fig:l_skygrid}) and segment S (Fig.~\ref{fig:s_skygrid}).
 Both segments' population reconstructions show the same patterns.
 In both segments we observe exponentially increasing effective population size since the \gls{tmrca} until roughly 1900.
 The 1900s show a trough in effective population size (lowest around the year 1950) followed by another increase in population until roughly the 1990s.
