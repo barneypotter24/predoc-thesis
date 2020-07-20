@@ -9,14 +9,14 @@ To two of these datasets we additionally include several genomes isolated from m
 Conditioned on the results of this phylogenetic inference, we perform phylogeographic inference to identify historical migration events that may have contributed to the current geographic distribution patterns of \gls{hbv}.
 
 We observed that genotype D was the fastest evolving.
-Genotype E is the most recently diverged genotype, however both its divergence and evolutionary rate estimates have large 95\% highest posterior density intervals, indicating that these estimates must be cautiously interpreted.
+Genotype E is the most recently diverged genotype, however both its divergence and evolutionary rate estimates have large 95\% highest posterior density intervals, indicating that these estimates have a relatively high degree of uncertainty and must be cautiously interpreted.
 This is probably due to the smaller dataset for genotype E (234 sequences), compared to the dataset sizes for the other genotypes (583 and 764 sequences for A and D, respectively).
 Additionally, there is recent evidence that HBV has limited temporal signal warranting temporal and evolutionary estimation not reliable, particularly for very long timeframes, with the risk of underestimating when the most recent common ancestor (MRCA) diverged\cite{ross2018paradox}.
-To avoid the inherent biases of estimate these measures for viruses that have an ancient time of divergence, we opted for analyzing each genotype separately.
+To avoid the inherent biases of estimating these measures for viruses that have an ancient time of divergence, we opted for analyzing each genotype separately.
 Moreover, the short time frame of these datasets, ranging from 16 to 37 years of sampling, should be less affected by the limited temporal signal, thus making the estimation of evolutionary rate and time to MRCA more reliable.
 The phylogeographic reconstructions are not affected by the temporal inference, particularly because we conditioned it on a posterior subset of trees.
 
-Rather than employing each specific country in our comprehensive data set as a different location for our discrete phylogeographic reconstruction, we have opted to perform these analyses on the continent level in order to deal with sampling bias among the different countries in our data set.
+Rather than employing each specific country in our comprehensive dataset as a different location for our discrete phylogeographic reconstruction, we have opted to perform these analyses on the continent level in order to deal with sampling bias among the different countries in our dataset.
 Unfortunately, to maintain consistent geographic subdivisions across datasets there remains significant heterogeneity in number of sequences between regions for some analyses.
 Phylogeographic inference using structured coalescent models\cite{de2015new, muller2018mascot} offers a potential solution to deal with sampling bias, at the expense of much increased computational demands.
 Given that generating the empirical tree distributions was already very time-consuming on its own, and that this approach cannot be combined with the use of structured coalescent models, we decided to resort to continent-level analysis rather than employing a range of subsampling strategies\cite{hong2020search}.
@@ -28,25 +28,25 @@ This is then applied to genomes collected during seasonal \gls{lasv} outbreaks t
 
 \section{Future directions}
 
-One of the biggest challenges in performing Bayesian phylogenetic inference is the large computational footprint of analyses.
-Depending on the size and complexity of a dataset---as well as the particular statistical model being used and the hardware on which analyses are run---analyses of a single dataset can take upwards of a month of runtime.
-While this can largely be worked around for retrospective analyses of datasets, it proves a major impediment to using Bayesian phylogenetics to analyze ongoing disease outbreaks because current tools are designed to operate on a a single dataset; their utility breaks down under scenarios that create dynamic inputs.
+One of the biggest challenges in performing Bayesian phylogenetic inference is the large computational burden of analyses.
+Depending on the size and complexity of a dataset---as well as the particular statistical model being used and the hardware on which analyses are run---an analysis of a single dataset can take upwards of a month of runtime.
+While this can largely be worked around for retrospective analyses of datasets, it proves a major impediment to using Bayesian phylogenetics to analyze ongoing disease outbreaks because current tools are designed to operate on a single dataset; their utility breaks down under scenarios that create dynamic inputs.
 Because of runtime constraints, complete analyses can plausibly take longer to run than is actionable during the course of an epidemic.
-Additionally, current methods do not accommodate changes to datasets or statistical models, often requiring new analyses to be restarted ``from scratch'' as more information regarding a pathogen is being uncovered.
-While frequent restarts may be feasible for small datasets or relatively simple models that run in a short amount of time, it quickly becomes unreasonable as dataset size and model complexity grows.
+Additionally, current methods do not accommodate changes to datasets or statistical models, often requiring new analyses to be restarted ``from scratch'' after more information regarding a pathogen is uncovered.
+While frequent restarts may be feasible for small datasets or relatively simple models that run in a short amount of time, it quickly becomes unreasonable as dataset size and model complexity grow.
 
 \section{Online Bayesian phylogenetic inference}
 
-We have demonstrated the utility of Bayesian phylogenetic inference as a tool for performing rigorous \textit{post hoc} analysis of viral pathogen outbreaks.
+We have demonstrated the utility of Bayesian phylogenetic inference as a tool for performing rigorous \textit{post hoc} analyses of viral pathogen outbreaks.
 However, much work remains to create a fully functional online \gls{beast} ecosystem.
 The online build framework described in this thesis may be extended through three major improvements: viral pathogen database integration, phylogenetic and demographic model extensions, and cloud-based task scheduling.
 
 \subsection{Database integration}
 
-One of the most crucial next steps that we identify moving forward towards the ideal online Bayesian phylogenetic framework is the development of tools to seamlessly integrate data streams with analysis pipelines.
+One of the most crucial next steps that we identify moving forward towards an ideal online Bayesian phylogenetic framework is the development of tools to seamlessly integrate data streams with analysis pipelines.
 In particular, we suggest the combination of \gls{beast}'s analysis tools with genomic databases whose design is focused around efficient, biologically informed storage of both genetic sequence data, as well as relevant metadata.
 This integration would considerably mitigate the amount of bespoke preprocessing work that is currently required to initiate phylogenetic analyses.
-Such ``full stack" pipelines are currently in existence for Maximum Likelihood bases phylogenetics\cite{hadfield2019nextstrain}, however at this time no such framework exists for large-scale Bayesian phylogenetic analysis.
+Such ``full stack" pipelines are currently in existence for Maximum Likelihood based phylogenetics\cite{hadfield2019nextstrain}, however at this time no such framework exists for large-scale Bayesian phylogenetic analysis.
 
 As our next direction, we will integrate existing online \gls{beast} pipelines with GLUE\cite{singer2018glue}---a database software designed specifically for viral genomic sequence data.
 This database stores sequence data---and their associated metadata---in a phylogenetically-informed manner as a series of multiple sequence alignments.
@@ -82,8 +82,8 @@ Functionally, this will require new methods of detecting when parameter posterio
 Currently, our main tools for determining this take the shape of \gls{ess}s and manual inspection of the state of analyses.
 This process requires significant time on the behalf of researchers, and is not able to be automated at all.
 Through the development of new tools for assessing the completeness of analyses we will be able to automatically detect when analyses should be terminated, thereby preventing unnecessary computation.
-By doing so compute resources will be freed up for new analyses begin.
-If this is achieved, we will be able to create a fully online \gls{beast} environment that runs continuously on cloud compute resources, making maximum use of both available resources and time so that researchers may spend more time analyzing results rather than fussing with the minutiae currently associated with performing Bayesian phylogenetic analysis.
+By doing so, computational resources will be freed up for new analyses to begin.
+If this is achieved, we will be able to create a fully online \gls{beast} environment that runs continuously on cloud computing resources, making maximum use of both available resources and time so that researchers may spend more time analyzing results rather than fussing with the minutiae currently associated with performing Bayesian phylogenetic analysis.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
