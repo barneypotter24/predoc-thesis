@@ -18,7 +18,7 @@ Analysing the historical information contained in viral genomes contributes to b
 Molecular phylogenetic inference is a particularly powerful tool available to scientists interested in inferring pathogen dynamics.
 This is a methodology by which the shared evolutionary history of a set of genomic sequences, sometimes referred to as taxa, is hypothesized based on genomic similarity.
 Phylogenetic methodologies come in many different forms, ranging from simple heuristics that approximate phylogenetic relationships based on the number of observed differences between sequences \cite{felsenstein2003inferring} to highly complex models that use demographic and geographic population structure as well as state-of-the-art models of evolution to inform phylogenetic inference \cite{dudas2018mers}.
-Additionally, phylogenetic analyses may be combined with other methodologies (e.g. methods in population genetics \cite{felsenstein2003inferring} or epidemiology \cite{black2020ten}) to provide insight into the relationship between evolutionary dynamics and other processes.
+Additionally, phylogenetic analyses may be combined with other methodologies (e.g. methods in population genetics \cite{felsenstein2003inferring} or epidemiology \cite{black2020ten}) to provide insight into the relationship between evolutionary dynamics and other processes. %GB: I find this to be a vague sentence; can you be more specific or provide an example related to the sentence?
 
 \newglossaryentry{mrca}{name={MRCA},description={Most recent common ancestor}}
 
@@ -28,7 +28,7 @@ Such trees often use length of branches to represent genetic distance between no
 A more useful representation of evolutionary history can be found by rescaling branch lengths along a tree according to a mutation rate which provides a mapping between genetic distance and time, allowing the phylogeny to be represented as a function of time.
 Phylogenetic trees can also be used to infer the shared mutation history of a set of sequences, thereby allowing the reconstruction of inferred ancestral genomes.
 Similar methods may be used to reconstruct the ancestral states of various discrete or continuous traits associated with the taxa of the tree.
-Common examples of these types of analyses include analyses of particular phenotypes of interest and phytogeographic analyses that treat sequence sampling locations as traits and aim to reconstruct the spatiotemporal spread of pathogens.
+Common examples of these types of analyses include analyses of particular phenotypes of interest and phylogeographic analyses that treat sequence sampling locations as traits and aim to reconstruct the spatiotemporal spread of pathogens.
 Finally, phylogenetic methods often hypothesize a link between population dynamics and tree shape---formalized through coalescent theory \cite{Kingman1982}---whereby small populations are expected to have relatively high rates of branching (and therefore relatively short branch lengths) compared to larger populations.
 Visual examples of all of these aspects of phylodynamic analyses are illustrated in Fig.~\ref{fig:phylogeneticsOverview} \cite{pybus2009evolutionary}.
 
@@ -39,11 +39,11 @@ Visual examples of all of these aspects of phylodynamic analyses are illustrated
   \caption[Applications of phylogenetic analysis]{Key concepts in phylodynamic analysis.
   a) Molecular phylogenies from viral gene sequences are typically rooted and bifurcating.
   b) A molecular clock allows to define a relationship between genetic distance and time, with unusually fast or slow evolving lineages are shown as thick or thin lines, respectively.
-  c) Phylodynamic data can also highlight the evolution through time of mutations that may reflect viral adaptations; of particular interest are the replacement mutations that are found on the persisting phylogenetic ‘backbone’ that represents the ancestor of future virus populations (blue branches), as opposed to those occurring on branches that die out (black branches).
+  c) Phylodynamic data can highlight the evolution through time of mutations that may reflect viral adaptations; of particular interest are the replacement mutations that are found on the persisting phylogenetic ‘backbone’ that represents the ancestor of future virus populations (blue branches), as opposed to those occurring on branches that die out (black branches).
   d) Temporal phylogeographic inference is used to reconstruct the history of pathogen spread, so that each branch is labelled with its estimated geographic position.
   e) Coalescent analyses incorporate an explicit model of the sampled pathogen population.
   The increasing width of each row therefore reflects the growth of the epidemic through time. Starting from the sampled infections (red), the sampled lineages (black lines) can be traced back through unsampled infections (grey) to the common ancestor (black circle).
-  (\textit{Figure credit: Pybus \& Rambaut 2009} \cite{pybus2009evolutionary})
+  \textit{Figure credit: Pybus \& Rambaut (2009)} \cite{pybus2009evolutionary}.
   }
   \label{fig:phylogeneticsOverview}
 \end{figure}
@@ -61,18 +61,17 @@ We use these analyses to illustrate the use of current phylogenetic and phylogeo
 \section{Measurably evolving populations and temporal signal}
 
 While performing phylogenetic analyses, we are often interested in how populations evolve as a function of time, rather than as a function of genetic distance.
-To this end, we seek a way to correlate differences in our input data (i.e. genetic distance) with time.
-We do this by assuming that mutations accumulate along the branches of a phylogenetic tree according to some rate, which can be posited to hold a constant value across the entire phylogeny \cite{brown2011rate}, or can vary by branch according to different statistical models \cite{drummond2006relaxed, drummond2010randomLocal}.
-We refer to this rate as a ``clock rate''---generally represented in units of substitutions per site per year.
-The clock rate can be used to rescale the branches of a phylogeny from units of genetic distance to units of time.
+To this end, we seek to correlate differences in our input data (i.e. genetic distance) with time.
+We do this by assuming that mutations accumulate along the branches of a phylogenetic tree according to some rate, which can be posited to hold a constant value across the entire phylogeny \cite{brown2011rate}, or can vary by branch according to different statistical models known as ``clock models'' \cite{drummond2006relaxed, drummond2010randomLocal}.
+We refer to this rate as an ``evolutionary rate'', generally represented in units of substitutions per site per year, which can be used to rescale the branches of a phylogeny from units of genetic distance to units of time.
 
 \newglossaryentry{mep}{name={MEP},description={Measurably evolving population}}
-Historically, such clock rate calculations were produced using informed estimates of divergence times between two known lineages using fossil calibration\cite{smith2010birds, near2005turtles}---a process whereby internal node times were set to an externally-supplied date of divergence.
+Historically, calibration of the clock models describing the evolutionary rates across branch were informed by estimates of divergence times between known lineages using fossil calibration \cite{smith2010birds, near2005turtles}---a process whereby internal node times were set to an externally-supplied date of divergence. %GB: not sure why these recent papers are being cited; the original work is by Zuckerkandl and Pauling in 1962 and 1965.
 While this approach works well for reconstructing phylogenies for eukaryotic species whose extant genomes are more-or-less isochronous and fossil records exist to date ancient divergences, it has limited use in the inference of molecular clocks in viruses, where known divergence times may be much more limited.
-Indeed, it is frequently impossible to provide accurate prior estimates of historical divergence times, and we instead wish to infer molecular clock rates directly from heterochronous (i.e. sampled over long periods of time) sequences.
-We call the existence of sufficient statistical power from heterochronous sequence data to determine a molecular clock rate ``temporal signal'', and we refer to a population from which we can observe a statistically significant number of mutations through time a ``measurably evolving population'' (\gls{mep}) \cite{drummond2003measurably}. %GB: how can this be deemed to be 'statistically significant'?
-In general, there are two sources from which we can observe \gls{mep}s: populations with available ancient genomes, and rapidly evolving RNA viruses.
-Analysis of ancient genomes has proven to be an effective way of inferring the phylodynamics of eukaryotic populations \cite{shapiro2004bison}. %GB: if there is still room, I would be tempted to provide more information regarding this example, and perhaps the key figure from that paper
+Indeed, it is frequently impossible to provide accurate prior estimates of historical divergence times, and we instead wish to infer molecular clock rates directly from heterochronous (i.e. sampled a period of time) sequences.
+We call the existence of sufficient statistical power from heterochronous sequence data to determine an evolutionary rate ``temporal signal'', and we refer to a population from which we can observe a statistically significant number of mutations through time a ``measurably evolving population'' (\gls{mep}) \cite{drummond2003measurably}.
+In general, there are two sources from which we can observe \gls{mep}s: populations with available ancient genomes and rapidly evolving RNA viruses.
+Analysis of data sets that contain ancient genomes has proven to be an effective way of inferring the phylodynamics of eukaryotic populations \cite{shapiro2004bison}. %GB: if there is still room, I would be tempted to provide more information regarding this example, and perhaps the key figure from that paper
 
 \section{Bayesian phylodynamic inference}
 
