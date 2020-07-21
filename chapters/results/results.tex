@@ -7,12 +7,12 @@
 
 For this project, we had originally planned to reconstruct the demographic history of Hepatitis B genotypes throughout their history using a Bayesian skygrid coalescent model.
 This was a process by which we divided the evolutionary history of the virus into discrete intervals, then attempted to treat each ``bin'' as a constant population size time window---resulting in a population function over time that was piecewise constant.
-%Bins would then be smoothed with their neighbors to make a continuous estimation of population size through time.
+Bins would then be smoothed with their neighbors to make a continuous estimation of population size through time.
 
 Unfortunately, this process was unsuccessful.
 The initial cause of the lack of success was the so-called ``block'' operator of the \gls{mcmc} that governed the change in Skygrid population size values.
 This operator became ``stuck'' in all cases where we attempted to use it, such that the \gls{mcmc} algorithm would never accept new proposals in state space, and therefore the simulated parameter values never changed---that is to say, the entire Markov chain became stuck in a local optimum and was never able to leave it.
-We attempted to rectify this situation by changing to a different transition kernel---a Hamiltonian Monte Carlo operator---however this operator was still never able to explore the state space rapidly enough to produce results. 
+We attempted to rectify this situation by changing to a different transition kernel---a Hamiltonian Monte Carlo operator---however this operator was still never able to explore the state space rapidly enough to produce results.
 
 To circumvent these issues, we transitioned to using a less sophisticated demographic model wherein the entire population size was assumed to be constant throughout history.
 Using this method, we recovered that \gls{hbv}-A had an inferred effective population size of 1,620 [95\% HPD:765--2,815] and that \gls{hbv}-D had an inferred effective population size of 60,686 [95\% HPD: 38,478--86,598].
@@ -20,11 +20,11 @@ Using this method, we recovered that \gls{hbv}-A had an inferred effective popul
 \subsection{Temporal signal and clock rates}
 
 \newglossaryentry{tmrca}{name={tMRCA},description={Time to most recent common ancestor}}
-The mean evolutionary rate and times to the most recent common ancestor (\gls{tmrca}) were first estimated for all data sets without including any ancient sequences (and hence not imposed any informative prior information) by collaborators.
+The mean evolutionary rate and times to the most recent common ancestor (\gls{tmrca}) were first estimated for all datasets without including any ancient sequences (and hence not imposed any informative prior information) by collaborators.
 \gls{hbv} genotype A was estimated to evolve at a mean rate of $5.75\times10^{-4}$ [95\% HPD: $3.81\times10^{-4}$--$7.90\times10^{-4}$] substitutions/site/year, genotype D at a mean rate of $1.27\times10^{-3}$ [95\% HPD: $1.12\times10^{-3}$--$1.43\times10^{-3}$] substitutions/site/year, and genotype E at a mean rate of $6.84\times10^{-4}$ [95\% HPD: $2.08\times10^{-4}$--$1.16\times10^{-3}$] substitutions/site/year.
 However, \gls{hbv} often shows very little temporal signal, making it difficult to accurately estimate the time scale for an \gls{hbv} phylogeny and to hence put accurate dates on historical migrations of the virus.
 M{\"u}hlemann et al. (2018) have shown that including ancient genomic sequences can provide the required additional information to warrant the use of molecular clock models to reconstruct time-measured phylogenetic trees for \gls{hbv}.
-For \gls{hbv} data sets A and D, we have hence included the relevant ancient sequences and have set an informative prior distribution on the mean of the underlying lognormal distribution for the uncorrelated relaxed clock model, based on the reported estimate from M{\"u}hlemann et al. (2018).
+For \gls{hbv} datasets A and D, we have hence included the relevant ancient sequences and have set an informative prior distribution on the mean of the underlying lognormal distribution for the uncorrelated relaxed clock model, based on the reported estimate from M{\"u}hlemann et al. (2018).
 For genotype A, this leads us to obtain a somewhat increased mean rate of $7.32\times10^{-4}$ [95\% HPD: $4.14\times10^{-4}$--$1.06\times10^{-3}$] substitutions/site/year, while for genotype D we obtained a much decreased mean rate of $9.65\times10^{-5}$ [95\% HPD: $5.97\times10^{-5}$--$1.36\times10^{-4}$] substitutions/site/year.
 
 \subsection{Phylogenetic placement}
@@ -106,7 +106,7 @@ Given that nearly all European sequences in the tree are singletons there is not
 \subsubsection{Migration history support}
 
 To confirm that our inferred migration histories were valid, we performed two tests to ensure that our inferred results were statistically supported.
-We first summarized the strongest supported rates of discrete location transitions between pairs regions for each genotype data set using Bayes factor analysis (Fig.~\ref{fig:bayes_factors}).
+We first summarized the strongest supported rates of discrete location transitions between pairs regions for each genotype dataset using Bayes factor analysis (Fig.~\ref{fig:bayes_factors}).
 For \gls{hbv}-A, we find very strong (i.e. Bayes factor $>100$) support for movements from Europe to East \& South Asia and the Americas, as well as strong support for movements from the Americas and Africa to Europe (Fig.~\ref{fig:bayes_factors}).
 However, we did not find support for movements between West \& Central Asia and the Americas, nor for movements between West \& Central Asia and East \& South Asia, nor between Africa and East \& South Asia.
 For \gls{hbv}-D, we observe very strong support for outgoing movements from West \& Central Asia to Europe, Africa and East \& South Asia.
