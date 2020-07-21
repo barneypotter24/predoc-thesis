@@ -75,16 +75,16 @@ Analysis of data sets that contain ancient genomes has proven to be an effective
 
 \section{Bayesian phylodynamic inference}
 
-In this thesis, we specifically use Bayesian methodologies of phylogenetic inference.
-Unlike many other approaches, including maximum-likelihood inference, Bayesian methods do not assume that the parameters which govern statistical models take a single-point value, but rather come from a posterior probability distribution.
+In this thesis, I specifically aim to use Bayesian methodologies of phylogenetic inference.
+Unlike many other approaches, including fast maximum-likelihood methods, Bayesian inference does not assume that the parameters which govern statistical models take a single-point value, but rather come from a posterior probability distribution.
 Such methodologies are also informed by hypotheses of these parameter distributions provided \textit{a priori} by researchers---referred to as parameter prior distributions.
 Bayesian methodologies are particularly well suited to phylogenetic methods in several key ways.
-Firstly, they allow researchers to create strongly supported estimates of evolutionary histories that account for uncertainty in the phylogenies and in other model parameters.
+Firstly, they allow researchers to create strongly supported estimates of evolutionary histories that account for uncertainty in the phylogenies and in other model parameters. %GB: why 'strongly supported'?
 Additionally, Bayesian phylogenetic methods afford researchers the opportunity to infer many different parameters of interest (e.g. mutation rates, effective population sizes, and migration rates) jointly with the phylogeny.
-Finally, for many different evolutionary models algorithms for performing Bayesian phylogenetic inference are well defined and implemented efficiently, allowing tractable computation.
+Finally, for many different evolutionary models algorithms for performing Bayesian phylogenetic inference are well defined and implemented efficiently, allowing tractable computation. %GB: this makes it sounds as if non-Bayesian methods can get away with non being implemented properly ...
 
 \newglossaryentry{mcmc}{name={MCMC},description={Markov chain Monte Carlo}}
-To perform Bayesian analyses it is frequently necessary to compute very large, high-dimensional integrals to produce exact posterior distributions; this task is unfortunately typically analytically intractable.
+To perform Bayesian (phylodynamic) inference it's frequently necessary to compute high-dimensional integrals to produce exact posterior distributions, a task that's unfortunately analytically intractable in nearly all but the simplest of situations.
 However, this hurdle can be overcome by simulating a Markov chain whose stationary distribution is the desired posterior distribution.
 This approach is known as Markov chain Monte Carlo (\gls{mcmc}) and can be exploited to numerically approximate posterior distributions of phylogenetic models.
 
@@ -105,7 +105,7 @@ At that stage, which can take days or even weeks to reach (but see section~\ref{
 
 One of the major challenges of phylogenetic inference that can lead to very time-consuming analyses is the vast size of the state space of potentially inferred variables.
 The size of ``tree space''---the set of all possible phylogenetic trees for a given dataset---scales at the rate $\frac{(2n-3)!}{2^{n-1}(n-1)!}$.
-This is far too large to exhaustively explore for the datasets that researchers are interested in; for a dataset consisting of only thirty taxa, the number of possible rooted, labeled phylogenies numbers over $10^{38}$ \cite{felsenstein2003inferring}.
+This is far too large to exhaustively explore for the datasets that researchers are typically interested in; for a dataset consisting of only thirty taxa, the number of possible rooted, labeled phylogenies totals over $10^{38}$ \cite{felsenstein2003inferring}.
 For the datasets that we explore in this thesis---ranging in size to 769 taxa---this number grows to vastly overshadow the number of atoms in the observable universe.
 As such, exhaustively exploring this space is impossible, and traversing this space algorithmically can still take considerable time.
 
@@ -114,25 +114,23 @@ As such, exhaustively exploring this space is impossible, and traversing this sp
 \newglossaryentry{ess}{name={ESS},description={Effective sample size}}
 
 Bayesian phylogenetic inference of large, complex datasets can hence take upwards of a month of constant computational time before a chain achieves convergence and has adequately explored the full posterior distribution.
-During this time, we sample the constructed Markov chain at fixed intervals by recording the state of all parameters of the chain.
-We quantify how thoroughly the posterior has been sampled using a metric known as the effective sample size (\gls{ess})---a measure of the number of effectively independent draws from the posterior distribution that the Markov chain sample is equivalent to.
-Because sequential samples of the chain's state are frequently highly correlated, we find \gls{ess} to be an appropriate metric for how fully the \gls{mcmc} has explored the posterior distribution of interest.
-While there is no theoretical foundation for using a specific cut-off value when computing the \gls{ess}, we generally seek to accumulate \gls{ess} values over 200 for each parameter of interest as a decent trade-off between length of computation and the number of independent samples collected for a specific parameter.
+During this time, the constructed Markov chain is sampled at fixed intervals by recording the state of all parameters of the chain.
+How thoroughly the posterior has been sampled can be quantified using a metric known as the effective sample size (\gls{ess})---a measure of the number of effectively independent draws from the posterior distribution that the Markov chain sample is equivalent to.
+Because sequential samples of the chain's state are frequently highly correlated, the \gls{ess} is an appropriate metric for how fully the \gls{mcmc} has explored the posterior distribution of interest.
+While there is no theoretical foundation for using a specific cut-off value when computing the \gls{ess}, a commonly applied consensus is to accumulate \gls{ess} values over 200 for each parameter of interest as a decent trade-off between length of computation and the number of independent samples collected for a specific parameter.
 
-A significant amount of computational time is consumed by the chain moving from where it began in state space toward the posterior distribution---a period referred to as ``burn-in''.
-Because the chain is rapidly traversing parameter space during this period all samples are correlated, and we are therefore unable to accumulate any \gls{ess} during this time.
-Indeed, the entire burn-in period is discarded prior to analysis.
-The burn-in period can take upwards of 10\% of the total computation time.
-A major computational issue stemming from the burn-in period is that the time spent in burn-in can only be mitigated by specifying prior distributions that are strongly informative of the posterior distribution.
+A significant amount of computation time is consumed by the chain moving from its starting point in state space toward the posterior distribution---a period referred to as the ``burn-in''.
+Because the chain aims to rapidly traverse parameter space towards the posterior, this initial burn-in phase does not help to accumulate independent samples from said posterior and hence the entire burn-in period is discarded prior to summarizing the results from the analysis.
+A major computational issue stemming from the burn-in period is that the time spent in burn-in can only be mitigated by either specifying prior distributions that are strongly informative of the posterior distribution, or by designing novel transition kernels to move towards the posterior in a more efficient manner.
 This means that even if identically parameterized chains are run in parallel the burn-in period must take place for each independent run, significantly lowering the utility of chain-level parallelization.
 
 \subsection{BEAST}
 
 \newglossaryentry{beast}{name={BEAST},description={Bayesian Evolutionary Analysis Sampling Trees}}
-For the analyses described in this thesis, we make use of the software package Bayesian Evolutionary Analysis Sampling Trees (\gls{beast}) 1.10 \cite{suchard2018bayesian}.
+For the analyses described in this thesis, I make use of the software package Bayesian Evolutionary Analysis Sampling Trees (\gls{beast}) 1.10 \cite{suchard2018bayesian}.
 \gls{beast} is an easy-to-use software package in which many Bayesian phylogenetic models---and their associated priors and transition kernels---have been implemented and optimized such that analyses on large datasets may be easily specified and run efficiently on a wide variety of computing resources.
 %This tool mostly implements Bayesian phylogenetic inference via \gls{mcmc} but recent developments have started exploring the use of Hamiltonian Monte Carlo approaches. %MG: HMC is an MCMC method
-Analyses in \gls{beast} are facilitated by hardware optimization libraries \cite{ayres2019beagle}, as well as a large suite of utility programs that make running analyses in parallel and quickly interpreting results feasible.
+Analyses in \gls{beast} are facilitated by hardware optimization libraries such as BEAGLE \cite{ayres2019beagle}, as well as a large suite of utility programs that make running analyses in parallel and quickly interpreting results feasible.
 
 \section{Viral pathogens}
 Viral pathogen outbreaks are a particularly useful study system for Bayesian phylogeneticists because their relatively small genomes typically allow for tractable computation.
@@ -142,13 +140,14 @@ Viruses frequently cause human suffering and death, both as endemic diseases (se
 Indeed, viruses have been responsible for the majority of the most deadly pandemics of the last century (1918 Spanish influenza, 2009 Swine flu, COVID-19).
 Even when they do not cause large-scale epidemics or global pandemics, or when they do not cause death, viruses can still cause vast amounts of human suffering though localized, small-scale outbreaks that cause severe health problems for those that they infect.
 In this thesis, I present the results of Bayesian phylogenetic analyses of two separate viral pathogens: hepatitis B virus (\gls{hbv}) and Lassa virus (\gls{lasv}).
+I here provide some information regarding the genome structure of these two pathogens, which will aid in justifying modelling assumptions in subsequent chapters.
 
 
 \subsection{Hepatitis B virus (HBV)}
 
-\gls{hbv} has infected over two billion people worldwide, and puts over 350 million people at risk of cirrhosis and liver cancer \cite{kane1995global}.
+\gls{hbv} has infected over two billion people worldwide and puts over 350 million people at risk of cirrhosis and liver cancer \cite{kane1995global}.
 The virus is classified into eight different genotypes based on genomic sequence divergence.
-These genotypes show strong ethnospatial patterns, and are often correlated directly to the region of the world where they are most prominent \cite{schaefer2007hepatitis}.
+These genotypes show strong ethnospatial patterns and are often correlated directly to the region of the world where they are most prominent \cite{schaefer2007hepatitis}.
 \gls{hbv} consists of two partially overlapping strands of DNA (Fig.~\ref{fig:hbvGenome}).
 The long strand ranges from 3,020--3,320 bases in length, while the short strand ranges from 1,700--2,800 nucleotides long, depending on genotype \cite{kay2007hepatitis}.
 
@@ -156,7 +155,7 @@ The long strand ranges from 3,020--3,320 bases in length, while the short strand
   \centering
   \medskip
   \includegraphics[width=.6\textwidth]{hbv_genome_schematic}
-  \caption[Scematic of the HBV genome]{The \gls{hbv} genome consists of two partially overlapping strands of DNA. The long strand (purple) is roughly 3 kb in length and circular, while the shrot strand (red) is roughly 2.2 kb in length. Between the two strands there are four identified open reading frames. (\textit{Figure credit: Wikimedia Commons} \cite{HBVwiki})}
+  \caption[Scematic of the HBV genome]{The \gls{hbv} genome consists of two partially overlapping strands of DNA. The long strand (purple) is roughly 3 kb in length and circular, while the short strand (red) is roughly 2.2 kb in length. Between the two strands there are four identified open reading frames. \textit{Figure credit: Wikimedia Commons} \cite{HBVwiki}.}
   \label{fig:hbvGenome}
 \end{figure}
 
@@ -170,7 +169,7 @@ The L segment encodes genes \textit{Pol} and \textit{Z}, while the S segment enc
   \centering
   \medskip
   \includegraphics[width=.8\textwidth]{lassa_genome_schematic}
-  \caption[Scematic of the LASV genome]{The \gls{lasv} genome is divided into two segments, each containing two different genes. Both segments are ambisenseand contain two oppositely oriented open reading frames separated by an intergenic region. (\textit{Figure credit: Kafetzopoulou 2019} \cite{lianaThesis})}
+  \caption[Scematic of the LASV genome]{The \gls{lasv} genome is divided into two segments, each containing two different genes. Both segments are ambisenseand contain two oppositely oriented open reading frames separated by an intergenic region. \textit{Figure credit: Kafetzopoulou (2019)} \cite{lianaThesis}.}
   \label{fig:lasvGenome}
 \end{figure}
 
