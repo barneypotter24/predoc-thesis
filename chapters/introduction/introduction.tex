@@ -6,7 +6,7 @@
 Infectious diseases are now emerging or reemerging almost every year.
 This trend will continue because a number of factors, including the increased global population, aging, travel, urbanization, and climate change, favor the emergence, evolution, and spread of new pathogens \cite{bloom2017emerging}.
 Many of these pathogens represent a clear and eminent threat to public health, as the ongoing severe acute respiratory syndrome corona virus 2 (SARS-CoV-2) outbreak has made brutally clear, as well as a tremendous burden on global economies.
-Other examples from the last few years include the emergence of West Nile\cite{hadfield2019twenty}, H5N1\cite{imai2018diversity}, H1N1\cite{bedford2015global}, Ebola\cite{dudas2017virus}, Zika\cite{fauci2016zika, faria2016zika} and Lassa\cite{kafetzopoulou2019metagenomic}.
+Other examples from the last few years include the emergence of West Nile \cite{hadfield2019twenty}, H5N1 \cite{imai2018diversity}, H1N1 \cite{bedford2015global}, Ebola \cite{dudas2017virus}, Zika \cite{fauci2016zika, faria2016zika} and Lassa \cite{kafetzopoulou2019metagenomic}.
 Demographic forces amplify the risks associated with such emerging infectious diseases (\gls{eids}). The global population is expected to grow to 8 billion within 8 years, with nearly 60\% of the population living in relatively crowded urban areas.
 Among \gls{eids}, viral pathogens, particularly RNA viruses, stand as major concerns, owing to their high rates of nucleotide substitution and capacity to adapt to new hosts.
 Viral sequence data are invaluable for characterising these pathogens.
@@ -29,7 +29,7 @@ Phylogenetic trees can also be used to infer the shared mutation history of a se
 Similar methods may be used to reconstruct the ancestral states of various discrete or continuous traits associated with the taxa of the tree.
 Common examples of these types of analyses include analyses of particular phenotypes of interest and phytogeographic analyses that treat sequence sampling locations as traits and aim to reconstruct the spatiotemporal spread of pathogens.
 Finally, phylogenetic methods often hypothesize a link between population dynamics and tree shape---formalized through coalescent theory \cite{Kingman1982}---whereby small populations are expected to have relatively high rates of branching (and therefore relatively short branch lengths) compared to larger populations.
-Visual examples of all of these aspects of phylodynamic analyses are illustrated in Fig.~\ref{fig:phylogeneticsOverview}\cite{pybus2009evolutionary}.
+Visual examples of all of these aspects of phylodynamic analyses are illustrated in Fig.~\ref{fig:phylogeneticsOverview} \cite{pybus2009evolutionary}.
 
 \begin{figure}[ht]
   \centering
@@ -42,7 +42,7 @@ Visual examples of all of these aspects of phylodynamic analyses are illustrated
   d) Temporal phylogeographic inference is used to reconstruct the history of pathogen spread, so that each branch is labelled with its estimated geographic position.
   e) Coalescent analyses incorporate an explicit model of the sampled pathogen population.
   The increasing width of each row therefore reflects the growth of the epidemic through time. Starting from the sampled infections (red), the sampled lineages (black lines) can be traced back through unsampled infections (grey) to the common ancestor (black circle).
-  (\textit{Photo credit: Pybus \& Rambaut 2009} \cite{pybus2009evolutionary})
+  (\textit{Figure credit: Pybus \& Rambaut 2009} \cite{pybus2009evolutionary})
   }
   \label{fig:phylogeneticsOverview}
 \end{figure}
@@ -73,7 +73,7 @@ We call the existence of sufficient statistical power from heterochronous sequen
 In general, there are two sources from which we can observe \gls{mep}s: populations with available ancient genomes, and rapidly evolving RNA viruses.
 Analysis of ancient genomes has proven to be an effective way of inferring the phylodynamics of eukaryotic populations \cite{shapiro2004bison}. %GB: if there is still room, I would be tempted to provide more information regarding this example, and perhaps the key figure from that paper
 
-\section{Bayesian phylodynamics and joint inference}
+\section{Bayesian phylodynamic inference}
 
 In this thesis, we specifically use Bayesian methodologies of phylogenetic inference.
 Unlike many other approaches, including maximum-likelihood inference, Bayesian methods do not assume that the parameters which govern statistical models take a single-point value, but rather come from a posterior probability distribution.
@@ -144,7 +144,7 @@ Even when they do not cause large-scale epidemics or global pandemics, or when t
 In this thesis, I present the results of Bayesian phylogenetic analyses of two separate viral pathogens: hepatitis B virus (\gls{hbv}) and Lassa virus (\gls{lasv}).
 
 
-\subsection{Hepatitis B virus}
+\subsection{Hepatitis B virus (HBV)}
 
 \gls{hbv} has infected over two billion people worldwide, and puts over 350 million people at risk of cirrhosis and liver cancer \cite{kane1995global}.
 The virus is classified into eight different genotypes based on genomic sequence divergence.
@@ -156,11 +156,11 @@ The long strand ranges from 3,020--3,320 bases in length, while the short strand
   \centering
   \medskip
   \includegraphics[width=.6\textwidth]{hbv_genome_schematic}
-  \caption[Scematic of the HBV genome]{The \gls{hbv} genome consists of two partially overlapping strands of DNA. The long strand (purple) is roughly 3 kb in length and circular, while the shrot strand (red) is roughly 2.2 kb in length. Between the two strands there are four identified open reading frames. (\textit{Photo credit: Wikimedia Commons} \cite{HBVwiki})}
+  \caption[Scematic of the HBV genome]{The \gls{hbv} genome consists of two partially overlapping strands of DNA. The long strand (purple) is roughly 3 kb in length and circular, while the shrot strand (red) is roughly 2.2 kb in length. Between the two strands there are four identified open reading frames. (\textit{Figure credit: Wikimedia Commons} \cite{HBVwiki})}
   \label{fig:hbvGenome}
 \end{figure}
 
-\subsection{Lassa virus}
+\subsection{Lassa virus (LASV)}
 
 Lassa virus (\gls{lasv}) is the causative agent of Lassa fever, a viral hemorrhagic fever that infects 300,000--500,000 people anually and causes 54,000--90,000 deaths yearly \cite{lianaThesis, asogun2012molecular}.
 \gls{lasv} has a genome that is divided into two segments: a large (L) segment approximately 7.5 kb in length, and a small (S) segment approximately 3.5 kb in length.
@@ -170,7 +170,7 @@ The L segment encodes genes \textit{Pol} and \textit{Z}, while the S segment enc
   \centering
   \medskip
   \includegraphics[width=.8\textwidth]{lassa_genome_schematic}
-  \caption[Scematic of the LASV genome]{The \gls{lasv} genome is divided into two segments, each containing two different genes. Both segments are ambisenseand contain two oppositely oriented open reading frames separated by an intergenic region. (\textit{Photo credit: Kafetzopoulou 2019} \cite{lianaThesis})}
+  \caption[Scematic of the LASV genome]{The \gls{lasv} genome is divided into two segments, each containing two different genes. Both segments are ambisenseand contain two oppositely oriented open reading frames separated by an intergenic region. (\textit{Figure credit: Kafetzopoulou 2019} \cite{lianaThesis})}
   \label{fig:lasvGenome}
 \end{figure}
 
