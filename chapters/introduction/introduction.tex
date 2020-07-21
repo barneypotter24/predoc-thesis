@@ -23,7 +23,7 @@ Additionally, phylogenetic analyses may be combined with other methodologies (e.
 \newglossaryentry{mrca}{name={MRCA},description={Most recent common ancestor}}
 
 Phylogenetic methods can help reveal many features of a set of related taxa.
-The most frequent use of these methods is to construct a phylogenetic tree: a bifurcating (or sometimes multifurcating) representation of the inferred evolutionary history of a set of contemporary taxa---represented as tips or leaves of the tree---with inferred shared ancestors represented by internal nodes where two or more branches of the tree meet, eventually coalescing at the most recent common ancestor (\gls{mrca}) of all the taxa in a data set.
+The most frequent use of these methods is to construct a phylogenetic tree: a bifurcating (or sometimes multifurcating) representation of the inferred evolutionary history of a set of contemporary taxa---represented as tips or leaves of the tree---with inferred shared ancestors represented by internal nodes where two or more branches of the tree meet, eventually coalescing at the most recent common ancestor (\gls{mrca}) of all the taxa in a dataset.
 Such trees often use length of branches to represent genetic distance between nodes.
 A more useful representation of evolutionary history can be found by rescaling branch lengths along a tree according to a mutation rate which provides a mapping between genetic distance and time, allowing the phylogeny to be represented as a function of time.
 Phylogenetic trees can also be used to infer the shared mutation history of a set of sequences, thereby allowing the reconstruction of inferred ancestral genomes.
@@ -90,7 +90,7 @@ However, this hurdle can be overcome by simulating a Markov chain whose stationa
 This approach is known as Markov chain Monte Carlo (\gls{mcmc}) and can be exploited to numerically approximate posterior distributions of phylogenetic models.
 
 % MG: this entire paragraph needs to be rewritten. It is poorly and sometimes inaccurately explained.
-The implementation of such methods works according to a modified Metropolis-Hastings algorithm. 
+The implementation of such methods works according to a modified Metropolis-Hastings algorithm.
 First, a starting value for each parameter of interest is randomly drawn from its prior distribution or set to a pre-specified value.
 %For numeric parameters this takes the form of one or more numbers being generated randomly, and a random tree topology is used as the initial tree.
 A likelihood for the model can then be calculated, conditional on the current values of the model parameters.
