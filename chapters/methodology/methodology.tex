@@ -5,7 +5,7 @@
 \section{Bayesian phylogeographic inference of HBV}
 
 \subsection{Genomic sequence data}
-We analyzed a total of 1,590 complete hepatitis B virus (HBV) genomes divided among three genotypes, and arising from three primary sources: publicly availabe sequence databases, novel genomes sequenced by collaborators, and recently sequenced ``ancient'' genomes isolated from mummies.
+We analyzed a total of 1,590 complete hepatitis B virus (HBV) genomes divided among three genotypes, and arising from three primary sources: publicly available sequence databases, novel genomes sequenced by collaborators, and recently sequenced ``ancient'' genomes isolated from mummies.
 The genomes that we analyzed were divided into three datasets based on their \gls{hbv} genotype, such that we had 587 \gls{hbv}-A genomes, 769 \gls{hbv}-D genomes, and 234 \gls{hbv}-E genomes.
 Of these, the vast majority (total 1,466: 540 \gls{hbv}-A, 765 \gls{hbv}-D, 170 \gls{hbv}-E) were provided by collaborators following a query of the GenBank sequence database. %GB: this begs the question where the other ones came from; you can mention this information and prepare for questions (rudimentary ones) on how these data were generated, i.e. which technology (Illumina, MinION, ...).
 In order to investigate temporal signal in these \gls{hbv} datasets, we performed subsequent analyses by including---for two genotypes---recently published ``ancient'' genomes isolated from mummies ranging in age from 450 years old to 4,500 years old \cite{muhlemann2018ancient, ross2018paradox}.
@@ -14,7 +14,7 @@ We will assess whether the addition of these ancient samples allows for inferenc
 
 \subsection{Preprocessing}
 
-Prior to Bayesian inference, we estimated unrooted maximum likelihood phylogenetic trees using IQ-TREE \cite{nguyen2015iq}. %GB: mention the version of IQ-TREE
+Prior to Bayesian inference, we estimated unrooted maximum likelihood phylogenetic trees using IQ-TREE 1.5.5 \cite{nguyen2015iq}.
 These maximum likelihood trees were used to perform temporal signal analysis using TempEst \cite{rambaut2016exploring}---a tool which quantifies temporal signal by performing regression analysis of genetic divergence over time---allowing us to remove sequences that showed incongruent temporal signal patterns.
 %GB: The next two sequences are technically results.
 The resulting dataset comprised 583 sequences of \gls{hbv}-A genotype viruses, 764 sequences of \gls{hbv}-D sequences, and 234 sequences of \gls{hbv}-E genotype viruses.
@@ -31,7 +31,7 @@ To accommodate the impact of the overlapping regions in the \gls{hbv} genome on 
 We performed at least three independent replicates of our \gls{mcmc} analysis with each replicate running for 500 million iterations and subsampling every 10,000th iteration.
 This helped ensure proper convergence, as we could verify that all independent replicates converged to the same posterior distribution.
 Parallelization of replicates had the added benefit of providing us with higher \gls{ess} values, as multiple chains could be sampled from independently at the same time, lowering overall computation time.
-We assumed default priors in \gls{beast} for all parameters in these analyses except for the mean evolutionary rate which we assigned a lognormal prior distribution with mean $\text{log}(\mu)=-11.3474$ and standard deviation $\sigma^{2}=1.22)$ which was derived from the \gls{hbv} evolutionary rate estimated by the researchers who generated the ancient genomes \cite{muhlemann2018ancient}. %GB: double-check this sentence with Mandev
+We assumed default priors in \gls{beast} for all parameters in these analyses except for the mean evolutionary rate which we assigned a lognormal prior distribution with mean $\text{log}(\mu)=-11.3474$ and standard deviation $\sigma^{2}=1.22)$ which was derived from the \gls{hbv} evolutionary rate estimated by the researchers who generated the ancient genomes \cite{muhlemann2018ancient}.
 To speed up likelihood computations we used the BEAGLE 3 high-performance computational library.
 \gls{mcmc} chains ran for 500 million iterations and were sampled every 25,000th state.
 For each subtype, multiple replicates were run in parallel using different starting seeds to verify convergence and ensure proper statistical mixing, and a single combined posterior distribution was formed from all replicates, removing an appropriate proportion (at least 10\%) of each chain as burn-in.
@@ -65,7 +65,7 @@ Though our data are generated using this particular technology, the automated bu
 
 \subsection{Preprocessing and model specification}
 
-Beyond the runtime complexity of currently available phylogeographic inference tools, real-time analyses are further impeded by the significant amount of preprocessing that they necessitate before raw sequence data can be analyzed. %GB: check throughout the thesis for the use of 'real time' versus 'real-time' and be consistent
+Beyond the runtime complexity of currently available phylogeographic inference tools, real-time analyses are further impeded by the significant amount of preprocessing that they necessitate before raw sequence data can be analyzed.
 This preprocessing generally takes the form of bespoke pipelines that require significant manual work to function properly.
 While each individual analysis presents challenges unique to the biology of the pathogen of interest, for many analyses the general scheme of data preprocessing is similar.
 
@@ -93,7 +93,7 @@ Once an alignment has been generated, a selection of models for phylogenetic ana
 Some models can be specified in \gls{beast} using its graphical user interface, BEAUti.
 Unfortunately this program does not support the full suite of models that \gls{beast} can run at this time, and its use in facilitating online phylogenetic analyses is even more limited.
 Indeed, for many features that researchers may wish to use the only method for specifying them is by editing code blocks in an XML source file manually.
-While this process is possible to automate for those with sufficient technical knowledge there is no existing method for first-time users of the \gls{beast} framework to do so. %GB: avoid use of 'ecosystem' throughout the thesis
+While this process is possible to automate for those with sufficient technical knowledge there is no existing method for first-time users of the \gls{beast} framework to do so.
 In addition to initial model specification, it is frequently the case that models need to be tweaked following some runtime either to be optimized or to fix issues that occur during their execution.
 This process is currently performed entirely manually by the user, further impeding automatic phylogenetic analysis.
 
@@ -110,7 +110,7 @@ Only after all of these steps have been completed can a user begin to perform th
 
 Lassa virus (LASV) proves to be a particularly difficult virus to preprocess for the purpose of phylogenetic inference.
 In particular, generating an accurate and useful alignment can be very challenging with \gls{lasv} due to its high sequence variability.
-The challenges from this variability are compounded, as they need to be accounted for both across LASV's two genomic segments, but also for the two genes on each of the segments, which need to be aligned to each other to provide meaningful results during phylogenetic analysis.
+The challenges from this variability are compounded, as they need to be accounted for both across \gls{lasv}'s two genomic segments, but also for the two genes on each of the segments, which need to be aligned to each other to provide meaningful results during phylogenetic analysis.
 To handle these challenges, we divided our adaptable processing framework into two steps, one for alignment generation, and one for build parameterization and specification.
 
 \subsubsection{Snakemake for build management}
