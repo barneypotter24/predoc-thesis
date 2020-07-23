@@ -40,10 +40,6 @@ We perform phylogeographic inference on an empirical tree distribution because j
 
 \subsection{Phylogeographic modeling}
 
-\newglossaryentry{mcc}{name={MCC},description={Maximum clade credibility}}
-\newglossaryentry{ctmc}{name={CTMC},description={Continuous-time Markov chain}}
-\newglossaryentry{bssvs}{name={BSSVS},description={Bayesian stochastic search variable selection}}
-\newglossaryentry{bf}{name={BF},description={Bayes factor}}
 Employing the collected empirical tree distributions, we estimated the spatial diffusion dynamics using a Bayesian phylogeographic approach in which the locations are treated as discrete traits, and allowed for different migration rates to and from each location.
 This approach conditioned on the geographic locations recorded at the tips of the trees and modeled the transition history among those locations as a continuous-time Markov chain (\gls{ctmc}) process to infer the unobserved locations at the internal nodes of each tree.
 For these reconstructions, \gls{mcmc} chains were run for 10 million iterations and sampled every 10,000th state.
@@ -148,7 +144,6 @@ Genotype-gene alignments were then built using MAFFT and concatenated ``vertical
 Finally, alignments were concatenated ``horizontally'' between the two genes for each segment, padded with \textit{N} characters to allow for variations in length and to buffer between genes.
 This process is illustrated in Figure~\ref{fig:alignment_dag}.
 
-\newglossaryentry{dag}{name={DAG},description={Directed acyclic graph}}
 \begin{figure}[ht]
   \centering
   \medskip
@@ -159,11 +154,11 @@ This process is illustrated in Figure~\ref{fig:alignment_dag}.
 
 \subsubsection{MCMC build specification}
 
-\newglossaryentry{hmc}{name={HMC},description={Hamiltonian Monte Carlo}}
-For our LASV analyses, we created a Snakemake pipeline similar in form to the one used for preprocessing.
-This pipeline (Fig.~\ref{fig:workflow_dag}) took the output alignments described above as its primary input to generate \gls{beast} XML files.
-We used a Bayesian skygrid demographic model for our analyses---though the pipeline is parameterized to easily accommodate both constant population size and Bayesian skyride \cite{minin2008smooth} demographic models.
-Our skygrid inference used a Hamiltonian Monte Carlo (\gls{hmc}) operator to enable efficient exploration of population size state space \cite{baele2020hamiltonian}.
+For our Lassa analyses, we created a Snakemake pipeline similar in form to that used for preprocessing.
+This pipeline (Fig.~\ref{fig:workflow_dag}) took the output alignments described above as its primary input.
+From each, we generated \gls{beast} XML files.
+We used a Bayesian skygrid demographic models for our analyses---though the pipeline is parameterized to easily accommodate both constant population size and Bayesian skyride\cite{minin2008smooth} demographic models.
+Our skygrid inference used a Hamiltonian Monte Carlo (\gls{hmc}) operator to enable efficient exploration of population size state space\cite{baele2020hamiltonian}.
 We assumed an HKY substitution model with codon partitioning for each gene, accommodating among-site rate heterogeneity through a discretized gamma distribution.
 We otherwise assumed default \gls{beast} settings for the transition kernels and priors.
 The \gls{mcmc} chain length, logging frequency, and number of parallel replicates were parameterized dynamically through Snakemake, however for the results we present we ran a single chain for $5\times10^7$ iterations, logging every 15,000th state.
