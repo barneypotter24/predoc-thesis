@@ -4,18 +4,17 @@
 
 \section{HBV phylogeography}
 
-%GB: past tense makes more sense to me here
 In this thesis, we first illustrated the power of Bayesian phylogenetic inference as a \textit{post hoc} analysis tool.
-We performed phylogenetic inference on a three large datasets of contemporary HBV sequences from around the world.
+We performed phylogenetic inference on a three large datasets of contemporary \gls{hbv} sequences from around the world.
 To two of these datasets we additionally included several genomes isolated from mummies ranging between 500--4,500 years in age.
 Conditioned on the results of this phylogenetic inference, we performed phylogeographic inference to identify historical migration events that may have contributed to the current geographic distribution patterns of \gls{hbv}.
 
-We observed that genotype D was the fastest evolving among the HBV genotypes.
+We observed that genotype D was the fastest evolving among the \gls{hbv} genotypes.
 Genotype E is the most recently diverged genotype, however both its divergence and evolutionary rate estimates had large 95\% highest posterior density intervals, indicating that these estimates have a relatively high degree of uncertainty and must be cautiously interpreted.
 This is probably due to the smaller dataset for genotype E (234 sequences), compared to the dataset sizes for the other genotypes (583 and 764 sequences for A and D, respectively).
-Additionally, there is recent evidence that HBV has limited temporal signal warranting temporal and evolutionary estimation not reliable, particularly for very long timeframes, with the risk of underestimating when the most recent common ancestor (MRCA) diverged \cite{ross2018paradox}.
+Additionally, there is recent evidence that \gls{hbv} has limited temporal signal warranting temporal and evolutionary estimation not reliable, particularly for very long timeframes, with the risk of underestimating when the \gls{mrca} diverged \cite{ross2018paradox}.
 To avoid the inherent biases of estimating these measures for viruses that have an ancient time of divergence, we opted for analyzing each genotype separately.
-Moreover, the short time frame of these datasets, ranging from 16 to 37 years of sampling, should be less affected by the limited temporal signal, thus making the estimation of evolutionary rate and time to MRCA more reliable. %GB: do you have a citation/reference for this statement? perhaps from recent SARS-CoV-2 analyses/publications?
+Moreover, the short time frame of these datasets, ranging from 16 to 37 years of sampling, should be less affected by the limited temporal signal, thus making the estimation of evolutionary rate and time to \gls{mrca} more reliable. %GB: do you have a citation/reference for this statement? perhaps from recent SARS-CoV-2 analyses/publications?
 The phylogeographic reconstructions are not affected by the temporal inference, particularly because we conditioned it on a posterior subset of trees.
 
 Rather than employing each specific country in our comprehensive dataset as a different location for our discrete phylogeographic reconstruction, we have opted to perform these analyses on the continent level in an attempt to mitigate sampling bias among the different countries in our dataset.
@@ -32,7 +31,8 @@ This was then applied to genomes collected during seasonal \gls{lasv} outbreaks 
 
 One of the biggest challenges in performing Bayesian phylogenetic inference is the large computational burden of analyses.
 Depending on the size and complexity of a dataset---as well as the particular statistical model being used and the hardware on which analyses are run---an analysis of a single dataset can take upwards of a month of runtime.
-While this can largely be worked around for retrospective analyses of datasets, it proves a major impediment to using Bayesian phylogenetics to analyze ongoing disease outbreaks because current tools are designed to operate on a single dataset; their utility breaks down under scenarios that create dynamic inputs. %GB: this sentence is vague/unclear (the latter part)
+While this can largely be worked around for retrospective analyses of datasets, it proves a major impediment to using Bayesian phylogenetics to analyze ongoing disease outbreaks because current tools are designed to operate on a single dataset.
+The utility of such methods breaks down in such situations that require expedient analyses to inform policy and public health decision making.
 Because of runtime constraints, complete analyses can plausibly take longer to run than is actionable during the course of an epidemic.
 Additionally, current methods do not accommodate changes to datasets or statistical models, often requiring new analyses to be restarted ``from scratch'' after more information regarding a pathogen is uncovered.
 While frequent restarts may be feasible for small datasets or relatively simple models that run in a short amount of time, it quickly becomes unreasonable as dataset size and model complexity grow.
