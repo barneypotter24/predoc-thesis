@@ -184,7 +184,7 @@ Over the last three decades, we observed much more variable growth and decline i
   \centering
   \medskip
   \includegraphics[width=\textwidth]{L_full_skygrid}
-  \caption[Demographic history of Lassa's L segment]{Bayesian skygrid reconstruction of the demographic history (effective population size over time) of \gls{lasv} segment L. Mean effective population size is shown as a black line, with blue regions representing 95\% HPD interval. We infer the \gls{tmrca} to be 1697 [95\% HPD: 1647--1741].}
+  \caption[Demographic history of Lassa's L segment]{Bayesian skygrid reconstruction of the demographic history (effective population size over time) of \gls{lasv} segment L. Mean effective population sie is shown as a black line, with blue regions representing 95\% HPD interval. We infer the \gls{tmrca} to be 1697 [95\% HPD: 1647--1741].}
   \label{fig:l_skygrid}
 \end{figure}
 
@@ -192,7 +192,7 @@ Over the last three decades, we observed much more variable growth and decline i
   \centering
   \medskip
   \includegraphics[width=\textwidth]{S_full_skygrid}
-  \caption[Demographic history of Lassa's S segment]{Bayesian skygrid reconstruction of the demographic history (effective population size over time) of \gls{lasv} segment S. Mean effective population site is shown as a black line, with blue regions representing 95\% HPD interval. We infer the \gls{tmrca} to be 1752 [95\% HPD: 1751--1802].}
+  \caption[Demographic history of Lassa's S segment]{Bayesian skygrid reconstruction of the demographic history (effective population size over time) of \gls{lasv} segment S. Mean effective population sie is shown as a black line, with blue regions representing 95\% HPD interval. We infer the \gls{tmrca} to be 1752 [95\% HPD: 1751--1802].}
   \label{fig:s_skygrid}
 \end{figure}
 
